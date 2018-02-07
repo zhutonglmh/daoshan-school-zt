@@ -30,10 +30,10 @@ management:
   security:
     enabled: false
 logging:
-  level:
-    root: INFO
-  file: D:/data/app.log
+
   config: classpath:logback-dev.xml
+  level:
+      root: INFO
 mybatis-plus:
   type-aliases-package: com.daoshan.bean
   mapper-locations: classpath:mapper/*Mapper.xml

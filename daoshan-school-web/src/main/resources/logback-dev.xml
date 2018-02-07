@@ -8,10 +8,10 @@
         </encoder>  
     </appender>  
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">  
-        <file>D:/app2.log</file>  
+        <file>D:/app3.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
             <!-- daily rollover 保存历史记录到这个文件夹一日起为后缀 -->  
-            <fileNamePattern>app2.log.%d{yyyy-MM-dd}.log</fileNamePattern>  
+            <fileNamePattern>app3.log.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->  
             <maxHistory>30</maxHistory>  
         </rollingPolicy>  
@@ -23,7 +23,7 @@
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->  
         </encoder>  
     </appender>  
-    <root level="INFO">  
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE"></appender-ref>  
         <appender-ref ref="FILE"></appender-ref>  
     </root>  

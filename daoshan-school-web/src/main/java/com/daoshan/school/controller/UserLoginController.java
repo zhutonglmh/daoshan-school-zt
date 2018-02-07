@@ -32,6 +32,7 @@ public class UserLoginController {
         userLogin.setId(1);
         userLoginMapper.selectOne(userLogin);
         userLoginMapper.selectById(userLogin.getId());
+        System.out.println("哈哈哈哈哈  暂时就先这样吧");
         return JSON.toJSONString(userLoginMapper.selectById(userLogin.getId()));
     }
 }
