@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @ServletComponentScan
+@MapperScan("com.daoshan.dao")
 @EnableTransactionManagement
 public class DaoshanSchoolWebApplication {
 

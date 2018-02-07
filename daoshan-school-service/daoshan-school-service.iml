@@ -19,6 +19,7 @@
     <orderEntry type="module" module-name="daoshan-school-dao" />
     <orderEntry type="module" module-name="daoshan-school-utils" />
     <orderEntry type="module" module-name="daoshan-school-entity" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.1.23" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:1.5.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.8.RELEASE" level="project" />
