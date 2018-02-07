@@ -1,0 +1,43 @@
+#端口配置
+server:
+  port: 9090
+# 数据库配置
+spring:
+    datasource:
+      name: ordersystem
+      url: jdbc:mysql://localhost:3306/ordersystem
+      username: root
+      password: zhutong960607
+      # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: com.mysql.jdbc.Driver
+      #这里飘黄是因为spring boot 没有内置druid连接池的以下配置信息，所以需要自己去写一个druid的配置类  来进行这些属性的配置
+      initialSize: 1
+      filters: stat
+      maxActive: 20
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+#解决关于监控401报错   敏感权限问题
+management:
+  security:
+    enabled: false
+logging:
+  level:
+    root: INFO
+  file: D:/data/app.log
+  config: classpath:logback-dev.xml
+mybatis:
+  type-aliases-package: com.daoshan.bean
+  mapper-locations: classpath:mapper/*Mapper.xml
+mapper:
+  #mappers: com.example.myMapper.MyMapper
+  identity: MYSQL
+  not-empty: false

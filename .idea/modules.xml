@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/daoshan-school.iml" filepath="$PROJECT_DIR$/daoshan-school.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daoshan-school-dao/daoshan-school-dao.iml" filepath="$PROJECT_DIR$/daoshan-school-dao/daoshan-school-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daoshan-school-entity/daoshan-school-entity.iml" filepath="$PROJECT_DIR$/daoshan-school-entity/daoshan-school-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daoshan-school-service/daoshan-school-service.iml" filepath="$PROJECT_DIR$/daoshan-school-service/daoshan-school-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daoshan-school-utils/daoshan-school-utils.iml" filepath="$PROJECT_DIR$/daoshan-school-utils/daoshan-school-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daoshan-school-web/daoshan-school-web.iml" filepath="$PROJECT_DIR$/daoshan-school-web/daoshan-school-web.iml" />
+    </modules>
+  </component>
+</project>
