@@ -2,7 +2,6 @@ package com.daoshan.school.controller;
 
 import com.daoshan.bean.UserLogin;
 import com.daoshan.dao.UserLoginMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +28,10 @@ public class UserLoginController {
 
         List<UserLogin> list = userLoginMapper.selectUserMse(map);
 
-        return JSON.toJSONString(list);
+        UserLogin userLogin = new UserLogin();
+        userLogin.setId(1);
+        userLoginMapper.selectOne(userLogin);
+        userLoginMapper.selectById(userLogin.getId());
+        return JSON.toJSONString(userLoginMapper.selectById(userLogin.getId()));
     }
 }

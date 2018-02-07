@@ -1,5 +1,11 @@
 package com.daoshan.bean;
 
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableName;
+import lombok.Data;
+
+import java.io.Serializable;
+
 /**
  * 
  * 实体bean 对应数据库中的user_zt表
@@ -7,7 +13,9 @@ package com.daoshan.bean;
  * @author 朱同  2017/12/7
  *
  */
-public class UserLogin {
+@Data
+@TableName("user_login")
+public class UserLogin implements Serializable {
     
     /**
      * 用户id，对应表中字段id
@@ -29,54 +37,11 @@ public class UserLogin {
      */
     private String isadm;
 
+    @TableField(exist = false)
+    private String demo1;
     /**
      * 还账号是否使用，对应表中字段issys ('0'：不再使用； '1'：正在使用)
      */
     private String issys;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public String getUserpassword() {
-        return userpassword;
-    }
-
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword == null ? null : userpassword.trim();
-    }
-
-    public String getIsadm() {
-        return isadm;
-    }
-
-    public void setIsadm(String isadm) {
-        this.isadm = isadm == null ? null : isadm.trim();
-    }
-
-    public String getIssys() {
-        return issys;
-    }
-
-    public void setIssys(String issys) {
-        this.issys = issys == null ? null : issys.trim();
-    }
-    /**
-     * 获取当前类的String 展示
-     */
-    public String toString() {
-        return this.toString();
-    }
 }

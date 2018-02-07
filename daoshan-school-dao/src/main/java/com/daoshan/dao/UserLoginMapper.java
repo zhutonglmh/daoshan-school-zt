@@ -1,6 +1,7 @@
 package com.daoshan.dao;
 
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.daoshan.bean.UserLogin;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Map;
  * @author 朱同   2017/12/7
  * 
  */
-public interface UserLoginMapper {
+public interface UserLoginMapper extends BaseMapper<UserLogin> {
     
     /**
      * 
