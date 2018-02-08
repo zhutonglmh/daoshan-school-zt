@@ -1,4 +1,4 @@
-package com.daoshan.school.utils;
+package com.daoshan.school.utils.check;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * @author 朱同(雏鹰订餐系统组) 2017/12/15
  *
  */
-public class CheckCharacterValidatorImpl implements ConstraintValidator<CheckCharacterValidator, String> {  
+public class CheckCharacterValidatorImpl implements ConstraintValidator<CheckCharacterValidator, String> {
     
     private int len;
     
@@ -22,7 +22,7 @@ public class CheckCharacterValidatorImpl implements ConstraintValidator<CheckCha
      * 
      * 初始参数,获取注解中length的值 
      */  
-    public void initialize(CheckCharacterValidator arg0) {  
+    public void initialize(CheckCharacterValidator arg0) {
         this.len = arg0.length();  
     }  
   

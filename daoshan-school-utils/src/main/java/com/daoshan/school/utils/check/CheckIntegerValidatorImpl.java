@@ -1,4 +1,4 @@
-package com.daoshan.school.utils;
+package com.daoshan.school.utils.check;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

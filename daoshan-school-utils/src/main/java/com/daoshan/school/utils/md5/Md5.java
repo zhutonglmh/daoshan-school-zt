@@ -1,4 +1,4 @@
-package com.daoshan.school.utils;
+package com.daoshan.school.utils.md5;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
