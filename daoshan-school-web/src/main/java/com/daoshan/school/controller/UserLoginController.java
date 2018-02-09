@@ -44,7 +44,7 @@ public class UserLoginController {
     @PostMapping("set/session")
     @ResponseBody
     public String setSession(HttpSession session){
-        session.setAttribute("name","zhutong");
+        session.setAttribute("id","zhutong");
         return "success";
     }
 
@@ -52,9 +52,21 @@ public class UserLoginController {
     @ResponseBody
     public String getSession(HttpSession session){
 
+        String ss = null;
+        ss.toCharArray();
+        System.out.println("安徽省快点哈考虑是否会考虑");
         return dsxhUserService.sessionDemo();
     }
 
+    @PostMapping("het/session")
+    @ResponseBody
+    public String hetSession(HttpSession session){
+
+        String ss = null;
+        ss.toCharArray();
+        System.out.println("安徽省快点哈考虑是否会考虑");
+        return dsxhUserService.sessionDemo();
+    }
     /*-------------------------------------------------------------------------------------------------------*/
             //以上代码仅供测试框架使用      正式环境可以删除
     /*--------------------------------------------------------------------------------------------------------*/

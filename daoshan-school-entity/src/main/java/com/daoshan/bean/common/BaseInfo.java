@@ -7,6 +7,7 @@ import java.util.Date;
 /**
  * 基本信息实体类
  */
+@Data
 public class BaseInfo {
 
     /**
@@ -22,7 +23,7 @@ public class BaseInfo {
     /**
      * 修改时间
      */
-    private Data updateTime;
+    private Date updateTime;
 
     /**
      * 创建人
@@ -38,4 +39,6 @@ public class BaseInfo {
      * 是否有效
      */
     private int status;
+
+
 }

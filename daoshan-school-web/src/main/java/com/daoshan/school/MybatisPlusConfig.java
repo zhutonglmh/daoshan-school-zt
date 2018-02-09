@@ -6,14 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MybatisPlus {
+public class MybatisPlusConfig {
 
-    //扫描dao或者是Mapper接口
-    @MapperScan("com.daoshan.dao.UserLoginMapper")
-    public class MybatisPlusConfig {
-        /**
-         * mybatis-plus 分页插件
-         */
 
         @Bean
         public PaginationInterceptor paginationInterceptor(){
@@ -22,5 +16,5 @@ public class MybatisPlus {
             return page;
         }
 
-    }
+
 }
