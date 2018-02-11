@@ -38,13 +38,18 @@ public class DsxhUserController {
         return MessageBody.getMessageBody(true,map);
     }
 
+    /**
+     * 分页查询
+     * @param dsxhUser
+     * @return
+     */
     @PostMapping("/findDataForPage")
     public MessageBody findDataForPage(@RequestBody DsxhUser dsxhUser){
         Map<String,Object> map = new HashMap<String,Object>();
 
         Page<DsxhUser> page = new Page<DsxhUser>();
         page.setCurrent(1);
-        page.setSize(1);
+        page.setSize(3);
         page = dsxhUserService.findDataForPage(page,dsxhUser);
         map.put("data",page);
         return MessageBody.getMessageBody(true,map);
