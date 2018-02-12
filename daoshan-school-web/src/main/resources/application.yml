@@ -1,8 +1,10 @@
 #端口配置
 server:
   port: 9090
+  context-path: /daoshan-school
 # 数据库配置
 spring:
+    #数据库配置
     datasource:
       name: daoshan_school
       #是可以设置时区
@@ -26,6 +28,15 @@ spring:
       testOnReturn: false
       poolPreparedStatements: true
       maxPoolPreparedStatementPerConnectionSize: 20
+    #jsp 支持
+    mvc:
+      view:
+        prefix: /jsp/
+        suffix: .jsp
+    #关闭默认模板引擎
+    thymeleaf:
+      cache: false
+      enabled: false
 #解决关于监控401报错   敏感权限问题
 management:
   security:

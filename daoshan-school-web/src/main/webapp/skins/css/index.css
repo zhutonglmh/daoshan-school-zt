@@ -1,0 +1,9 @@
+.carousel-control{
+    font-size: 222px;
+}
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 10px;
+    border: 1px solid #00000000;
+}

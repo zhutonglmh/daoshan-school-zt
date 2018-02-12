@@ -4,10 +4,8 @@ import com.daoshan.bean.UserLogin;
 import com.daoshan.dao.UserLoginMapper;
 import com.daoshan.service.dsxh.DsxhUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -15,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.alibaba.fastjson.JSON;
-@RestController
+@Controller
 @RequestMapping("demo")
 public class UserLoginController {
 
@@ -58,7 +56,7 @@ public class UserLoginController {
         return dsxhUserService.sessionDemo();
     }
 
-    @PostMapping("het/session")
+    @PostMapping("/het/session")
     @ResponseBody
     public String hetSession(HttpSession session){
 
@@ -71,5 +69,9 @@ public class UserLoginController {
             //以上代码仅供测试框架使用      正式环境可以删除
     /*--------------------------------------------------------------------------------------------------------*/
 
+    @RequestMapping(path = {"/index"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public String index(){
+        return "demo";
+    }
 
 }
