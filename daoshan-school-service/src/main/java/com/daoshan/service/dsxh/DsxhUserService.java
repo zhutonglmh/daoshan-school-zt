@@ -3,6 +3,7 @@ package com.daoshan.service.dsxh;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface DsxhUserService {
@@ -57,4 +58,31 @@ public interface DsxhUserService {
      * @return
      */
     public Page<DsxhUser> findDataForPage(Page<DsxhUser> page, DsxhUser dsxhUser);
+
+
+    /**
+     * 校验用户登录
+     * @param dsxhUser
+     * @return
+     */
+    String userLogin(DsxhUser dsxhUser);
+
+    /**
+     * 用户登出
+     * @return
+     */
+    String userLoginOut();
+
+    /**
+     * 获取当前session
+     * @return
+     */
+    HttpSession getSession();
+
+    /**
+     * 获取当前登录用户信息
+     * @return
+     */
+    DsxhUser getUserInfo();
+
 }

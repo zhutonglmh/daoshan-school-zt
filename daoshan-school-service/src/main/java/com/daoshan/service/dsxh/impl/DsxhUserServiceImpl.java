@@ -1,6 +1,7 @@
 package com.daoshan.service.dsxh.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
 import com.daoshan.dao.dsxh.DsxhUserMapper;
@@ -8,14 +9,13 @@ import com.daoshan.school.utils.constans.ConStants;
 import com.daoshan.school.utils.md5.Md5;
 import com.daoshan.school.utils.uuid.UUIDUtils;
 import com.daoshan.service.dsxh.DsxhUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +36,7 @@ public class DsxhUserServiceImpl implements DsxhUserService{
         //获取到当前线程绑定的请求对象
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         //已经拿到session,就可以拿到session中保存的用户信息了。
+
         String name = request.getSession().getAttribute("id").toString();
         return name;
     }
@@ -84,14 +85,15 @@ public class DsxhUserServiceImpl implements DsxhUserService{
             //MD5加密
             String password = dsxhUser.getPwd();
             dsxhUser.setPwd(Md5.getMd5ByParams(password));
+        }else {
+            return ConStants.DSXH_FAILUER;
         }
         //获取当前用户
         //dsxhUser.setCreateUser(sessionDemo());
         //获取当前时间
         Date date = new Date();
-        System.out.println(date);
         Timestamp timestamp = new Timestamp(date.getTime());
-        dsxhUser.setCreateTime(timestamp);
+        dsxhUser.setUpdateTime(timestamp);
 
         int updateResult = dsxhUserMapper.updateById(dsxhUser);
 
@@ -140,7 +142,9 @@ public class DsxhUserServiceImpl implements DsxhUserService{
     @Override
     public List<DsxhUser> queryUserList(DsxhUser dsxhUser) {
 
-        return null;
+        Wrapper<DsxhUser> wrapper = new EntityWrapper<>(dsxhUser);
+
+        return dsxhUserMapper.selectList(wrapper);
     }
 
     /**
@@ -154,6 +158,79 @@ public class DsxhUserServiceImpl implements DsxhUserService{
         List<DsxhUser> list = dsxhUserMapper.selectByZt(page,dsxhUser);
         page.setRecords(list);
         return page;
+    }
+
+    /**
+     * 校验用户登录
+     *
+     * @param dsxhUser
+     * @return
+     */
+    @Override
+    public String userLogin(DsxhUser dsxhUser) {
+
+        String name = dsxhUser.getName();
+        String password = dsxhUser.getPwd();
+        if(name != dsxhUser.getName() && password != dsxhUser.getPwd() && !"".equals(name) && !"".equals(password)){
+            DsxhUser dsxhUser1 = dsxhUserMapper.selectById(dsxhUser.getId());
+            if(null != dsxhUser1){
+                String passwordMd5 = Md5.getMd5ByParams(password);
+                String result = passwordMd5 == dsxhUser1.getPwd() ? ConStants.DSXH_SUCCESS : ConStants.DSXH_FAILUER;
+                //放置session
+                if (ConStants.DSXH_SUCCESS.equals(result)){
+                    HttpSession session = getSession();
+                    session.setAttribute("id",dsxhUser1.getId());
+                }
+                return result;
+            }else {
+                return ConStants.DSXH_FAILUER;
+            }
+        }else {
+            return ConStants.DSXH_FAILUER;
+        }
+    }
+
+    /**
+     * 用户登出
+     *
+     * @return
+     */
+    @Override
+    public String userLoginOut() {
+
+        HttpSession session = getSession();
+        session.removeAttribute("id");
+        return ConStants.DSXH_SUCCESS;
+    }
+
+    /**
+     * 获取当前进程session
+     *
+     * @return
+     */
+    @Override
+    public HttpSession getSession() {
+
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpSession session = request.getSession();
+        return session;
+    }
+
+    /**
+     * 获取当前登录用户信息
+     *
+     * @return
+     */
+    @Override
+    public DsxhUser getUserInfo() {
+
+        DsxhUser dsxhUser = null;
+        HttpSession session = getSession();
+        String id = session.getAttribute("id").toString();
+        if(!"".equals(id) && null != id){
+            dsxhUser = dsxhUserMapper.selectById(id);
+        }
+        return dsxhUser;
     }
 
 

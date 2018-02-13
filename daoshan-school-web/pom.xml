@@ -29,6 +29,11 @@
             <artifactId>daoshan-school-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+		<!--spring aop 面向切面编程-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
         <!-- 添加日志依赖jar包 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
