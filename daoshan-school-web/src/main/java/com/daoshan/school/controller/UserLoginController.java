@@ -50,9 +50,6 @@ public class UserLoginController {
     @ResponseBody
     public String getSession(HttpSession session){
 
-        String ss = null;
-        ss.toCharArray();
-        System.out.println("安徽省快点哈考虑是否会考虑");
         return dsxhUserService.sessionDemo();
     }
 

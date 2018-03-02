@@ -226,9 +226,10 @@ public class DsxhUserServiceImpl implements DsxhUserService{
 
         DsxhUser dsxhUser = null;
         HttpSession session = getSession();
-        String id = session.getAttribute("id").toString();
+        Object id = session.getAttribute("id");
         if(!"".equals(id) && null != id){
-            dsxhUser = dsxhUserMapper.selectById(id);
+            String userId = id.toString();
+            dsxhUser = dsxhUserMapper.selectById(userId);
         }
         return dsxhUser;
     }
