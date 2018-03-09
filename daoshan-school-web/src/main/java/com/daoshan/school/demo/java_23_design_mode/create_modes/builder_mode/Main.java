@@ -51,7 +51,6 @@ public class Main {
         director.construct();
         Product product = builder.retrieveResult();
         System.out.println(product.getPart1());
-
         System.out.println(product.getPart2());
     }
 }
