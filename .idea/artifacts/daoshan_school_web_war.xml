@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="daoshan-school-web:war">
+    <output-path>$PROJECT_DIR$/daoshan-school-web/target</output-path>
+    <root id="archive" name="daoshan-school-web-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="daoshan-school-web:war exploded" />
+    </root>
+  </artifact>
+</component>
