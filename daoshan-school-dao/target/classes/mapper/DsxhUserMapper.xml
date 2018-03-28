@@ -11,6 +11,7 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="SMALLINT" />
     <result column="vip" property="vip" jdbcType="SMALLINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, pwd, create_time, create_user, update_user, update_time, status, vip

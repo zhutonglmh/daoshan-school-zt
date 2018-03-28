@@ -7,10 +7,9 @@ import com.daoshan.school.utils.constans.ConStants;
 import com.daoshan.school.utils.messagebody.MessageBody;
 import com.daoshan.service.dsxh.DsxhUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,7 +87,7 @@ public class DsxhUserController {
     @PostMapping("/userLogin")
     public MessageBody userLogin(@RequestBody DsxhUser dsxhUser){
         Map<String,Object> map = new HashMap<String,Object>();
-        String result = dsxhUserService.userLogin(dsxhUser);
+        HashMap<String,Object> result = dsxhUserService.userLogin(dsxhUser);
         map.put("data",result);
         return MessageBody.getMessageBody(true,map);
     }
@@ -108,5 +107,21 @@ public class DsxhUserController {
             map.put("data", ConStants.DSXH_FAILUER);
         }
         return MessageBody.getMessageBody(true,map);
+    }
+
+    /**
+     * 退出登录
+     *
+     * @return
+     */
+    @PostMapping("/loginOut")
+    public MessageBody loginOut(){
+
+        HttpSession session = dsxhUserService.getSession();
+        session.removeAttribute("id");
+        if(session.getAttribute("id") != null){
+            session.invalidate();
+        }
+        return MessageBody.getMessageBody(true,"success");
     }
 }

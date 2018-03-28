@@ -12,7 +12,7 @@ public class IODemo {
     public static void main(String[] args) {
 
         //创建文件对象
-        File file = new File("D://demo.txt");
+        File file = new File("D://Demo.txt");
         //获取输出流   备注：从系统写入文件
         //OutputStream outputStream = null;
         //获取输入流   备注：从文件读入系统

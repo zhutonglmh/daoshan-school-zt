@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Service("dsxhUserService")
@@ -167,26 +168,35 @@ public class DsxhUserServiceImpl implements DsxhUserService{
      * @return
      */
     @Override
-    public String userLogin(DsxhUser dsxhUser) {
+    public HashMap<String,Object> userLogin(DsxhUser dsxhUser) {
 
+        HashMap map = new HashMap();
         String name = dsxhUser.getName();
         String password = dsxhUser.getPwd();
-        if(name != dsxhUser.getName() && password != dsxhUser.getPwd() && !"".equals(name) && !"".equals(password)){
-            DsxhUser dsxhUser1 = dsxhUserMapper.selectById(dsxhUser.getId());
+        if(null != dsxhUser.getName() && null != dsxhUser.getPwd() && !"".equals(name) && !"".equals(password)){
+
+            DsxhUser user =  new DsxhUser();
+            user.setName(dsxhUser.getName());
+            List<DsxhUser>  list = this.queryUserList(user);
+            DsxhUser dsxhUser1 = list.get(0);
             if(null != dsxhUser1){
                 String passwordMd5 = Md5.getMd5ByParams(password);
-                String result = passwordMd5 == dsxhUser1.getPwd() ? ConStants.DSXH_SUCCESS : ConStants.DSXH_FAILUER;
+                String result = passwordMd5.equals(dsxhUser1.getPwd()) ? ConStants.DSXH_SUCCESS : ConStants.DSXH_FAILUER;
                 //放置session
                 if (ConStants.DSXH_SUCCESS.equals(result)){
                     HttpSession session = getSession();
                     session.setAttribute("id",dsxhUser1.getId());
                 }
-                return result;
+                map.put("result",result);
+                map.put("data",dsxhUser1);
+                return map ;
             }else {
-                return ConStants.DSXH_FAILUER;
+                map.put("result",ConStants.DSXH_FAILUER);
+                return map ;
             }
         }else {
-            return ConStants.DSXH_FAILUER;
+            map.put("result",ConStants.DSXH_FAILUER);
+            return map ;
         }
     }
 

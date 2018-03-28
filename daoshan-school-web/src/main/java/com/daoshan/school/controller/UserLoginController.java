@@ -67,8 +67,14 @@ public class UserLoginController {
     /*--------------------------------------------------------------------------------------------------------*/
 
     @RequestMapping(path = {"/index"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
     public String index(){
-        return "demo";
+        return "Demo";
     }
 
+    @RequestMapping(path = {"/index2"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public String index2(){
+        return "Demo";
+    }
 }

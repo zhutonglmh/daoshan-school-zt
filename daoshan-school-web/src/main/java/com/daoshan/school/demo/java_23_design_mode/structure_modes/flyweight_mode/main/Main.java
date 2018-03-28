@@ -51,9 +51,9 @@ public class Main {
     //所以我们不能单纯的说equals到底比较的是什么。你想知道一个类的equals方法是什么意思就是要去看定义。*/
 //    public static void main(String[] args) {
 //
-//        Demo demo = new Demo();
+//        Demo Demo = new Demo();
 //        Demo demo1 = new Demo();
-//        System.out.println(demo.equals(demo1));
+//        System.out.println(Demo.equals(demo1));
 //
 //        String str1 = new String("1");
 //        String str2 = "1";

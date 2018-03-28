@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 
 public interface DsxhUserService {
@@ -65,7 +66,7 @@ public interface DsxhUserService {
      * @param dsxhUser
      * @return
      */
-    String userLogin(DsxhUser dsxhUser);
+    HashMap<String,Object> userLogin(DsxhUser dsxhUser);
 
     /**
      * 用户登出

@@ -57,6 +57,11 @@ public class DsxhUser extends Model<DsxhUser>{
      */
     private int status;
 
+    /**
+     * 用户昵称
+     */
+    private String userName;
+
     @Override
     protected Serializable pkVal() {
         return null;

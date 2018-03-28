@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
  * 切面  使用注解标识拦截方法
  * Created By java-zt On 2018-02-13
  */
-@Aspect //标注切面
-@Component //
+//@Aspect //标注切面
+//@Component //
 public class AccessControlAspect {
 
     @Autowired
