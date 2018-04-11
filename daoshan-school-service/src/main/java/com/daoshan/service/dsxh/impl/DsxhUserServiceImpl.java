@@ -70,6 +70,10 @@ public class DsxhUserServiceImpl implements DsxhUserService{
         dsxhUser.setCreateTime(timestamp);
         int insertResult = dsxhUserMapper.insert(dsxhUser);
         String result = insertResult > 0 ? ConStants.DSXH_SUCCESS : ConStants.DSXH_FAILUER;
+        if(insertResult > 0){
+            HttpSession session = getSession();
+            session.setAttribute("id",dsxhUser.getId());
+        }
         return result;
     }
 

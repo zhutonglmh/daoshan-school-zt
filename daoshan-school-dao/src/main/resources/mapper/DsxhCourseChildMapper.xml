@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.daoshan.dao.dsxh.DsxhCourseChildMapper" >
+  <resultMap id="BaseResultMap" type="com.daoshan.bean.dsxh.entity.DsxhCourseChild" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="course_id" property="courseId" jdbcType="CHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, course_id, number, address, name, course_name
+  </sql>
+ <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from dsxh_course_child
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from dsxh_course_child
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseChild" >
+    insert into dsxh_course_child (id, course_id, number, 
+      address, name, course_name
+      )
+    values (#{id,jdbcType=CHAR}, #{courseId,jdbcType=CHAR}, #{number,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseChild" >
+    insert into dsxh_course_child
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseChild" >
+    update dsxh_course_child
+    <set >
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseChild" >
+    update dsxh_course_child
+    set course_id = #{courseId,jdbcType=CHAR},
+      number = #{number,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      course_name = #{courseName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>-->
+</mapper>

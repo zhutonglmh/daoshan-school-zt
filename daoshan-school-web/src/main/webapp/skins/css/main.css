@@ -1,0 +1,236 @@
+.container-fluid{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 60px;
+}
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    width: 160px;
+}
+#myNav > li {
+    width:76px;
+    height: 60px;
+}
+#myNav > li > a{
+    width: 76px;
+    height: 60px;
+    line-height: 30px;
+    color: #fff;
+    background: #424141;
+}
+#search{
+    float: right;
+    height: 60px;
+    line-height: 60px;
+}
+#search > input{
+    height: 30px;
+}
+#search > label {
+    width: 60px;
+    margin-left: 15px;
+}
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 10px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    margin-top: 70px;
+    height: 40px;
+    line-height: 27px;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #e6dede;
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #424141;
+    height: 60px;
+    /* color: #f2f5f5; */
+}
+#my-navbar-brand{
+    color: #fff;
+    line-height: 30px;
+}
+.message_info{
+    float: right;
+    width: 43%;
+    height: 340px;
+    margin-top: 30px;
+}
+.message_info > .title{
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
+    font-weight: 400;
+}
+.price{
+    height: 200px;
+    line-height: 150px;
+    font-size: 30px;
+    color: red;
+    font-weight: 300;
+}
+#my_btns > .btn{
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.handle {
+    float: right;
+    margin-top: -40px;
+    margin-right: 10px;
+}
+.handle > span {
+    font-size: 18px;
+    font-weight: 100;
+    color: #333;
+    margin-right: 1px;
+}
+.my_content{
+    width: 850px;
+    height: 400px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #ffffff;
+}
+.my_nav {
+    margin-top: 15px;
+    border-bottom: ridge #f7f7e9;
+}
+.information{
+    margin-top: -400px;
+    float: right;
+    width: 250px;
+}
+.information > div {
+    margin-bottom: 15px;
+}
+.information > div > div{
+    width: 250px;
+    background-color:#dcd4d4;
+
+}
+.child{
+    padding: 20px;
+    font: 12px/22px Helvetica Neue,Helvetica,Arial,Sans-serif;
+}
+.information_top > .child1{
+    text-align: center;
+    line-height: 50px;
+    padding: 0px;
+    font-size: 20px;
+    height: 50px;
+    border-bottom: ridge #f7f7e9;
+}
+
+.information_top > .child2{
+    height: 150px;
+}
+
+.information_main > .child1{
+    padding:  0px 0px 0px 0px;
+    height: 50px;
+    border-bottom: ridge #f7f7e9;
+    text-align:center;
+    line-height: 50px;
+    font-size: 20px;
+}
+
+.information_main > .child2{
+    height: 122px;
+}
+
+.information_bottom > .child1{
+    height: 50px;
+    border-bottom: ridge #f7f7e9;
+    text-align:center;
+    padding: 0px;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.information_bottom > .child2{
+    height: 60px;
+    line-height: 60px;
+    padding: 0px;
+    text-align: center;
+}
+
+.information_comments > .child1{
+    height: 50px;
+    border-bottom: ridge #f7f7e9;
+    text-align:center;
+    padding: 0px;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.information_comments > .child2{
+    height: 450px;
+    line-height: 60px;
+}
+.consult{
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 25px;
+    color: #3bd017;
+    border: solid 1px;
+    margin-bottom: 8px;
+}
+.consult > span {
+    margin-right: 15px;
+}
+.my_foot{
+    width: 100%;
+    height: 220px;
+    background: #474443;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    color: #ddd;
+}
+.logo_info {
+    font-size: 32px;
+}
+.logo_info > span{
+    margin-right: 10px;
+}
+.foot_info{
+    height: 66px;
+    margin-top: 20px;
+    width: 430px;
+    font-size: 12px;
+}
+.foot_info_right{
+
+    float: right;
+    margin-top: -70px;
+}
+.foot_info_right > a{
+    font-size: 12px;
+    color: #ddd;
+}
+.copyright{
+    margin-top: 10px;
+    color: #999;
+    font-size: 12px;
+}
+#my-navbar-brand > span{
+    margin-right: 5px;
+}

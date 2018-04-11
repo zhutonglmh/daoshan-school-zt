@@ -40,13 +40,10 @@
 			<div id="login">
 				<ul>
 					<li class="userLogin">
-						<a href="login.jsp">登录</a>
+						<a href="login.jsp">登录/注册</a>
 					</li>
 					<li class="userInfo" style="">
 						<a href=""></a>
-					</li>
-					<li class = "userRegister">
-						<a href="login.jsp">注册</a>
 					</li>
 					<li class = "loginOut">
 						<a>登出</a>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.daoshan.dao.dsxh.DsxhCourseDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.daoshan.bean.dsxh.entity.DsxhCourseDetail" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="course_id" property="courseId" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.daoshan.bean.dsxh.entity.DsxhCourseDetail" extends="BaseResultMap" >
+    <result column="course_message" property="courseMessage" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, course_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    course_message
+  </sql>
+  <!--<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dsxh_course_detail
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from dsxh_course_detail
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseDetail" >
+    insert into dsxh_course_detail (id, course_id, course_message
+      )
+    values (#{id,jdbcType=CHAR}, #{courseId,jdbcType=CHAR}, #{courseMessage,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseDetail" >
+    insert into dsxh_course_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="courseMessage != null" >
+        course_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="courseMessage != null" >
+        #{courseMessage,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseDetail" >
+    update dsxh_course_detail
+    <set >
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="courseMessage != null" >
+        course_message = #{courseMessage,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseDetail" >
+    update dsxh_course_detail
+    set course_id = #{courseId,jdbcType=CHAR},
+      course_message = #{courseMessage,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseDetail" >
+    update dsxh_course_detail
+    set course_id = #{courseId,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>-->
+</mapper>

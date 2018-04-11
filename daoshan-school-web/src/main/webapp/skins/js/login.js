@@ -12,9 +12,51 @@ function initPageDom(){
     //queryAllStudent()
 }
 function initPageEvent(){
+
+    //d登录
     $(document).on("click","#login", loginClick);
+    //注册
+    $(document).on("click","#register", signClick);
 }
 
+//注册
+function signClick() {
+
+    var user = $("#userName_sign").val();
+    var userName = $("#user_sign").val();
+    var password = $("#password_sign").val();
+    var password2 = $("#password_try").val();
+    if(password != password2){return;}
+
+    var url = encodeURI(global.context + "/dsxh/user/insert");
+
+    var JsonData = {
+        "name" : user,
+        "pwd" : password,
+        "userName" : userName
+    }
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:false,
+        data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if (data.data.data == "success") {
+                window.location.href= global.context+"/jsp/index.jsp?";
+            }
+            else{
+            }
+        },
+        error: function () {
+        }
+    });
+}
+
+//登录
 function loginClick() {
 
     var username = $("#userNameLogin").val();
@@ -37,6 +79,7 @@ function loginClick() {
                 window.location.href= global.context+"/jsp/index.jsp?"+data.data.data.data.id;
             }
             else{
+                $("#myAlert").alert();
             }
         },
         error: function () {

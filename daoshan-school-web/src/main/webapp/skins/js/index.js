@@ -33,7 +33,6 @@ function loginOut() {
         success: function (data) {
                 $(".userInfo a" ).hide();
                 $(".userLogin a" ).show();
-                $(".userRegister a" ).show();
                 $(".loginOut a" ).hide();
         },
         error: function () {
@@ -60,12 +59,10 @@ function initPageDom() {
                 $(".loginOut a" ).show();
                 $(".userInfo a" ).html(data.data.data.userName);
                 $(".userLogin a" ).hide();
-                $(".userRegister a" ).hide();
             }
             else{
                 $(".userInfo a" ).hide();
                 $(".userLogin a" ).show();
-                $(".userRegister a" ).show();
                 $(".loginOut a" ).hide();
             }
         },

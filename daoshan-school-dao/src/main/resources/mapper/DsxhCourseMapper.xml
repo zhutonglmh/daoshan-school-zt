@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daoshan.dao.dsxh.DsxhCourseMapper">
+  <resultMap id="BaseResultMap" type="com.daoshan.bean.dsxh.entity.DsxhCourse">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="big_type_id" jdbcType="CHAR" property="bigTypeId" />
+    <result column="big_type_name" jdbcType="VARCHAR" property="bigTypeName" />
+    <result column="type_id" jdbcType="CHAR" property="typeId" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="child_type_id" jdbcType="CHAR" property="childTypeId" />
+    <result column="child_type_name" jdbcType="VARCHAR" property="childTypeName" />
+    <result column="course_price" jdbcType="INTEGER" property="coursePrice" />
+    <result column="picture_address" jdbcType="VARCHAR" property="pictureAddress" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="CHAR" property="createUser" />
+    <result column="delete_flag" jdbcType="SMALLINT" property="deleteFlag" />
+    <result column="praise_number" jdbcType="INTEGER" property="praiseNumber" />
+    <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, course_name, big_type_id, big_type_name, type_id, type_name, child_type_id, child_type_name, 
+    course_price, picture_address, create_time, create_user, delete_flag, praise_number, 
+    teacher_name
+  </sql>
+ <!-- <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dsxh_course
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dsxh_course
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourse">
+    insert into dsxh_course (id, course_name, big_type_id, 
+      big_type_name, type_id, type_name, 
+      child_type_id, child_type_name, course_price, 
+      picture_address, create_time, create_user, 
+      delete_flag, praise_number, teacher_name
+      )
+    values (#{id,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR}, #{bigTypeId,jdbcType=CHAR}, 
+      #{bigTypeName,jdbcType=VARCHAR}, #{typeId,jdbcType=CHAR}, #{typeName,jdbcType=VARCHAR}, 
+      #{childTypeId,jdbcType=CHAR}, #{childTypeName,jdbcType=VARCHAR}, #{coursePrice,jdbcType=INTEGER}, 
+      #{pictureAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=CHAR}, 
+      #{deleteFlag,jdbcType=SMALLINT}, #{praiseNumber,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourse">
+    insert into dsxh_course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="bigTypeId != null">
+        big_type_id,
+      </if>
+      <if test="bigTypeName != null">
+        big_type_name,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="childTypeId != null">
+        child_type_id,
+      </if>
+      <if test="childTypeName != null">
+        child_type_name,
+      </if>
+      <if test="coursePrice != null">
+        course_price,
+      </if>
+      <if test="pictureAddress != null">
+        picture_address,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="praiseNumber != null">
+        praise_number,
+      </if>
+      <if test="teacherName != null">
+        teacher_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="bigTypeId != null">
+        #{bigTypeId,jdbcType=CHAR},
+      </if>
+      <if test="bigTypeName != null">
+        #{bigTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=CHAR},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="childTypeId != null">
+        #{childTypeId,jdbcType=CHAR},
+      </if>
+      <if test="childTypeName != null">
+        #{childTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="coursePrice != null">
+        #{coursePrice,jdbcType=INTEGER},
+      </if>
+      <if test="pictureAddress != null">
+        #{pictureAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="praiseNumber != null">
+        #{praiseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null">
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourse">
+    update dsxh_course
+    <set>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="bigTypeId != null">
+        big_type_id = #{bigTypeId,jdbcType=CHAR},
+      </if>
+      <if test="bigTypeName != null">
+        big_type_name = #{bigTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=CHAR},
+      </if>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="childTypeId != null">
+        child_type_id = #{childTypeId,jdbcType=CHAR},
+      </if>
+      <if test="childTypeName != null">
+        child_type_name = #{childTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="coursePrice != null">
+        course_price = #{coursePrice,jdbcType=INTEGER},
+      </if>
+      <if test="pictureAddress != null">
+        picture_address = #{pictureAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="praiseNumber != null">
+        praise_number = #{praiseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null">
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourse">
+    update dsxh_course
+    set course_name = #{courseName,jdbcType=VARCHAR},
+      big_type_id = #{bigTypeId,jdbcType=CHAR},
+      big_type_name = #{bigTypeName,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=CHAR},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      child_type_id = #{childTypeId,jdbcType=CHAR},
+      child_type_name = #{childTypeName,jdbcType=VARCHAR},
+      course_price = #{coursePrice,jdbcType=INTEGER},
+      picture_address = #{pictureAddress,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=CHAR},
+      delete_flag = #{deleteFlag,jdbcType=SMALLINT},
+      praise_number = #{praiseNumber,jdbcType=INTEGER},
+      teacher_name = #{teacherName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.daoshan.bean.DsxhCourse">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="big_type_id" jdbcType="CHAR" property="bigTypeId" />
+    <result column="big_type_name" jdbcType="VARCHAR" property="bigTypeName" />
+    <result column="type_id" jdbcType="CHAR" property="typeId" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="child_type_id" jdbcType="CHAR" property="childTypeId" />
+    <result column="child_type_name" jdbcType="VARCHAR" property="childTypeName" />
+    <result column="course_price" jdbcType="INTEGER" property="coursePrice" />
+    <result column="picture_address" jdbcType="VARCHAR" property="pictureAddress" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="CHAR" property="createUser" />
+    <result column="delete_flag" jdbcType="SMALLINT" property="deleteFlag" />
+    <result column="praise_number" jdbcType="INTEGER" property="praiseNumber" />
+    <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, course_name, big_type_id, big_type_name, type_id, type_name, child_type_id, child_type_name, 
+    course_price, picture_address, create_time, create_user, delete_flag, praise_number, 
+    teacher_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dsxh_course
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dsxh_course
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.daoshan.bean.DsxhCourse">
+    insert into dsxh_course (id, course_name, big_type_id, 
+      big_type_name, type_id, type_name, 
+      child_type_id, child_type_name, course_price, 
+      picture_address, create_time, create_user, 
+      delete_flag, praise_number, teacher_name
+      )
+    values (#{id,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR}, #{bigTypeId,jdbcType=CHAR}, 
+      #{bigTypeName,jdbcType=VARCHAR}, #{typeId,jdbcType=CHAR}, #{typeName,jdbcType=VARCHAR}, 
+      #{childTypeId,jdbcType=CHAR}, #{childTypeName,jdbcType=VARCHAR}, #{coursePrice,jdbcType=INTEGER}, 
+      #{pictureAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=CHAR}, 
+      #{deleteFlag,jdbcType=SMALLINT}, #{praiseNumber,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.daoshan.bean.DsxhCourse">
+    insert into dsxh_course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="bigTypeId != null">
+        big_type_id,
+      </if>
+      <if test="bigTypeName != null">
+        big_type_name,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="childTypeId != null">
+        child_type_id,
+      </if>
+      <if test="childTypeName != null">
+        child_type_name,
+      </if>
+      <if test="coursePrice != null">
+        course_price,
+      </if>
+      <if test="pictureAddress != null">
+        picture_address,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="praiseNumber != null">
+        praise_number,
+      </if>
+      <if test="teacherName != null">
+        teacher_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="bigTypeId != null">
+        #{bigTypeId,jdbcType=CHAR},
+      </if>
+      <if test="bigTypeName != null">
+        #{bigTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=CHAR},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="childTypeId != null">
+        #{childTypeId,jdbcType=CHAR},
+      </if>
+      <if test="childTypeName != null">
+        #{childTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="coursePrice != null">
+        #{coursePrice,jdbcType=INTEGER},
+      </if>
+      <if test="pictureAddress != null">
+        #{pictureAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="praiseNumber != null">
+        #{praiseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null">
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daoshan.bean.DsxhCourse">
+    update dsxh_course
+    <set>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="bigTypeId != null">
+        big_type_id = #{bigTypeId,jdbcType=CHAR},
+      </if>
+      <if test="bigTypeName != null">
+        big_type_name = #{bigTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=CHAR},
+      </if>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="childTypeId != null">
+        child_type_id = #{childTypeId,jdbcType=CHAR},
+      </if>
+      <if test="childTypeName != null">
+        child_type_name = #{childTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="coursePrice != null">
+        course_price = #{coursePrice,jdbcType=INTEGER},
+      </if>
+      <if test="pictureAddress != null">
+        picture_address = #{pictureAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="praiseNumber != null">
+        praise_number = #{praiseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null">
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daoshan.bean.DsxhCourse">
+    update dsxh_course
+    set course_name = #{courseName,jdbcType=VARCHAR},
+      big_type_id = #{bigTypeId,jdbcType=CHAR},
+      big_type_name = #{bigTypeName,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=CHAR},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      child_type_id = #{childTypeId,jdbcType=CHAR},
+      child_type_name = #{childTypeName,jdbcType=VARCHAR},
+      course_price = #{coursePrice,jdbcType=INTEGER},
+      picture_address = #{pictureAddress,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=CHAR},
+      delete_flag = #{deleteFlag,jdbcType=SMALLINT},
+      praise_number = #{praiseNumber,jdbcType=INTEGER},
+      teacher_name = #{teacherName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>-->
+</mapper>
