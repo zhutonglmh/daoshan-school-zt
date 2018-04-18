@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daoshan.dao.dsxh.DsxhOrderMapper">
+  <resultMap id="BaseResultMap" type="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="course_id" jdbcType="CHAR" property="courseId" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="create_user" jdbcType="CHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, course_id, course_name, price, create_user, create_time, user_name
+  </sql>
+ <!-- <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dsxh_order
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dsxh_order
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    insert into dsxh_order (id, course_id, course_name, 
+      price, create_user, create_time, 
+      user_name)
+    values (#{id,jdbcType=CHAR}, #{courseId,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{createUser,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{userName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    insert into dsxh_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    update dsxh_order
+    <set>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    update dsxh_order
+    set course_id = #{courseId,jdbcType=CHAR},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      create_user = #{createUser,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      user_name = #{userName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="course_id" jdbcType="CHAR" property="courseId" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="create_user" jdbcType="CHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, course_id, course_name, price, create_user, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dsxh_order
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dsxh_order
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    insert into dsxh_order (id, course_id, course_name, 
+      price, create_user, create_time
+      )
+    values (#{id,jdbcType=CHAR}, #{courseId,jdbcType=CHAR}, #{courseName,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{createUser,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    insert into dsxh_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    update dsxh_order
+    <set>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    update dsxh_order
+    set course_id = #{courseId,jdbcType=CHAR},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      create_user = #{createUser,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=CHAR}
+  </update>-->
+</mapper>

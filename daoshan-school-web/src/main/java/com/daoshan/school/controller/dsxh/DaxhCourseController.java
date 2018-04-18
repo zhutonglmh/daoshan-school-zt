@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +26,17 @@ public class DaxhCourseController {
 
         Map<String,Object> map = new HashMap<String,Object>();
         dsxhCourse = dsxhCourseService.getCourseInfo(dsxhCourse);
+        map.put("data",dsxhCourse);
+        System.out.println(JSON.toJSONString(dsxhCourse));
+        return MessageBody.getMessageBody(true,map);
+    }
+
+
+    @PostMapping("/addCourseInfo")
+    public MessageBody addCourse(@RequestBody DsxhCourse dsxhCourse){
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        dsxhCourse = dsxhCourseService.addCourse(dsxhCourse);
         map.put("data",dsxhCourse);
         System.out.println(JSON.toJSONString(dsxhCourse));
         return MessageBody.getMessageBody(true,map);

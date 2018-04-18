@@ -29,7 +29,7 @@ public class DsxhCourse extends Model<DsxhUser> {
 
     private String childTypeName;
 
-    private Integer coursePrice;
+    private Double coursePrice;
 
     private String pictureAddress;
 
@@ -44,10 +44,19 @@ public class DsxhCourse extends Model<DsxhUser> {
     private String teacherName;
 
     @TableField(exist = false)
+    private String courseMessage;
+
+    @TableField(exist = false)
     private DsxhCourseDetail dsxhCourseDetail;
 
     @TableField(exist = false)
     private List<DsxhCourseChild> dsxhCourseChildren;
+
+    @TableField(exist = false)
+    private List<DsxhCourseComments> commentsList;
+
+    @TableField(exist = false)
+    private String vedioAddress;
 
     @Override
     protected Serializable pkVal() {

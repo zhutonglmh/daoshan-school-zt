@@ -10,7 +10,7 @@
     <result column="type_name" jdbcType="VARCHAR" property="typeName" />
     <result column="child_type_id" jdbcType="CHAR" property="childTypeId" />
     <result column="child_type_name" jdbcType="VARCHAR" property="childTypeName" />
-    <result column="course_price" jdbcType="INTEGER" property="coursePrice" />
+    <result column="course_price" jdbcType="DECIMAL" property="coursePrice" />
     <result column="picture_address" jdbcType="VARCHAR" property="pictureAddress" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_user" jdbcType="CHAR" property="createUser" />

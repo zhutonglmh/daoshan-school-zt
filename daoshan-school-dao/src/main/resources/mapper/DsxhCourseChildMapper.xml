@@ -12,6 +12,13 @@
   <sql id="Base_Column_List" >
     id, course_id, number, address, name, course_name
   </sql>
+  
+  <select id="getChildren" resultMap="BaseResultMap" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseChild">
+    SELECT  <include refid="Base_Column_List" />
+    from dsxh_course_child a
+    where  a.course_id = #{courseId,jdbcType=CHAR}
+    ORDER BY a.number ASC;
+  </select>
  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.daoshan.dao.dsxh.DsxhCourseCommentsMapper" >
+  <resultMap id="BaseResultMap" type="com.daoshan.bean.dsxh.entity.DsxhCourseComments" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="course_id" property="courseId" jdbcType="CHAR" />
+    <result column="comment_loves" property="commentLoves" jdbcType="INTEGER" />
+    <result column="comment_hates" property="commentHates" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="create_user" property="createUser" jdbcType="CHAR" />
+    <result column="create_user_name" property="createUserName" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.daoshan.bean.dsxh.entity.DsxhCourseComments" extends="BaseResultMap" >
+    <result column="comment_message" property="commentMessage" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, course_id, comment_loves, comment_hates, create_time, create_user, create_user_name, 
+    parent_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    comment_message
+  </sql>
+  <!--<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dsxh_course_comments
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from dsxh_course_comments
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseComments" >
+    insert into dsxh_course_comments (id, course_id, comment_loves, 
+      comment_hates, create_time, create_user, 
+      create_user_name, parent_id, comment_message
+      )
+    values (#{id,jdbcType=CHAR}, #{courseId,jdbcType=CHAR}, #{commentLoves,jdbcType=INTEGER}, 
+      #{commentHates,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, #{createUser,jdbcType=CHAR}, 
+      #{createUserName,jdbcType=VARCHAR}, #{parentId,jdbcType=CHAR}, #{commentMessage,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseComments" >
+    insert into dsxh_course_comments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="commentLoves != null" >
+        comment_loves,
+      </if>
+      <if test="commentHates != null" >
+        comment_hates,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createUserName != null" >
+        create_user_name,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="commentMessage != null" >
+        comment_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="commentLoves != null" >
+        #{commentLoves,jdbcType=INTEGER},
+      </if>
+      <if test="commentHates != null" >
+        #{commentHates,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="createUserName != null" >
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=CHAR},
+      </if>
+      <if test="commentMessage != null" >
+        #{commentMessage,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseComments" >
+    update dsxh_course_comments
+    <set >
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=CHAR},
+      </if>
+      <if test="commentLoves != null" >
+        comment_loves = #{commentLoves,jdbcType=INTEGER},
+      </if>
+      <if test="commentHates != null" >
+        comment_hates = #{commentHates,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=CHAR},
+      </if>
+      <if test="createUserName != null" >
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=CHAR},
+      </if>
+      <if test="commentMessage != null" >
+        comment_message = #{commentMessage,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseComments" >
+    update dsxh_course_comments
+    set course_id = #{courseId,jdbcType=CHAR},
+      comment_loves = #{commentLoves,jdbcType=INTEGER},
+      comment_hates = #{commentHates,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=DATE},
+      create_user = #{createUser,jdbcType=CHAR},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=CHAR},
+      comment_message = #{commentMessage,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourseComments" >
+    update dsxh_course_comments
+    set course_id = #{courseId,jdbcType=CHAR},
+      comment_loves = #{commentLoves,jdbcType=INTEGER},
+      comment_hates = #{commentHates,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=DATE},
+      create_user = #{createUser,jdbcType=CHAR},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>-->
+</mapper>

@@ -19,4 +19,7 @@ public interface DsxhCourseService {
      * @throws Exception
      */
     DsxhCourse getCourseInfo(DsxhCourse dsxhCourse);
+
+    DsxhCourse addCourse(DsxhCourse dsxhCourse);
+
 }
