@@ -58,6 +58,9 @@ public class DsxhCourse extends Model<DsxhUser> {
     @TableField(exist = false)
     private String vedioAddress;
 
+    @TableField(exist = false)
+    private String queryString;
+
     @Override
     protected Serializable pkVal() {
         return null;

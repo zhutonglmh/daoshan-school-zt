@@ -4,6 +4,7 @@ var global = {
 };
 
 window.onload = function() {
+
 	initPageEvent();
 	initPageDom();
 	showSubmenu();
@@ -16,8 +17,34 @@ window.onload = function() {
 function initPageEvent() {
 
     $(document).on("click",".loginOut a", loginOut);
+
+    $(document).on("click",".item_class", courseInfo);
+
+    $(document).on("click","#search-begin", toSearch);
+
+    $(document).on("click","#hide", hideUser);
+
+    $(document).on("click","#user-name", showUser);
+
 }
 
+function hideUser() {
+    $(".user-info-message").hide();
+}
+function showUser() {
+    $(".user-info-message").show();
+}
+
+function toSearch() {
+
+	var search = $("#search-info").val();
+    window.location.href= global.context+"/jsp/search.jsp?"+search;
+}
+//进入课程
+function courseInfo() {
+	var courseId = $(this).attr("data-id");
+    window.location.href= global.context+"/jsp/main.jsp?"+courseId;
+}
 /**
  * 用户登出
  */
@@ -42,8 +69,7 @@ function loginOut() {
 /**
  * 初始化获取当前登录用户
  */
-function initPageDom() {
-
+function initUser() {
     var url = encodeURI(global.context + "/dsxh/user/getUserLoginInfo");
     $.ajax({
         url: url,
@@ -54,21 +80,22 @@ function initPageDom() {
         dataType: "JSON",
         success: function (data) {
 
-            if (data.data.data != "failure") {
-				$(".userInfo a" ).show();
-                $(".loginOut a" ).show();
-                $(".userInfo a" ).html(data.data.data.userName);
-                $(".userLogin a" ).hide();
+            if (data.data.data == "failure") {
+                $("#user-name").hide();
+                $("#goto-login").show();
             }
             else{
-                $(".userInfo a" ).hide();
-                $(".userLogin a" ).show();
-                $(".loginOut a" ).hide();
+                $("#user-name").html(data.data.data.userName);
+                $("#user-name").show();
+                $("#goto-login").hide();
             }
         },
         error: function () {
         }
     });
+}
+function initPageDom() {
+    initUser();
 }
 /**
  * 显示子菜单栏

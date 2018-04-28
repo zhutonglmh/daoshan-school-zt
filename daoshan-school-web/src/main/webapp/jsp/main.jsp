@@ -23,24 +23,29 @@
             <a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
         </div>
         <div>
-            <ul id="myNav" class="nav navbar-nav">
-                <li class="active"><a href="#">iOS</a></li>
-                <li><a href="#">SVN</a></li>
-                <li class="active"><a href="#">iOS</a></li>
-                <li><a href="#">SVN</a></li>
-            </ul>
+            <div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
+                爱学习&nbsp;&nbsp;不设限&nbsp;&nbsp;我们与你同在！
+            </div>
             <div id="search">
-                <input type="text" name="search" placeholder="输入搜索内容" value="" />
-                <label><a>搜索</a></label>
+                <input type="text" name="search"  id="search-info" placeholder="输入搜索内容" value="" />
+                <label><a  id="search-begin">搜索</a></label>
                 <label><a>我的学习</a></label>
                 <label><a>我的收藏</a></label>
                 <label><a>我的余额</a></label>
-                <label><a href="login.jsp">登录/注册</a></label>
+                <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
+                <label><a id="user-name" style="display: none"></a></label>
             </div>
         </div>
     </div>
 </nav>
 </div>
+<ul class="user-info-message">
+    <li id="update-message">修改资料</li>
+    <li id="my-order">我的订单</li>
+    <li id="my-money">我的余额</li>
+    <li id="log-out">退出登录</li>
+    <li id="hide">隐藏</li>
+</ul>
 <div class="container">
 <ol class="breadcrumb">
     <li><a id="toIndex" href="index.jsp">首页</a></li>
@@ -183,9 +188,9 @@
                             <div class="modal-title buy-titlt">课程购买</div>
                         </div>
                         <div class="modal-body buy-body">
-                            <p>你要购买的课程为：<label></label></p>
-                            <p>本次购买所需费用：<label></label></p>
-                            <p>账户余额：<label></label></p>
+                            <p>你要购买的课程为：<label id="label-course-name"></label></p>
+                            <p>本次购买所需费用：<label id="label-course-price"></label></p>
+                            <p>账户余额：<label id="label-course-amt" >1000.00元</label></p>
                             <p>感谢！</p>
                         </div>
                         <div class="modal-footer">
@@ -206,9 +211,11 @@
 <script type="text/javascript" src="../skins/js/jquery.pagination.js"></script>
 <script type="text/javascript" src="../skins/js/message.min.js"></script>
 <script type="text/javascript" src="../skins/js/main.js"></script>
+
 <script type="text/javascript">
     global.context = "<%=request.getContextPath()%>";
 </script>
+
 
 </body>
 <script id="weather" type="text/html">
@@ -268,5 +275,6 @@
 <div class="fa_biao_child">
     <button class="btn btn-info btn_comments_child">发布</button>
 </div>
+
 </script>
 </html>

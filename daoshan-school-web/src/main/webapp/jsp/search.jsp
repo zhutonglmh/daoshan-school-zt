@@ -1,16 +1,30 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zhuto
-  Date: 2018/4/9
-  Time: 9:56
+  User: thinkpad
+  Date: 2017/11/26
+  Time: 22:36
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
+
 <head>
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <title></title>
     <link href="../skins/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="../skins/css/search.css" rel="stylesheet" type="text/css" />
+    <link href="../skins/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="../skins/css/pagination.css" rel="stylesheet" type="text/css" />
+    <link href="../skins/css/message.css" rel="stylesheet" type="text/css"/>
+    <link href="../skins/css/search.css" rel="stylesheet" type="text/css"/>
+
+    <script src="../skins/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../skins/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../skins/js/arttemplate.js"></script>
+    <script type="text/javascript" src="../skins/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="../skins/js/message.min.js"></script>
+    <script type="text/javascript" src="../skins/js/search.js"></script>
+
 </head>
 
 <body>
@@ -18,29 +32,43 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a id="my-navbar-brand" class="navbar-brand" href="#">道山学海</a>
+                <a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
             </div>
             <div>
-                <ul id="myNav" class="nav navbar-nav">
-                    <li class="active"><a href="#">iOS</a></li>
-                    <li><a href="#">SVN</a></li>
-                    <li class="active"><a href="#">iOS</a></li>
-                    <li><a href="#">SVN</a></li>
-                </ul>
+                <div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
+                    爱学习&nbsp;&nbsp;不设限&nbsp;&nbsp;我们与你同在！
+                </div>
                 <div id="search">
-                    <input type="text" name="search" placeholder="输入搜索内容" value="" />
-                    <label><a>搜索</a></label>
+                    <input type="text" name="search"  id="search-info" placeholder="输入搜索内容" value="" />
+                    <label><a  id="search-begin">搜索</a></label>
                     <label><a>我的学习</a></label>
                     <label><a>我的收藏</a></label>
                     <label><a>我的余额</a></label>
-                    <label><a href="login.jsp">登录/注册</a></label>
+                    <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
+                    <label><a id="user-name" style="display: none"></a></label>
                 </div>
             </div>
         </div>
     </nav>
 </div>
+<ul class="user-info-message">
+    <li id="update-message">修改资料</li>
+    <li id="my-order">我的订单</li>
+    <li id="my-money">我的余额</li>
+    <li id="log-out">退出登录</li>
+    <li id="hide">隐藏</li>
+</ul>
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="index.jsp">首页</a></li>
+        <li><a >搜索结果</a></li>
+    </ol>
+    <div class="search-total">共有333门包含java的课程</div>
+    <div class="search-content">
 
-
+    </div>
+    <div  align="right" class="m-style M-box3"></div>
+</div>
 <div class="my_foot">
     <div class="container">
         <div class="logo_info"><span class="glyphicon glyphicon-book"></span>道山学海</div>
@@ -57,37 +85,17 @@
             <a>疑难解答</a>
             <div class="copyright">
                 ©CopyRight 2018-2019  朱同 版权所有 17862979628
-            </div>
-            <%--模态框声明--%>
-            <%--模态框声明--%>
-            <div class="modal fade" id="Mydialog4">
-                <%--窗口声明--%>
-                <div class="modal-dialog">
-                    <%--内容声明--%>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button class="close" data-dismiss="modal"><span>&times;</span></button>
-                            <div class="modal-title">标题</div>
-                        </div>
-                        <div class="modal-body">
-                            <p>内容区域</p>
-                            <p>内容区域</p>
-                            <p>内容区域</p>
-                            <p>内容区域</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-info">登录</button>
-                            <button class="btn btn-primary">注册</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<script type="text/javascript" src="../skins/js/jquery.js"></script>
-<script type="text/javascript" src="../skins/js/bootstrap.js"></script>
-<script type="text/javascript" src="../skins/js/main.js"></script>
+            </div></div></div></div>
 </body>
+<script id="item-template" type="text/html">
+    {{each data as data2}}
+    <div class="search-item" data-id="{{data2.id}}">
+    <img class="search-img" src="{{data2.pictureAddress}}">
+    <div class="course-info"> {{data2.courseName}}</br>道山学海(zt.com)为您提供海量优质课程</div>
+    </div>
+    {{/each}}
+</script>
+<script type="text/javascript">
+    global.context = "<%=request.getContextPath()%>";
+</script>
 </html>

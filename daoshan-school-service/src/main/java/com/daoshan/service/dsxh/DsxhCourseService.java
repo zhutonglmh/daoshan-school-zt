@@ -2,6 +2,8 @@ package com.daoshan.service.dsxh;
 
 import com.daoshan.bean.dsxh.entity.DsxhCourse;
 
+import java.util.List;
+
 /**
  * 课程类
  *
@@ -20,6 +22,18 @@ public interface DsxhCourseService {
      */
     DsxhCourse getCourseInfo(DsxhCourse dsxhCourse);
 
+    /**
+     * 添加课程
+     * @param dsxhCourse
+     * @return
+     */
     DsxhCourse addCourse(DsxhCourse dsxhCourse);
+
+    /**
+     * 条件搜索
+     * @param dsxhCourse
+     * @return
+     */
+    List<DsxhCourse> courseSearch(DsxhCourse dsxhCourse);
 
 }

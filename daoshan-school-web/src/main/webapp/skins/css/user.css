@@ -1,0 +1,232 @@
+.info-message{
+    padding-left: 30px;
+    background: #fff;
+    padding-top: 20px;
+}
+.label-one{
+    font-size: 12px;
+    font-family: '宋体';
+    color: #ccc;
+}
+.base-info{
+    height: 60px;
+    line-height: 60px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.info-one{
+    padding-left: 40px;
+}
+.info-one > label{
+    color: #666;
+    padding: 0 20px 0 0;
+    font-size: 14px;
+    font-family: '微软雅黑';
+    font-weight: 400;
+}
+.user-name{
+    height: 35px;
+    /* background: #fafafa; */
+    padding-left: 10px;
+}
+.user-sex {
+    vertical-align: middle;
+    height: 22px;
+}
+.user-info-textarea{
+    margin-left: 50px;
+    margin-top: -30px;
+    float: left;
+    width: 395px;
+    height: 74px;
+    font-size: 12px;
+    line-height: 23px;
+    background: transparent;
+    border: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    resize: none;
+    color: #444;
+    outline: none;
+    padding: 0;
+    cursor: auto;
+    white-space: pre-wrap;
+    border: 1px solid #c9c9da;
+    margin-top: -20px;
+
+}
+.label-two-div{
+    margin-bottom: 20px;
+}
+.label-name{
+    height: 35px;
+}
+.label-right{
+    margin-left: 90px;
+    margin-top: -38px;
+}
+.label-right-top{
+
+}
+.label-right-top > input{
+    height: 35px;
+    width: 285px;
+}
+.label-right-bottom{
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}
+.relation-info {
+    margin-top: 70px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.save {
+    padding-bottom: 50px;
+    margin-top: 30px;
+    padding-left: 90px;
+}
+
+.modal-content {
+    height: 350px;
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+}
+.buy-titlt {
+    margin-top: 20px;
+    padding-left: 30px;
+    color: #333;
+    font-size: 22px;
+}
+.modal-header {
+    min-height: 16.43px;
+    padding: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e5e5e5;
+}
+.buy-body {
+    /* color: #e02525; */
+    width: 440px;
+    padding-left: 100px;
+    padding-top: 30px;
+}
+.modal-one {    height: 42px;
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+.modal-two {
+
+}
+
+.modal-three {
+
+}
+
+.modal-four {
+
+}
+
+.modal-one > input{
+    width: 280px;
+    height: 42px;
+    /* line-height: 0px; */
+    font-size: 16px;
+    color: #333;
+    margin-left: 10px;
+    float: left;
+    display: block;
+}
+
+.modal-one > div{
+    font-size: 30px;
+    line-height: 40px;
+    color: #ccc;
+    float: left;
+}
+
+.modal-two > input{
+    width: 140px;
+    height: 42px;
+    /* line-height: 0px; */
+    font-size: 16px;
+    color: #333;
+    margin-left: 10px;
+    float: left;
+    display: block;
+}
+
+.modal-two > div{
+    font-size: 30px;
+    line-height: 40px;
+    color: #ccc;
+    float: left;
+}
+
+.modal-two > button{
+
+    float: left;
+    width: 115px;
+    height: 42px;
+    color: #4f4fa9;
+    margin-left: 25px;
+}
+.modal-three {
+    width: 325px;
+    color: #f10606;
+    font-size: 14px;
+}
+.modal-four {
+    width: 325px;
+    height: 42px;
+    margin-top: 20px;
+}
+
+.info-one > #message1{
+    color: red;
+    margin-left: 20px;
+}
+.info-one > #message2{
+    color: #78c578;
+    margin-left: 20px;
+}
+
+.label-right-top > #message3{
+    color: red;
+    margin-left: 20px;
+}
+.label-right-top > #message4{
+    color: #78c578;
+    margin-left: 20px;
+}
+#message5{
+    color: red;
+    margin-left: 20px;
+}
+#message6{
+    color: #78c578;
+    margin-left: 20px;
+}
+.check-card{
+    height: 35px;
+    margin-top: 20px;
+}
+.check-card > input{
+    width: 100px;
+    height: 35px;
+    margin-right: 20px;
+}
+#checkEmail{
+    margin-right: 10px;
+}

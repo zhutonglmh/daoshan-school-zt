@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 @TableName("dsxh_order")
 public class DsxhOrder extends Model<DsxhOrder> {
+
     private String id;
 
     private String courseId;

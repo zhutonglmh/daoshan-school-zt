@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 新增购买单  购买记录
+ */
 @RestController
 @RequestMapping("dsxh/order")
 public class DsxhOrderController  {
@@ -19,6 +25,9 @@ public class DsxhOrderController  {
     @PostMapping("addOrder")
     public MessageBody addOrder(@RequestBody DsxhOrder dsxhOrder){
 
-        return null;
+        Map<String,Object> map = new HashMap<>();
+        dsxhOrder = dsxhOrderService.addOrder(dsxhOrder);
+        map.put("data",dsxhOrder);
+        return MessageBody.getMessageBody(true,map);
     }
 }

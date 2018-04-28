@@ -13,6 +13,32 @@ function initPageDom(){
 
     initDate();
     //initComments();
+    initUser();
+}
+function initUser() {
+    var url = encodeURI(global.context + "/dsxh/user/getUserLoginInfo");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:false,
+        //data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if (data.data.data == "failure") {
+                $("#user-name").hide();
+                $("#goto-login").show();
+            }
+            else{
+                $("#user-name").html(data.data.data.userName);
+                $("#user-name").show();
+                $("#goto-login").hide();
+            }
+        },
+        error: function () {
+        }
+    });
 }
 //加载评论
 function initComments(page,data) {
@@ -47,14 +73,36 @@ function initPageEvent(){
     $(document).on("click",".control-play-icon", function () {
         alert("sddsd");
     }); //评论评论
+    $(document).on("click","#search-begin", toSearch);
 
+    $(document).on("click","#hide", hideUser);
+
+    $(document).on("click","#user-name", showUser);
+
+}
+
+function hideUser() {
+    $(".user-info-message").hide();
+}
+function showUser() {
+    $(".user-info-message").show();
+}
+
+function toSearch() {
+    var search = $("#search-info").val();
+    window.location.href= global.context+"/jsp/search.jsp?"+search;
 }
 function toBuy() {
     $('#Mydialog4').modal('show');
     var courseId = $("#course_name").attr("data-id");
-    var courseName = $("#course_name").val();
-    var priceStr = $("#course_name").val();
+    var courseName = $("#course_name").html().trim();
+    var priceStr = $("#course_name").html().trim();
     var price = $("#course_name").attr("data-price");
+
+    $("#label-course-name").parent().attr("data-id",courseId);
+    $("#label-course-name").html(courseName);
+    $("#label-course-price").parent().attr("data-id",price);
+    $("#label-course-price").html(priceStr);
 
 }
 //购买
@@ -186,7 +234,10 @@ function CreateComments() {
             contentType: "application/json",
             dataType: "JSON",
             success: function (data) {
+
                 message2("评论成功！","info");
+                initComments(1, data.data.data2);
+                initPage(data.data.data2);
             },
             error: function () {
             }

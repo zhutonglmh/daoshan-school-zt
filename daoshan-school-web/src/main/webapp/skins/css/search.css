@@ -1,0 +1,44 @@
+.search-item{
+    margin-right: 22px;
+    width: 228px;
+    float: left;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.search-total{
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+.search-content{
+    height: 684px;
+}
+.container {
+    width: 1280px;
+}
+.course-info{
+    padding: 10px;
+    font-size: 14px;
+    color: darkcyan;
+    width: 100%;
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.search-img {
+    width: 228px;
+    height: 128px;
+}
+.M-box3{
+    margin-left: 700px;
+    margin-bottom: 15px;
+}
+.m-style a {
+    float: left;
+    margin: 0 5px;
+    width: 40px;
+    line-height: 22px;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    color: #3e3535;
+    font-size: 12px;
+}

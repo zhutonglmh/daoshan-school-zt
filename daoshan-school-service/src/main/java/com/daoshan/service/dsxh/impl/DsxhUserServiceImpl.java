@@ -108,6 +108,7 @@ public class DsxhUserServiceImpl implements DsxhUserService{
         return result;
     }
 
+
     /**
      * 删除
      *
@@ -246,6 +247,18 @@ public class DsxhUserServiceImpl implements DsxhUserService{
             dsxhUser = dsxhUserMapper.selectById(userId);
         }
         return dsxhUser;
+    }
+
+    /**
+     * 修改用户信息
+     *
+     * @param dsxhUser
+     * @return
+     */
+    @Override
+    public int updateUserInfo(DsxhUser dsxhUser) {
+        Wrapper<DsxhUser> wrapper = new EntityWrapper<DsxhUser>(dsxhUser);
+        return dsxhUserMapper.update(dsxhUser,wrapper);
     }
 
 

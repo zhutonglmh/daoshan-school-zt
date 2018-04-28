@@ -2,6 +2,7 @@ package com.daoshan.school.controller.dsxh;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
+import com.daoshan.bean.dsxh.entity.DsxhUserDetail;
 import com.daoshan.school.aop.annotation.AccessControl;
 import com.daoshan.school.utils.constans.ConStants;
 import com.daoshan.school.utils.messagebody.MessageBody;
@@ -35,18 +36,41 @@ public class DsxhUserController {
     }
 
     /**
-     * 修改
+     * 修改用户资料
      * @param dsxhUser 用户信息
      * @return 结果
      */
-    @PostMapping("/update")
-    public MessageBody updateUser(@RequestBody DsxhUser dsxhUser){
+    @PostMapping("/updateUser")
+    public MessageBody updateUser(@RequestBody DsxhUserDetail dsxhUserDetail){
 
         Map<String,Object> map = new HashMap<String,Object>();
-        String result = dsxhUserService.updateUser(dsxhUser);
-        map.put("data",result);
+        //String result = dsxhUserService.updateUser(dsxhUserDetail);
+        //map.put("data",result);
         return MessageBody.getMessageBody(true,map);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 删除

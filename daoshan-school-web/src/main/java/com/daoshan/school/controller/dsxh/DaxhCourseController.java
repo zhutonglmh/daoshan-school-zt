@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -39,6 +40,20 @@ public class DaxhCourseController {
         dsxhCourse = dsxhCourseService.addCourse(dsxhCourse);
         map.put("data",dsxhCourse);
         System.out.println(JSON.toJSONString(dsxhCourse));
+        return MessageBody.getMessageBody(true,map);
+    }
+
+    /**
+     * 条件搜索
+     * @param dsxhCourse
+     * @return
+     */
+    @PostMapping("/courseSearch")
+    public MessageBody courseSearch(@RequestBody DsxhCourse dsxhCourse){
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        List<DsxhCourse> list = dsxhCourseService.courseSearch(dsxhCourse);
+        map.put("data",list);
         return MessageBody.getMessageBody(true,map);
     }
 }

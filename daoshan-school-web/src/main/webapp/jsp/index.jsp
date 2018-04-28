@@ -12,50 +12,74 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
+		<link href="../skins/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="../skins/css/main.css" rel="stylesheet" type="text/css" />
+		<link href="../skins/css/pagination.css" rel="stylesheet" type="text/css" />
+		<link href="../skins/css/message.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" type="text/css" href="../skins/css/common.css" />
 		<link rel="stylesheet" type="text/css" href="../skins/css/index.css" />
 		<script src="../skins/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../skins/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../skins/js/arttemplate.js"></script>
+		<script type="text/javascript" src="../skins/js/jquery.pagination.js"></script>
+		<script type="text/javascript" src="../skins/js/message.min.js"></script>
 		<script src="../skins/js/index.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
-		<div id="header">
-			<div id="logo">
-				<a href="">慕课网</a>
+	<%--<div class="myHead">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
+				</div>
+				<div>
+					<div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
+						爱学习&nbsp;&nbsp;不设限&nbsp;&nbsp;我们与你同在！
+					</div>
+					<div id="search">
+						<input type="text" name="search"  id="search-info" placeholder="输入搜索内容" value="" />
+						<label><a  id="search-begin">搜索</a></label>
+						<label><a>我的学习</a></label>
+						<label><a>我的收藏</a></label>
+						<label><a>我的余额</a></label>
+						<label><a id="goto-login" href="login.jsp">登录/注册</a></label>
+						<label><a id="user-name" style="display: none"></a></label>
+					</div>
+				</div>
 			</div>
-			<ul class="nav_list">
-				<li>
-					<a href="">实战</a>
-				</li>
-				<li>
-					<a href="">路径</a>
-				</li>
-				<li>
-					<a href="">猿问</a>
-				</li>
-				<li>
-					<a href="">手记</a>
-				</li>
-			</ul>
-			<div id="login">
-				<ul>
-					<li class="userLogin">
-						<a href="login.jsp">登录/注册</a>
-					</li>
-					<li class="userInfo" style="">
-						<a href=""></a>
-					</li>
-					<li class = "loginOut">
-						<a>登出</a>
-					</li>
-				</ul>
-			</div>
-			<div id="search">
-				<input type="text" name="search" placeholder="输入搜索内容" value="" />
-				<button>搜索</button>
-			</div>
-		</div>
-
+		</nav>
+	</div>--%>
+    <div class="myHead">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
+                </div>
+                <div>
+                    <div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
+                        爱学习&nbsp;&nbsp;不设限&nbsp;&nbsp;我们与你同在！
+                    </div>
+                    <div id="search">
+                        <input type="text" name="search"  id="search-info" placeholder="输入搜索内容" value="" />
+                        <label><a  id="search-begin">搜索</a></label>
+                        <label><a>我的学习</a></label>
+                        <label><a>我的收藏</a></label>
+                        <label><a>我的余额</a></label>
+                        <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
+                        <label><a id="user-name" style="display: none"></a></label>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+	<ul class="user-info-message">
+		<li id="update-message">修改资料</li>
+		<li id="my-order">我的订单</li>
+		<li id="my-money">我的余额</li>
+		<li id="log-out">退出登录</li>
+		<li id="hide">隐藏</li>
+	</ul>
 		<div id="content">
 			<div id="menu">
 				<div class="left_menu">
@@ -286,8 +310,8 @@
 						实战推荐
 						<a href="#">更多 ></a>
 					</div>
-					<div class="item_class">
-						<img src="../skins/imge/prictise1.jpg" height="124" width="100%" />
+					<div class="item_class" data-id="310f02b2-5f35-41ef-8f1e-1a3f1f9b2328">
+						<img src="D:\prictise1.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>多领域通用的Python秘籍</h3>
 							<p>只要用Python就一定用的到的多领域通用开发秘籍</p>
@@ -297,7 +321,7 @@
 							<span class="right">52人在学</span>
 						</div>
 					</div>
-					<div class="item_class">
+					<div class="item_class" data-id="3695cb4e-0377-4e90-9c4a-f82c2e3a6452">
 						<img src="../skins/imge/prictise2.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>所向披靡的响应式开发</h3>
@@ -308,7 +332,7 @@
 							<span class="right">52人在学</span>
 						</div>
 					</div>
-					<div class="item_class">
+					<div class="item_class" data-id="6c529ac6-48ee-4f28-89a4-654eeaed3836">
 						<img src="../skins/imge/prictise3.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>飞速上手的跨平台App开发</h3>
@@ -319,7 +343,7 @@
 							<span class="right">52人在学</span>
 						</div>
 					</div>
-					<div class="item_class">
+					<div class="item_class"  data-id="896385a9-6c61-4dbd-9830-3d47a0007eb0">
 						<img src="../skins/imge/prictise4.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>打造扛得住的MySQL数据库架构</h3>
@@ -330,7 +354,7 @@
 							<span class="right">52人在学</span>
 						</div>
 					</div>
-					<div class="item_class" style="margin-right: 0;">
+					<div class="item_class"  data-id="5b44fd6a-fa00-4550-9584-6e6f496ea84c" style="margin-right: 0;">
 						<img src="../skins/imge/prictise5.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>7天搞定Node.js微信公众号开发</h3>
@@ -348,7 +372,7 @@
 						免费课程
 						<a href="#">更多 ></a>
 					</div>
-					<div class="item_class">
+					<div class="item_class" data-id="ee0b79bf-4f66-44c3-9caa-791572251bf5">
 						<img src="../skins/imge/free1.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>
@@ -362,7 +386,7 @@
 							<!--<span class="right">52人在学</span>-->
 						</div>
 					</div>
-					<div class="item_class">
+					<div class="item_class" data-id="82f379f8-e8c5-4f7d-a2f6-4a1600bcc4cf">
 						<img src="../skins/imge/free2.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>
@@ -371,11 +395,11 @@
 							</h3>
 							<p> 从环境搭建、基础语法开始，带你入门</p>
 						</div>
-						<div class="item_class_bottom">
+						<div class="item_class_bottom" >
 							<span class="left" style="color: grey;">446679人在学</span>
 						</div>
 					</div>
-					<div class="item_class">
+					<div class="item_class" data-id="92382ecb-ddff-418b-9382-907414963cfe">
 						<img src="../skins/imge/free3.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>
@@ -388,7 +412,7 @@
 							<span class="left" style="color: grey;">446679人在学</span>
 						</div>
 					</div>
-					<div class="item_class">
+					<div class="item_class" data-id="71f9f48e-d1ea-4983-86fb-0f5f02d3de53">
 						<img src="../skins/imge/free4.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>
@@ -401,7 +425,7 @@
 							<span class="left" style="color: grey;">446679人在学</span>
 						</div>
 					</div>
-					<div class="item_class" style="margin-right: 0;">
+					<div class="item_class" data-id="fdb42d50-e64f-4888-af58-458c397696e7" style="margin-right: 0;">
 						<img src="../skins/imge/free5.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>
@@ -423,8 +447,6 @@
 					<a id="pro_path" href="#">职业路径 ></a>
 					<div class="web_l_bottom">
 						<a href="#">JQuery源码探索之旅</a>
-						<a href="#">响应布局那些事</a>
-						<a href="#">前端经典案例集</a>
 					</div>
 				</div>
 				<div class="web_m">
@@ -436,12 +458,12 @@
 					</div>
 				</div>
 				<div class="web_m2">
-					<div class="item_class web_m2_top">
+					<div class="item_class web_m2_top" data-id="de3f1376-7771-4d79-8e05-20e0bb31e1d7">
 						<img src="../skins/imge/web1.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>
 								<i>中</i>
-								 oeasy教你玩转css禅意花园
+								 oeasy教你玩转css花园
 							</h3>
 							<p> 36个设计让你彻底了解css</p>
 						</div>
@@ -449,7 +471,7 @@
 							<span class="left" style="color: grey;">24772人在学</span>
 						</div>
 					</div>
-					<div class="item_class web_m2_bottom">
+					<div class="item_class web_m2_bottom " data-id="58e47520-9955-4b94-8fe5-a66bb1dd0f89">
 						<img src="../skins/imge/web2.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>
@@ -464,7 +486,7 @@
 					</div>
 				</div>
 
-				<div class="item_class web_r">
+				<div class="item_class web_r" data-id="6b9ea1bc-248e-469b-a424-c41de3a5fd8b">
 					<img src="../skins/imge/web3.jpg" height="124" width="100%" />
 					<div class="item_class_intro">
 						<h3>
@@ -499,9 +521,23 @@
 			</div>
 
 		</div>
-		<div id="footer">
-
-		</div>
+	<div class="my_foot">
+		<div class="container">
+			<div class="logo_info"><span class="glyphicon glyphicon-book"></span>道山学海</div>
+			<div class="foot_info">
+				道山学海(zt.com)旗下实用技能学习平台。与优秀讲师、专业机构、院校合作，为您提供海量优质课程，以及创新的在线学习体验，帮助您获得全新的个人发展和能力提升。
+			</div>
+			<div class="foot_info_right">
+				<a>关于我们</a>
+				<a>联系我们</a>
+				<a>帮助中心</a>
+				<a>企业培训</a>
+				<a>中国大学MOOC</a>
+				<a>作者信息</a>
+				<a>疑难解答</a>
+				<div class="copyright">
+					©CopyRight 2018-2019  朱同 版权所有 17862979628
+				</div></div></div></div>
 	</body>
 	<script type="text/javascript">
         global.context = "<%=request.getContextPath()%>";

@@ -23,12 +23,15 @@
     course_price, picture_address, create_time, create_user, delete_flag, praise_number, 
     teacher_name
   </sql>
- <!-- <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="courseSearch" parameterType="com.daoshan.bean.dsxh.entity.DsxhCourse" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from dsxh_course
-    where id = #{id,jdbcType=CHAR}
+    from dsxh_course t
+    where (t.course_name LIKE CONCAT('%','${queryString}','%') or t.big_type_name LIKE CONCAT('%','${queryString}','%') or t.type_name LIKE CONCAT('%','${queryString}','%') or t.child_type_name LIKE CONCAT('%','${queryString}','%') or t.teacher_name LIKE CONCAT('%','${queryString}','%'))
   </select>
+
+
+  <!--
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from dsxh_course
     where id = #{id,jdbcType=CHAR}

@@ -1,6 +1,10 @@
 com\daoshan\bean\dsxh\entity\DsxhCourseChild.class
 com\daoshan\bean\dsxh\entity\DsxhCourseDetail.class
+com\daoshan\bean\dsxh\entity\DsxhOrder.class
+com\daoshan\bean\dsxh\entity\DsxhCourseComments.class
 com\daoshan\bean\dsxh\entity\DsxhCourse.class
+com\daoshan\bean\dsxh\entity\DsxhUserDetail.class
+com\daoshan\bean\dsxh\vo\DsxhCourseVo.class
 com\daoshan\bean\dsxh\entity\DsxhUser.class
 com\daoshan\bean\dsxh\dto\DsxhUserDto.class
 com\daoshan\bean\UserLogin.class

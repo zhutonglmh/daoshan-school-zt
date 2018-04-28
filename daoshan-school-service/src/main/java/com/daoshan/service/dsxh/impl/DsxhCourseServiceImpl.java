@@ -17,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.xml.crypto.Data;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -97,6 +95,18 @@ public class DsxhCourseServiceImpl implements DsxhCourseService{
             dsxhCourseChildMapper.insert(dsxhCourseChild);
         }
         return dsxhCourse;
+    }
+
+    /**
+     * 条件搜索
+     *
+     * @param dsxhCourse
+     * @return
+     */
+    @Override
+    public List<DsxhCourse> courseSearch(DsxhCourse dsxhCourse) {
+
+        return dsxhCourseMapper.courseSearch(dsxhCourse);
     }
 
 }

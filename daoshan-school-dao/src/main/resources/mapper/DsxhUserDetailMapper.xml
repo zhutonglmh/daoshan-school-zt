@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.daoshan.dao.dsxh.DsxhUserDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.daoshan.bean.dsxh.entity.DsxhUserDetail" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="head_image_address" property="headImageAddress" jdbcType="VARCHAR" />
+    <result column="user_really_name" property="userReallyName" jdbcType="VARCHAR" />
+    <result column="user_message" property="userMessage" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_iphone" property="userIphone" jdbcType="VARCHAR" />
+    <result column="user_qq_number" property="userQqNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, user_sex, head_image_address, user_really_name, user_message, user_email, 
+    user_iphone, user_qq_number
+  </sql>
+  <!--<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from dsxh_user_detail
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from dsxh_user_detail
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail" >
+    insert into dsxh_user_detail (id, user_id, user_sex, 
+      head_image_address, user_really_name, user_message, 
+      user_email, user_iphone, user_qq_number
+      )
+    values (#{id,jdbcType=CHAR}, #{userId,jdbcType=CHAR}, #{userSex,jdbcType=VARCHAR}, 
+      #{headImageAddress,jdbcType=VARCHAR}, #{userReallyName,jdbcType=VARCHAR}, #{userMessage,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{userIphone,jdbcType=VARCHAR}, #{userQqNumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail" >
+    insert into dsxh_user_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="headImageAddress != null" >
+        head_image_address,
+      </if>
+      <if test="userReallyName != null" >
+        user_really_name,
+      </if>
+      <if test="userMessage != null" >
+        user_message,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="userIphone != null" >
+        user_iphone,
+      </if>
+      <if test="userQqNumber != null" >
+        user_qq_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="headImageAddress != null" >
+        #{headImageAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userReallyName != null" >
+        #{userReallyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMessage != null" >
+        #{userMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userIphone != null" >
+        #{userIphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userQqNumber != null" >
+        #{userQqNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail" >
+    update dsxh_user_detail
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="headImageAddress != null" >
+        head_image_address = #{headImageAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userReallyName != null" >
+        user_really_name = #{userReallyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMessage != null" >
+        user_message = #{userMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userIphone != null" >
+        user_iphone = #{userIphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userQqNumber != null" >
+        user_qq_number = #{userQqNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail" >
+    update dsxh_user_detail
+    set user_id = #{userId,jdbcType=CHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      head_image_address = #{headImageAddress,jdbcType=VARCHAR},
+      user_really_name = #{userReallyName,jdbcType=VARCHAR},
+      user_message = #{userMessage,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_iphone = #{userIphone,jdbcType=VARCHAR},
+      user_qq_number = #{userQqNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>-->
+</mapper>

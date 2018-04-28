@@ -22,14 +22,18 @@ public class Main
         }
 
         //取两个集合中id相同的地方
-        List<Demo> list3 = list1.stream()
-                .map(map -> list2.stream()
-                        .filter(m -> Objects.equals(m.getDemoId(), map.getId()))
-                        .findFirst().map(m -> {
-                            map.setId(m.getDemoId());
-                            return map;
-                        }).orElse(null))
-                .filter(Objects::nonNull).collect(Collectors.toList());
+        List<Demo> list3 = new ArrayList<>();
+        for (Demo map : list1) {
+            Demo demo = list2.stream()
+                    .filter(m -> Objects.equals(m.getDemoId(), map.getId()))
+                    .findFirst().map(m -> {
+                        map.setId(m.getDemoId());
+                        return map;
+                    }).orElse(null);
+            if (demo != null) {
+                list3.add(demo);
+            }
+        }
 
         System.out.println(list3);
 

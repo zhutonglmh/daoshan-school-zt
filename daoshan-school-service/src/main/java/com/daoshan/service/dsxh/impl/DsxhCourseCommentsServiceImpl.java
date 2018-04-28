@@ -35,8 +35,8 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
     @Override
     public List<DsxhCourseComments> getCourseComments(DsxhCourseComments dsxhCourseComments) {
 
-        Wrapper<DsxhCourseComments> commentsWrapper = new EntityWrapper<>(dsxhCourseComments);
-        List<DsxhCourseComments> list = dsxhCourseCommentsMapper.selectList(commentsWrapper);
+        //Wrapper<DsxhCourseComments> commentsWrapper = new EntityWrapper<>(dsxhCourseComments);
+        List<DsxhCourseComments> list = dsxhCourseCommentsMapper.selectList2(dsxhCourseComments);
 
         if(CollectionUtils.isEmpty(list)){
             return Collections.emptyList();

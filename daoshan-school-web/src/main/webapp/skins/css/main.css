@@ -1,3 +1,13 @@
+a {
+   /* color: #ffffff;*/
+    text-decoration: none;
+}
+
+a:focus, a:hover {
+    color: #8ad082;
+    text-decoration: none;
+    cursor: pointer;
+}
 .container-fluid{
     padding-right: 15px;
     padding-left: 15px;
@@ -203,7 +213,7 @@ body {
     background: #474443;
     padding-top: 50px;
     padding-bottom: 30px;
-    color: #5d0606;
+    color: #ffffff;
 }
 .logo_info {
     font-size: 32px;
@@ -420,9 +430,36 @@ body {
     color: #de993c;
     font-size: 18px;
 }
-.buy-body > a{
-
+.buy-body {
+    color: #e02525;
 }
 .buy-button{
     width: 80px;
+}
+.user-info-message{
+    position: absolute;
+    padding: 0px;
+    float: right;
+    margin-top: 60px;
+    width: 130px;
+    background: #fbfbfb;
+    border: 1px solid #d0d0ec;
+    right: 0px;
+    display: none;
+    top: 0px;
+    z-index: 1;
+}
+
+.user-info-message > li{
+    list-style-type: none;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #6a6f64;
+}
+.user-info-message > li:hover{
+    background: #9ea3c1;
+    color: white;
 }

@@ -8,8 +8,8 @@ spring:
     datasource:
       name: daoshan_school
       #是可以设置时区
-      url: jdbc:mysql://139.199.209.216:3306/daoshan_school?useSSL=false&&serverTimezone=GMT%2B8&&allowMultiQueries=true&&Unicode=true&characterEncoding=UTF-8
-      #url: jdbc:mysql://localhost:3306/daoshan_school?useSSL=false&&serverTimezone=GMT%2B8&&allowMultiQueries=true
+      #url: jdbc:mysql://139.199.209.216:3306/daoshan_school?useSSL=false&&serverTimezone=GMT%2B8&&allowMultiQueries=true&&Unicode=true&characterEncoding=UTF-8
+      url: jdbc:mysql://localhost:3306/daoshan_school?useSSL=false&&serverTimezone=GMT%2B8&&allowMultiQueries=true
       username: root
       password: zhutong960607
       # 使用druid数据源
@@ -65,3 +65,7 @@ mapper:
   #mappers: com.example.myMapper.MyMapper
   identity: MYSQL
   not-empty: false
+
+custom:
+  accessKeyId : LTAI1iGvvp1WkvAu
+  accessKeySecret : vxT037TPAnftcwv1CUyeTYZXA5BH4u

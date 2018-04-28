@@ -23,6 +23,16 @@ public class DsxhCourseCommentsController {
     @Autowired
     private DsxhCourseCommentsService dsxhCourseCommentsService;
 
+
+    @PostMapping("/getComments")
+    public MessageBody getComments(@RequestBody DsxhCourseComments dsxhCourseComments){
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        List<DsxhCourseComments> list =dsxhCourseCommentsService.getCourseComments(dsxhCourseComments);
+        map.put("data",list);
+        return MessageBody.getMessageBody(true,map);
+    }
+
     @PostMapping("/addComments")
     public MessageBody getAddComments(@RequestBody DsxhCourseComments dsxhCourseComments){
 
@@ -35,6 +45,11 @@ public class DsxhCourseCommentsController {
             DsxhCourseComments comments = new DsxhCourseComments();
             comments.setParentId(parentId);
             List<DsxhCourseComments> list = dsxhCourseCommentsService.getCourseCommentsByParentId(comments);
+            map.put("data2",list);
+        }else {
+            DsxhCourseComments comments = new DsxhCourseComments();
+            comments.setCourseId(dsxhCourseComments.getCourseId());
+            List<DsxhCourseComments> list =dsxhCourseCommentsService.getCourseComments(comments);
             map.put("data2",list);
         }
         if(result > 0){

@@ -62,6 +62,10 @@ public class DsxhUser extends Model<DsxhUser>{
      */
     private String userName;
 
+    /**
+     * 账户余额
+     */
+    private Double money;
     @Override
     protected Serializable pkVal() {
         return null;

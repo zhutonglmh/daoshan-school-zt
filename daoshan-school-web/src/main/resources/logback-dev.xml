@@ -1,30 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <property name="log.path" value="/choice/sms-platform/log" />
+
+    <!--LOGSTASH-->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>localhost:4560</destination>
+       <!-- <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />-->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%thread] [%-40.40logger{39}:%line] %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <!--STDOUT-->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%thread] [%-40.40logger{39}:%line] %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <!--FILE-->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/sms-platform.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <MaxHistory>15</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%thread] [%-40.40logger{39}:%line] %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <logger name="org.springframework" level="ERROR" />
+    <root level="DEBUG">
+        <appender-ref ref="file" />
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOGSTASH" />
+    </root>
+</configuration>
+    <!--
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>  
-    <include resource="org/springframework/boot/logging/logback/defaults.xml" />  
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">  
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    &lt;!&ndash;Appender主要用于指定日志输出的目的地，目的地可以是控制台、文件、远程套接字服务器、 MySQL、PostreSQL、 Oracle和其他数据库、 JMS和远程UNIX Syslog守护进程等。&ndash;&gt;
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+
         <encoder>  
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</pattern>  
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%thread] [%-40.40logger{39}:%line] %m%n</pattern>
             <charset>UTF-8</charset>  
         </encoder>  
     </appender>  
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">  
         <file>D:/app3.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-            <!-- daily rollover 保存历史记录到这个文件夹一日起为后缀 -->  
+            &lt;!&ndash; daily rollover 保存历史记录到这个文件夹一日起为后缀 &ndash;&gt;
             <fileNamePattern>app3.log.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <!-- keep 30 days' worth of history -->  
+            &lt;!&ndash; keep 30 days' worth of history &ndash;&gt;
             <maxHistory>30</maxHistory>  
         </rollingPolicy>  
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">  
             <maxFileSize>10MB</maxFileSize>  
         </triggeringPolicy>  
         <encoder>  
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</pattern>  
-            <charset>UTF-8</charset> <!-- 此处设置字符集 -->  
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%thread] [%-40.40logger{39}:%line] %m%n</pattern>
+            <charset>UTF-8</charset> &lt;!&ndash; 此处设置字符集 &ndash;&gt;
         </encoder>  
     </appender>  
     <root level="DEBUG">
         <appender-ref ref="CONSOLE"></appender-ref>  
         <appender-ref ref="FILE"></appender-ref>  
-    </root>  
-</configuration>  
+    </root>
+</configuration>-->

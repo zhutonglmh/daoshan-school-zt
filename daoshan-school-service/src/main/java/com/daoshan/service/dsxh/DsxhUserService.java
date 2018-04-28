@@ -86,4 +86,12 @@ public interface DsxhUserService {
      */
     DsxhUser getUserInfo();
 
+
+    /**
+     * 修改用户信息
+     * @param dsxhUser
+     * @return
+     */
+    int updateUserInfo(DsxhUser dsxhUser);
+
 }

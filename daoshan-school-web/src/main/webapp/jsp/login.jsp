@@ -10,8 +10,10 @@
 <html >
 <head>
 <meta charset="UTF-8">
-<title>学涯-登录</title>
+<title>道山学海-登录</title>
+  <link href="../skins/css/message.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="../skins/css/style.css">
+
 </head>
 
 <body >
@@ -66,6 +68,7 @@
 </div>
 <script type="text/javascript" src="../skins/js/jquery.js"></script>
 <script type="text/javascript" src="../skins/js/bootstrap.js"></script>
+<script type="text/javascript" src="../skins/js/message.min.js"></script>
 <script src="../skins/js/login.js"></script>
 <script type="text/javascript">
     global.context = "<%=request.getContextPath()%>";

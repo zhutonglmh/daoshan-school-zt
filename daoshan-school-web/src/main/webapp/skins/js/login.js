@@ -26,7 +26,18 @@ function signClick() {
     var userName = $("#user_sign").val();
     var password = $("#password_sign").val();
     var password2 = $("#password_try").val();
-    if(password != password2){return;}
+    if(user == ""){
+        message2("用户名不能为空","warning");
+        return;}
+    if(userName == ""){
+        message2("用户昵称不能为空!","warning");
+        return;}
+    if(password == ""){
+        message2("密码不能为空!","warning");
+        return;}
+    if(password != password2){
+        message2("两次输入密码不一致!","warning");
+        return;}
 
     var url = encodeURI(global.context + "/dsxh/user/insert");
 
@@ -61,6 +72,14 @@ function loginClick() {
 
     var username = $("#userNameLogin").val();
     var password = $("#userNameLogin").val();
+    if(null == username  || username == ""){
+        message2("用户名不能为空！","warning");
+        return;
+    }
+    if(null == password  || password == ""){
+        message2("密码不能为空！","warning");
+        return;
+    }
     var url = encodeURI(global.context + "/dsxh/user/userLogin");
     var JsonData = {
         "name" : username,
@@ -79,7 +98,7 @@ function loginClick() {
                 window.location.href= global.context+"/jsp/index.jsp?"+data.data.data.data.id;
             }
             else{
-                $("#myAlert").alert();
+                message2("用户名或密码错误！","error");
             }
         },
         error: function () {
@@ -123,9 +142,18 @@ setTimeout(function(){   document.querySelector('.cont_form_login').style.displa
 },400);  
 
 
-}    
+}
 
+function message2(message, type) {
 
+    $.message({
+        message:message,    //提示信息
+        time:'2000',           //显示时间（默认：2s）
+        type:type,        //显示类型，包括4种：success.error,info,warning
+        showClose:false,       //显示关闭按钮（默认：否）
+        autoClose:true,
+    });
+}
 
 function ocultar_login_sign_up() {
 
