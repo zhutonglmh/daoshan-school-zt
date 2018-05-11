@@ -16,6 +16,18 @@
     id, user_id, user_sex, head_image_address, user_really_name, user_message, user_email, 
     user_iphone, user_qq_number
   </sql>
+
+  <delete id="deleteByUser" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail">
+    delete from dsxh_user_detail
+    where user_id = #{userId,jdbcType=CHAR}
+  </delete>
+
+  <select id="getDsxhUserDetailByUser" resultMap="BaseResultMap" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail">
+    select
+    <include refid="Base_Column_List" />
+    from dsxh_user_detail
+    where user_id = #{userId,jdbcType=CHAR}
+  </select>
   <!--<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

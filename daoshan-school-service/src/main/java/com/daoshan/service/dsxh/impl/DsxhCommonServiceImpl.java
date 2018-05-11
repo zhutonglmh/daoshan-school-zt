@@ -29,7 +29,6 @@ public class DsxhCommonServiceImpl implements DsxhCommonService {
 
         String emailAddress = dsxhUserDetail.getUserEmail();
         int card = AirUtils.card();
-        System.out.println(emailAddress);
         EmailSend.send_mail(emailAddress, (String.valueOf(card)));
 
         HttpSession session = dsxhUserService.getSession();
@@ -49,11 +48,57 @@ public class DsxhCommonServiceImpl implements DsxhCommonService {
 
         String iphoneNumber = dsxhUserDetail.getUserIphone();
         int card = AirUtils.card();
-
         String result = AliSmsUntils.sms(iphoneNumber,String.valueOf(card));
         if("success".equals(result)){
             HttpSession session = dsxhUserService.getSession();
             session.setAttribute(iphoneNumber,card);
+            return "success";
+        }else {
+            return "false";
+        }
+    }
+
+    /**
+     * 验证手机验证码
+     *
+     * @param dsxhUserDetail
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public String checkIphone(DsxhUserDetail dsxhUserDetail) throws Exception {
+
+        String userCard = dsxhUserDetail.getCard();
+        String iphoneNumber = dsxhUserDetail.getUserIphone();
+
+        HttpSession session = dsxhUserService.getSession();
+        Object code = session.getAttribute(iphoneNumber);
+        if (!AirUtils.hv(code)) return "false";
+        if(userCard.equals(code.toString())){
+            return "success";
+        }else {
+            return "false";
+        }
+
+    }
+
+    /**
+     * 验证邮箱验证码
+     *
+     * @param dsxhUserDetail
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public String checkEmail(DsxhUserDetail dsxhUserDetail) throws Exception {
+
+        String userCard = dsxhUserDetail.getCard();
+        String iphoneNumber = dsxhUserDetail.getUserEmail();
+
+        HttpSession session = dsxhUserService.getSession();
+        Object card = session.getAttribute(iphoneNumber);
+        if (!AirUtils.hv(card)) return "false";
+        if(userCard.equals(card.toString())){
             return "success";
         }else {
             return "false";

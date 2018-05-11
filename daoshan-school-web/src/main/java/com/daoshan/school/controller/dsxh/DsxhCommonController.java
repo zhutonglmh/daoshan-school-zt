@@ -3,12 +3,14 @@ package com.daoshan.school.controller.dsxh;
 import com.daoshan.bean.dsxh.entity.DsxhUserDetail;
 import com.daoshan.school.utils.messagebody.MessageBody;
 import com.daoshan.service.dsxh.DsxhCommonService;
+import com.daoshan.service.dsxh.DsxhUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,9 @@ public class DsxhCommonController {
 
     @Autowired
     private DsxhCommonService dsxhCommonService;
+
+    @Autowired
+    private DsxhUserService dsxhUserService;
     /**
      * 发送邮件验证码
      * @param dsxhUserDetail
@@ -58,6 +63,38 @@ public class DsxhCommonController {
         } catch (Exception e) {
             map.put("result","发送失败，请检查手机号码是否存在！");
             return  MessageBody.getMessageBody(true,map);
+        }
+    }
+
+    /**
+     * 手机验证码验证
+     * @param dsxhUserDetail
+     * @return
+     */
+    @PostMapping("checkIphone")
+    public MessageBody checkIphone(@RequestBody DsxhUserDetail dsxhUserDetail){
+
+        try {
+            String result = dsxhCommonService.checkIphone(dsxhUserDetail);
+            return MessageBody.getMessageBody(true,result);
+        } catch (Exception e) {
+            return  MessageBody.getMessageBody(true,"false");
+        }
+    }
+
+    /**
+     * 邮箱验证码验证
+     * @param dsxhUserDetail
+     * @return
+     */
+    @PostMapping("checkEmail")
+    public MessageBody checkEmail(@RequestBody DsxhUserDetail dsxhUserDetail){
+
+        try {
+            String result = dsxhCommonService.checkEmail(dsxhUserDetail);
+            return MessageBody.getMessageBody(true,result);
+        } catch (Exception e) {
+            return  MessageBody.getMessageBody(true,"false");
         }
     }
 }

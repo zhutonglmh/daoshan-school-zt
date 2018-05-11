@@ -186,6 +186,7 @@
     width: 325px;
     color: #f10606;
     font-size: 14px;
+    margin-top: 70px;
 }
 .modal-four {
     width: 325px;
@@ -218,6 +219,16 @@
     color: #78c578;
     margin-left: 20px;
 }
+
+#message8{
+    color: red;
+    margin-left: 20px;
+}
+#message7{
+    color: #78c578;
+    margin-left: 20px;
+}
+
 .check-card{
     height: 35px;
     margin-top: 20px;
@@ -229,4 +240,8 @@
 }
 #checkEmail{
     margin-right: 10px;
+}
+#cancel-update{
+    color: #ff0021;
+    cursor: pointer;
 }

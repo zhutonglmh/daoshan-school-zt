@@ -2,10 +2,7 @@ package com.daoshan.service.dsxh.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.daoshan.bean.dsxh.entity.DsxhCourse;
-import com.daoshan.bean.dsxh.entity.DsxhCourseChild;
-import com.daoshan.bean.dsxh.entity.DsxhCourseComments;
-import com.daoshan.bean.dsxh.entity.DsxhCourseDetail;
+import com.daoshan.bean.dsxh.entity.*;
 import com.daoshan.dao.dsxh.DsxhCourseChildMapper;
 import com.daoshan.dao.dsxh.DsxhCourseDetailMapper;
 import com.daoshan.dao.dsxh.DsxhCourseMapper;
@@ -13,6 +10,8 @@ import com.daoshan.school.utils.common.AirUtils;
 import com.daoshan.school.utils.uuid.UUIDUtils;
 import com.daoshan.service.dsxh.DsxhCourseCommentsService;
 import com.daoshan.service.dsxh.DsxhCourseService;
+import com.daoshan.service.dsxh.DsxhOrderService;
+import com.daoshan.service.dsxh.DsxhUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,20 +33,29 @@ public class DsxhCourseServiceImpl implements DsxhCourseService{
     private DsxhCourseMapper dsxhCourseMapper;
 
     @Autowired
+    private DsxhOrderService dsxhOrderService;
+
+    @Autowired
     private DsxhCourseCommentsService dsxhCourseCommentsService;
+
+    @Autowired
+    private DsxhUserService dsxhUserService;
     /**
      * 获取课程信息
      * @param dsxhCourse
      * @return
      * @throws Exception
      */
-    public DsxhCourse getCourseInfo(DsxhCourse dsxhCourse){
+    public DsxhCourse getCourseInfo(DsxhCourse dsxhCourse) throws Exception{
 
         if(!AirUtils.hv(dsxhCourse) || !AirUtils.hv(dsxhCourse.getId())){
             return null;
         }
         //查询
         DsxhCourse dsxhCourse1 = dsxhCourseMapper.selectOne(dsxhCourse);
+        if(!AirUtils.hv(dsxhCourse1)){
+            return null;
+        }
         Double price = dsxhCourse1.getCoursePrice();
         dsxhCourse1.setCoursePrice(price);
         DsxhCourseDetail dsxhCourseDetail = new DsxhCourseDetail();
@@ -65,6 +73,13 @@ public class DsxhCourseServiceImpl implements DsxhCourseService{
         dsxhCourse1.setDsxhCourseDetail(dsxhCourseDetail1);
         dsxhCourse1.setDsxhCourseChildren(dsxhCourseChildren);
 
+        DsxhOrder dsxhOrder = new DsxhOrder();
+        DsxhUser dsxhUser = dsxhUserService.getUserInfo();
+        dsxhOrder.setCreateUser(dsxhUser.getId());
+        dsxhOrder.setCourseId(dsxhCourse.getId());
+        //TODO 查看当前用户是否购买
+        int flag = dsxhOrderService.selectOrder(dsxhOrder);
+        dsxhCourse1.setIsBuy(flag);
         return dsxhCourse1;
     }
 

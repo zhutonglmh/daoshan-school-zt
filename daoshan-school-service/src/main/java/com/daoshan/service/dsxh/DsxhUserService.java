@@ -9,12 +9,6 @@ import java.util.List;
 
 public interface DsxhUserService {
 
-    public String sessionDemo();
-
-
-    /*-------------------------------------------------------------------------------------------------------*/
-    //以上代码仅供测试框架使用      正式环境可以删除
-    /*--------------------------------------------------------------------------------------------------------*/
 
     /**
      * 新增
@@ -92,6 +86,14 @@ public interface DsxhUserService {
      * @param dsxhUser
      * @return
      */
-    int updateUserInfo(DsxhUser dsxhUser);
+    int updateUserInfo(DsxhUser dsxhUser) throws Exception;
 
+    /**
+     * 修改用户信息
+     *
+     * @param dsxhUser
+     * @return
+     */
+
+    int updateUser2(DsxhUser dsxhUser) throws Exception;
 }

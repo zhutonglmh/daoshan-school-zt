@@ -20,7 +20,7 @@ public class DaoshanApplicationTests {
 		try {
 //			String str = null;
 //			str.toCharArray();
-          //  AliSmsUntils.sms("17862979628","2222");
+           //AliSmsUntils.sms("15689438669","2222");
 
             //EmailSend.send_mail("shandongsunzhi@126.com","000099");
 

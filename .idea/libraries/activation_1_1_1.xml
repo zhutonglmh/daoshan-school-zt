@@ -1,9 +1,6 @@
 <component name="libraryTable">
   <library name="activation-1.1.1">
-    <CLASSES>
-      <root url="jar://D:/jar/activation-1.1.1.jar!/" />
-      <root url="jar://D:/jar/mail-1.4.1.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>

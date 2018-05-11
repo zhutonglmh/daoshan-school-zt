@@ -45,19 +45,20 @@
                     <label><a>我的收藏</a></label>
                     <label><a>我的余额</a></label>
                     <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
-                    <label><a id="user-name" style="display: none"></a></label>
+                    <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
                 </div>
             </div>
         </div>
+        <ul class="user-info-message">
+            <li id="update-message"><a href="user.jsp">修改资料</a></li>
+            <li id="my-order"><a href="user.jsp">我的订单</a></li>
+            <li id="my-money"><a href="user.jsp">我的余额</a></li>
+            <li id="log-out"><a href="user.jsp">退出登录</a></li>
+            <li id="hide">隐藏</li>
+        </ul>
     </nav>
 </div>
-<ul class="user-info-message">
-    <li id="update-message">修改资料</li>
-    <li id="my-order">我的订单</li>
-    <li id="my-money">我的余额</li>
-    <li id="log-out">退出登录</li>
-    <li id="hide">隐藏</li>
-</ul>
+
 <div class="container">
     <ol class="breadcrumb">
         <li><a href="index.jsp">首页</a></li>

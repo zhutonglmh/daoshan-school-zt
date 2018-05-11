@@ -459,7 +459,16 @@ body {
     font-size: 14px;
     color: #6a6f64;
 }
+.user-info-message > li >a {
+    color: rgb(51, 122, 183);
+}
 .user-info-message > li:hover{
     background: #9ea3c1;
     color: white;
+}
+
+#head-image2 {
+    width: 25px;
+    height: 25px;
+    margin-left: 35px;
 }

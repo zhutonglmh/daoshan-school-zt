@@ -88,6 +88,7 @@ function initUser() {
                 $("#user-name").html(data.data.data.userName);
                 $("#user-name").show();
                 $("#goto-login").hide();
+                $("#my-money").attr("data-money",data.data.data.money);
             }
         },
         error: function () {

@@ -8,19 +8,24 @@ $(function () {
     initPageDom();
     initPageEvent();
     initUser();
+
+    //$("#user-image").attr("src","/daoshan-school/upload/getImage/");
+
 });
 
 function initPageDom(){
 
-    $('#Mydialog4').modal('show');
 }
 
 function initPageEvent(){
 
+    //搜索
     $(document).on("click","#search-begin", toSearch);
 
+    //隐藏用户
     $(document).on("click","#hide", hideUser);
 
+    //显示用户
     $(document).on("click","#user-name", showUser);
 
     $(document).on("blur","#user-name-1", checkName);
@@ -30,8 +35,337 @@ function initPageEvent(){
 
     $(document).on("click","#checkEmail", sendEmail);
 
+    $(document).on("click","#uploadSubmit", uploadImage);
+
+    $(document).on("click","#add-iphone", addIphone);
+
+    $(document).on("click","#get-card", sendSms);
+
+    $(document).on("blur","#iphone-input", checkNumber);
+
+    $(document).on("click","#check-iphone", checkIphone);
+
+    $(document).on("click","#update-iphone", addIphone);
+
+    $(document).on("click","#update-email", updateEmail);
+
+    $(document).on("click","#cancel-update", cancelUpdateEmail);
+
+    $(document).on("click","#remove", removeImage);
+
+    $(document).on("click","#checkEmail-2", checkEmails);
+
+    //校验qq格式
+    $(document).on("blur","#QQ-number", checkQQNumber);
+
+    //保存
+    $(document).on("click","#save", saveInfo);
+
+    $(document).on("click","#user-name", showUser2);
+
+}
+function showUser2() {
+    $(".user-info-message").show();
 }
 
+//保存
+function saveInfo() {
+
+    var userName = $("#user-name-1").val();
+    var userSex =  $('#sex input[name="sex"]').val();
+    var headImageAddress = $("#user-image").attr("data-address");
+    var userMessage = $(".user-info-textarea").val();
+    var userReallyName = $("#input-name").val();
+    var userEmail = "shandongsunzhi@126.com"//$("#emailaddress").attr("data-email");
+    var userIphone = "17862979628"//$("#user-iphone").attr("data-iphone");
+    var userQqNumber = $("#QQ-number").val();
+
+    if("" == userName){
+        message2("用户昵称不能为空","error");
+        return;
+    }
+    if("" == userSex){
+        message2("用户性别不能为空","error");
+        return;
+    }
+    if("" == headImageAddress){
+        message2("将使用默认头像","info");
+    }
+    if("" == userReallyName){
+        message2("用户未开启真实姓名","info");
+    }
+    if("" == userEmail){
+        message2("邮箱信息不能为空","error");
+        return;
+    }if("" == userIphone){
+        message2("手机号码不能为空","error");
+        return;
+    }
+    if("" == userQqNumber){
+        message2("QQ号码不能为空","error");
+        return;
+    }
+
+    var data = {
+        "userName":userName,
+        "userSex":userSex,
+        "headImageAddress":headImageAddress,
+        "userMessage":userMessage,
+        "userReallyName":userReallyName,
+        "userEmail":userEmail,
+        "userIphone":userIphone,
+        "userQqNumber":userQqNumber,
+
+    }
+    var url = encodeURI(global.context + "/dsxh/userDetail/updUserInfo");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:true,
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if("success" == data.data){
+               message2("保存成功!","success");
+            }else {
+                message2(data.data,"success");
+            }
+        },
+        error: function () {
+        }
+    });
+}
+
+//校验qq
+function checkQQNumber() {
+
+    var qq = $("#QQ-number").val();
+    var regex = /[1-9][0-9]{4,14}/;
+    if(regex.test(qq)){
+        $("#message7").show();
+        $("#message8").hide();
+        $("#qq-number-2").attr("data-number",qq);
+    }else {
+        $("#message7").hide();
+        $("#message8").show();
+    }
+
+}
+//校验邮箱
+function checkEmails() {
+
+    var emailadd = $("#email-input").val();
+    var code = $("#email-caode").val();
+
+    if("" == code){
+        message2("请填写验证码","warning");
+        return;
+    }
+    if("" == emailadd){
+        message2("请填写邮箱地址","warning");
+        return;
+    }
+
+    var patter_special_char = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
+
+    if(!patter_special_char.test(emailadd)){
+        message2("邮箱格式不正确","warning");
+        return;
+    }
+
+    var data = {
+        "userEmail":emailadd,
+        "card":code
+    }
+    var url = encodeURI(global.context + "/dsxh/common/checkEmail");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:true,
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if("success" == data.data){
+                $("#emailaddress").attr("data-email",emailadd);
+                $("#upd-email").show();
+                $("#upd-email > label").html(emailadd);
+                $("#add-email").hide();
+            }else {
+                message2("验证码不正确！","warning");
+            }
+        },
+        error: function () {
+        }
+    });
+}
+
+function removeImage() {
+    $("#uploadSubmit").removeAttr("disabled");
+    $("#user-image").removeAttr("data-address");
+}
+//取消修改邮箱
+function cancelUpdateEmail() {
+    $("#upd-email").show();
+    $("#add-email").hide();
+}
+//修改邮箱
+function updateEmail() {
+
+    $("#upd-email").hide();
+    $("#add-email").show();
+    var email = $("#upd-email > label").html();
+    $("#email-input").val(email);
+}
+//校验手机验证码
+function checkIphone() {
+
+    var iphone = $("#iphone-input").val();
+    var code = $("#getted").val();
+
+    if(!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(iphone))){
+        $(".modal-three").html("不是正确的手机号！");
+        $(".modal-three").show();
+        return;
+    }else {
+        $(".modal-three").hide();
+    }
+
+    if("" == code){
+        $(".modal-three").html("验证码不能为空！");
+        $(".modal-three").show();
+        return;
+    }
+    else {
+        $(".modal-three").hide();
+    }
+
+    var data = {
+        "userIphone":iphone,
+        "card":code
+    }
+    var url = encodeURI(global.context + "/dsxh/common/checkIphone");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:true,
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if("success" == data.data){
+                $("#user-iphone").attr("data-iphone",iphone);
+                $('#Mydialog4').modal('hide');
+                $("#iphone-update").show();
+                $("#iphone-update > label").html(iphone);
+            }else {
+                $(".modal-three").html("验证码不正确！");
+                $(".modal-three").show();
+            }
+        },
+        error: function () {
+        }
+    });
+
+
+}
+
+//校验手机格式
+function checkNumber() {
+
+    var sMobile = $("#iphone-input").val();
+    if(!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(sMobile))){
+        $(".modal-three").html("不是正确的手机号！");
+        $(".modal-three").show();
+        return;
+    }else {
+        $(".modal-three").hide();
+    }
+}
+//发送手机验证码
+function sendSms() {
+
+
+    var sMobile = $("#iphone-input").val();
+    if(!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(sMobile))){
+        $(".modal-three").html("不是正确的手机号！");
+        $(".modal-three").show();
+        return;
+    }else {
+        $(".modal-three").hide();
+    }
+
+    var sMobile = $("#iphone-input").val();
+
+
+    $("#get-card").attr("disabled","disabled");
+    $("#get-card").html("发送中...");
+    var data = {
+        "userIphone": sMobile
+    }
+    var url = encodeURI(global.context + "/dsxh/common/sendIphone");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:true,
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if("success" == data.data.result){
+                $("#get-card").html("重新获取");
+                $(".modal-three").hide();
+            }else {
+                $(".modal-three").html("验证码发送失败！");
+                $("#get-card").removeAttr("disabled");
+                $(".modal-three").show();
+                $("#get-card").html("发送验证码");
+            }
+        },
+        error: function () {
+        }
+    });
+}
+//弹窗
+function addIphone() {
+    $('#Mydialog4').modal('show');
+    var iphone = $("#iphone-update > label").html();
+    $("#iphone-input").val(iphone);
+}
+
+// 文件上传
+function uploadImage() {
+
+    var url = encodeURI(global.context + "/upload/uploadImage");
+    var data = new FormData($('#uploadForm')[0]);
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: data,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            if(data.data == "失败"){
+                message2("上传失败","error");
+            }else{
+                $("#user-image").attr("data-address",data.data);
+                $("#uploadSubmit").html("已提交");
+                $("#uploadSubmit").attr("disabled","disabled");
+            }
+        },
+        error: function (data) {
+            console.log(data.status);
+        }
+    });
+}
 
 //校验邮箱
 function checkEmail() {
@@ -103,10 +437,11 @@ function sendEmail() {
 
             if("success" == data.data.result){
                 $("#checkEmail").html("已发送");
-                $("#checkEmail-2").attr("disabled","");
+                $("#checkEmail-2").removeAttr("disabled");
             }else {
                 message2("验证码发送失败，请检查邮箱重试！！","error");
-                $("#checkEmail").attr("disabled","");
+                $("#checkEmail").removeAttr("disabled");
+                $("#checkEmail-2").removeAttr("disabled");
                 $("#checkEmail").html("发送验证码");
             }
         },
@@ -187,6 +522,25 @@ function initUser() {
                 $("#user-name").html(data.data.data.userName);
                 $("#user-name").show();
                 $("#goto-login").hide();
+                $("#my-money").attr("data-money",data.data.data.money);
+
+                if(data.data.data.dsxhUserDetail != null){
+                    $("#head-image2").attr("src","/daoshan-school/upload/getImage/"+data.data.data.dsxhUserDetail.headImageAddress);
+                    $("#user-name-1").val(data.data.data.userName);
+                    $("#user-image").attr("data-address",data.data.data.dsxhUserDetail.headImageAddress);
+                    $("#picImg").attr("src","/daoshan-school/upload/getImage/"+data.data.data.dsxhUserDetail.headImageAddress);
+
+                    $('#sex input[value='+data.data.data.dsxhUserDetail.userSex+']').attr("checked","checked");
+                    $(".user-info-textarea").html(data.data.data.dsxhUserDetail.userMessage);
+                    $("#input-name").val(data.data.data.dsxhUserDetail.userReallyName);
+                    $("#emailaddress").attr("data-email",data.data.data.dsxhUserDetail.userEmail);
+                    $("#upd-email > label").html(data.data.data.dsxhUserDetail.userEmail);
+                    $("#user-iphone").attr("data-iphone",data.data.data.dsxhUserDetail.userIphone);
+                    $("#iphone-update").val(data.data.data.dsxhUserDetail.userIphone);
+                    $("#QQ-number").val(data.data.data.dsxhUserDetail.userQqNumber);
+
+                }
+
             }
         },
         error: function () {

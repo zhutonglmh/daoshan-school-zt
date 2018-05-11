@@ -61,6 +61,9 @@ public class DsxhCourse extends Model<DsxhUser> {
     @TableField(exist = false)
     private String queryString;
 
+    @TableField(exist = false)
+    private int isBuy;  //1  已购买  0 未购买
+
     @Override
     protected Serializable pkVal() {
         return null;

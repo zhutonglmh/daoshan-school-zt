@@ -21,4 +21,16 @@
     <include refid="Base_Column_List" />
     from dsxh_user
   </select>
+  <update id="updateByUser" parameterType="com.daoshan.bean.dsxh.entity.DsxhUser" >
+    UPDATE dsxh_user
+    set
+    user_name = #{userName,jdbcType=VARCHAR}
+    WHERE id = #{id,jdbcType=CHAR}
+  </update>
+  <select id="getDsxhUserDetailBuUser" resultMap="BaseResultMap" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail">
+      select
+      <include refid="Base_Column_List" />
+      from dsxh_user
+    WHERE user_id = #{userId,jdbcType=CHAR}
+  </select>
 </mapper>

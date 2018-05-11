@@ -29,25 +29,6 @@ public class DsxhUserServiceImpl implements DsxhUserService{
     private DsxhUserMapper dsxhUserMapper;
 
     /**
-     * 测试功能使用
-     * @return
-     */
-    @Override
-    public String sessionDemo() {
-        //获取到当前线程绑定的请求对象
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        //已经拿到session,就可以拿到session中保存的用户信息了。
-
-        String name = request.getSession().getAttribute("id").toString();
-        return name;
-    }
-
-
-    /*-------------------------------------------------------------------------------------------------------*/
-    //以上代码仅供测试框架使用      正式环境可以删除
-    /*--------------------------------------------------------------------------------------------------------*/
-
-    /**
      * 新增
      *
      * @param dsxhUser
@@ -256,10 +237,22 @@ public class DsxhUserServiceImpl implements DsxhUserService{
      * @return
      */
     @Override
-    public int updateUserInfo(DsxhUser dsxhUser) {
-        Wrapper<DsxhUser> wrapper = new EntityWrapper<DsxhUser>(dsxhUser);
-        return dsxhUserMapper.update(dsxhUser,wrapper);
+    public int updateUserInfo(DsxhUser dsxhUser) throws Exception {
+
+        return dsxhUserMapper.updateByUser(dsxhUser);
     }
 
+    /**
+     * 修改用户信息
+     *
+     * @param dsxhUser
+     * @return
+     */
+    @Override
+    public int updateUser2(DsxhUser dsxhUser) throws Exception {
+
+        Wrapper<DsxhUser> wrapper = new EntityWrapper<>(dsxhUser);
+        return dsxhUserMapper.update(dsxhUser,wrapper);
+    }
 
 }

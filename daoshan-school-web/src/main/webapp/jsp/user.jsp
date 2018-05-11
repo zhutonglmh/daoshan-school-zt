@@ -11,10 +11,12 @@
 <head>
     <title>Title</title>
     <link href="../skins/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../skins/css/bootstrap-fileinput.css" rel="stylesheet">
     <link href="../skins/css/main.css" rel="stylesheet" type="text/css"/>
     <link href="../skins/css/pagination.css" rel="stylesheet" type="text/css"/>
     <link href="../skins/css/message.css" rel="stylesheet" type="text/css"/>
     <link href="../skins/css/user.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
 <div class="myHead">
@@ -33,11 +35,18 @@
                     <label><a>我的学习</a></label>
                     <label><a>我的收藏</a></label>
                     <label><a>我的余额</a></label>
-                    <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
-                    <label><a id="user-name" style="display: none"></a></label>
+                    <label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
+                    <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
                 </div>
             </div>
         </div>
+        <ul class="user-info-message">
+            <li id="update-message"><a href="user.jsp">修改资料</a></li>
+            <li id="my-order"><a href="user.jsp">我的订单</a></li>
+            <li id="my-money"><a href="user.jsp">我的余额</a></li>
+            <li id="log-out"><a href="user.jsp">退出登录</a></li>
+            <li id="hide">隐藏</li>
+        </ul>
     </nav>
 </div>
 <div class="user-info">
@@ -52,30 +61,48 @@
             <div class="base-info">基本信息</div>
             <div class="info-one">
                 <label>昵称</label><input id="user-name-1" class="user-name" type="text" name="search" placeholder="请输入昵称" value=""/><span id="message1" class="errormesg" style="display: none">输入昵称有误，不得包含特殊字符！</span><span id="message2" class="errormesg" style="display: none">该昵称符合规则可以使用</span><br>
-                <label style="margin-top: 30px;">头像</label>
-                <div class="user-image" style="margin-left: 50px;
-    margin-top: -20px;"><img style="width: 120px;height: 120px;    float: left;" src="../skins/imge/slide.png">
-                    <div style="float: left;margin-left: 20px;"><p>支持jpg、gif、png或bmp格式的图片，建议文件小于20M</p>
-                        <button>修改头像</button>
+                <label id="user-image" style="margin-top: 30px;">头像</label>
+                <form id="uploadForm" enctype='multipart/form-data' style="margin-left: 50px;
+                                                                     margin-top: -20px;">
+                    <div class="form-group">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"  id="exampleInputUpload">
+                            <div class="fileinput-new thumbnail" style="width: 200px;height: auto;max-height:150px;">
+                                <img id='picImg' style="width: 100%;height: auto;max-height: 140px;" src="../skins/imge/noimage.jpg" alt="" />
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                            <div>
+                        <span class="btn btn-primary btn-file">
+                            <span class="fileinput-new" style="    margin-left: 15px;">选择文件</span>
+                            <span class="fileinput-exists">换一张</span>
+                            <input type="file" name="file" id="file" accept="image/*"<%--accept="../image/gif,image/jpeg,image/x-png"--%>/>
+                        </span>
+                                <a href="javascript:;" id="remove" class="btn btn-warning fileinput-exists" data-dismiss="fileinput">移除</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <br>
+                    <button style="
+                                margin-top: -105px;
+                                margin-left: 130px;
+                                color: #fff;
+                                background-color: #337ab7;
+                                border-color: #2e6da4;" type="button" id="uploadSubmit" class="btn btn-info ">提交</button>
+                </form>
 
-                <div style="margin-top: 120px;">
+                <div style="margin-top: 30px;">
                     <label style="    color: rgb(102, 102, 102);font-size: 14px;
                                     font-family: 微软雅黑;
                                     font-weight: 400;
                                     padding: 0px 20px 0px 0px;">性别</label>
-                    <div class="radio" style=" margin-top: -30px;
+                    <div class="radio" id="sex" style=" margin-top: -30px;
     margin-left: 50px;">
                         <label>
-                            <input class="user-sex" name="sex" type="radio" value="1"/>
+                            <input class="user-sex" name="sex" type="radio"  value="男"/>
                         </label><span>男</span>
                         <label>
-                            <input class="user-sex" name="sex" type="radio" value="2"/>
+                            <input class="user-sex" name="sex" type="radio" value="女"/>
                         </label><span>女</span>
                         <label>
-                            <input class="user-sex" name="sex" type="radio" value="3"/>
+                            <input class="user-sex" name="sex" type="radio" checked="checked" value="保密"/>
                         </label><span>保密</span>
                     </div>
                 </div>
@@ -91,7 +118,7 @@
             </div>
             <div class="relation-info" >联系信息</div>
            <div class="label-two-div">
-               <div class="label-name">真实姓名</div>
+               <div class="label-name" id="label-name">真实姓名</div>
                <div class="label-right">
                    <div class="label-right-top">
                        <input id="input-name" placeholder="请输入您的姓名" type="text"> <span id="message3" class="errormesg" style="display: none">输入姓名有误，不得包含特殊字符！</span><span id="message4" class="errormesg" style="display: none">符合规则</span><br>
@@ -101,37 +128,44 @@
            </div>
 
             <div class="label-two-div">
-                <div class="label-name">常用邮箱</div>
+                <div class="label-name" id="emailaddress">常用邮箱</div>
                 <div class="label-right">
-                    <div class="label-right-top">
-                        <input id="email-input" type="text" placeholder="请输入您的邮箱"> <span id="message5" class="errormesg" style="display: none">邮箱格式不正确</span><span id="message6" class="errormesg" style="display: none">格式正确</span>
-                        <div class="check-card"><input type="text" placeholder="请输入验证码"><button id="checkEmail" class=" btn btn-info mybutton2">发送验证码</button> <button class="btn mybutton2 btn-info" id="checkEmail-2" disabled="disabled">验证</button></div>
+                    <div class="label-right-top" id="add-email" style="display: none">
+                        <input id="email-input" type="text" placeholder="请输入您的邮箱"> <span id="cancel-update">取消修改</span> <span id="message5" class="errormesg" style="display: none">邮箱格式不正确</span><span id="message6" class="errormesg" style="display: none">格式正确</span>
+                        <div class="check-card"><input id="email-caode" type="text" placeholder="请输入验证码"><button id="checkEmail" class=" btn btn-info mybutton2">发送验证码</button> <button class="btn mybutton2 btn-info" id="checkEmail-2" disabled="disabled">验证</button></div>
+                    </div>
+                    <div class="label-right-top" id="upd-email">
+                        <label style="    margin-right: 10px;color: #1aa939;">shandongsunzhi@126.com</label><button id="update-email" class="btn btn-info mybutton2">修改</button>
                     </div>
                     <div class="label-right-bottom">用于接收来自平台和课程的邮件通知，非常重要</div>
                 </div>
             </div>
 
             <div class="label-two-div">
-                <div class="label-name">手机号码</div>
+                <div class="label-name" id="user-iphone">手机号码</div>
                 <div class="label-right">
-                    <div class="label-right-top">
-                        <button class="btn btn-info mybutton2">添加</button>
+                    <div class="label-right-top" id="iphone-add" style="display: none">
+                        <button id="add-iphone" class="btn btn-info mybutton2" >添加</button>
+                    </div>
+                    <div id="iphone-update" class="label-right-top" >
+                        <label style="    margin-right: 10px;color: #1aa939;">17862979628</label><button id="update-iphone" class="btn btn-info mybutton2">修改</button>
                     </div>
                     <div class="label-right-bottom">用于优质课程的学习提醒等服务，手机号不会对外公开，请放心</div>
                 </div>
             </div>
 
             <div class="label-two-div">
-                <div class="label-name">QQ号码</div>
+                <div class="label-name" id="qq-number-2">QQ号码</div>
                 <div class="label-right">
                     <div class="label-right-top">
-                        <input type="text">
+                        <input id="QQ-number" type="text"> <label id="message7" style="display: none">格式正确</label> <label style="display: none" id="message8">qq号码格式不正确</label>
                     </div>
                     <div class="label-right-bottom">用于课程的高效交流、方便机构及老师答疑解惑</div>
                 </div>
             </div>
-            <div class="save">
-                <button class="btn mybutton2 btn-info">保存</button>
+            <div class="save" >
+                <button id="save" class="btn mybutton2 btn-info">保存</button>
+                <a href="../jsp/index.jsp" class="btn mybutton2 btn-info">返回</a>
             </div>
         </div>
     </div>
@@ -148,10 +182,10 @@
                 <div class="modal-title buy-titlt">绑定手机</div>
             </div>
             <div class="modal-body buy-body">
-                <div class="modal-one"> <div class="glyphicon glyphicon-phone"></div><input type="text" placeholder="请输入手机号码"></div>
-                <div class="modal-two"><div class="glyphicon glyphicon-envelope"></div><input type="text"><button>获取验证码</button></div>
+                <div class="modal-one"> <div class="glyphicon glyphicon-phone"></div><input id="iphone-input" type="text" placeholder="请输入手机号码"></div>
+                <div class="modal-two"><div class="glyphicon glyphicon-envelope"></div><input id="getted" type="text" placeholder="请输入验证码"><button id="get-card">获取验证码</button></div>
                 <div class="modal-three" style="display: none"></div>
-                <button class="modal-four">完成</button>
+                <button class="modal-four" id="check-iphone">完成</button>
             </div>
         </div>
     </div>
@@ -181,6 +215,7 @@
 <script type="text/javascript" src="../skins/js/jquery.js"></script>
 <script type="text/javascript" src="../skins/js/bootstrap.js"></script>
 <script type="text/javascript" src="../skins/js/message.min.js"></script>
+<script type="text/javascript" src="../skins/js/bootstrap-fileinput.js"></script>
 <script type="text/javascript" src="../skins/js/user.js"></script>
 <script type="text/javascript">
     global.context = "<%=request.getContextPath()%>";

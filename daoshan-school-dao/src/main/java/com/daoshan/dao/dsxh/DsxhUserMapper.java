@@ -12,4 +12,6 @@ import java.util.List;
 public interface DsxhUserMapper extends BaseMapper<DsxhUser>{
 
     List<DsxhUser> selectByZt(Pagination page, DsxhUser dsxhUser);
+
+    int updateByUser(DsxhUser dsxhUser) throws Exception;
 }

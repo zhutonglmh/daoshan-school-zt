@@ -6,6 +6,7 @@ import com.daoshan.bean.dsxh.entity.DsxhUserDetail;
 import com.daoshan.school.aop.annotation.AccessControl;
 import com.daoshan.school.utils.constans.ConStants;
 import com.daoshan.school.utils.messagebody.MessageBody;
+import com.daoshan.service.dsxh.DsxhUserDetailService;
 import com.daoshan.service.dsxh.DsxhUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ public class DsxhUserController {
 
     @Autowired
     private DsxhUserService dsxhUserService;
+
+    @Autowired
+    private DsxhUserDetailService dsxhUserDetailService;
 
     /**
      * 新增
@@ -37,7 +41,7 @@ public class DsxhUserController {
 
     /**
      * 修改用户资料
-     * @param dsxhUser 用户信息
+     * @param dsxhUserDetail 用户信息
      * @return 结果
      */
     @PostMapping("/updateUser")
@@ -124,7 +128,12 @@ public class DsxhUserController {
     @PostMapping("/getUserLoginInfo")
     public MessageBody isUserLogin(){
         Map<String,Object> map = new HashMap<String,Object>();
-        DsxhUser dsxhUser = dsxhUserService.getUserInfo();
+        DsxhUser dsxhUser = null;
+        try {
+            dsxhUser = dsxhUserDetailService.getUserInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(null != dsxhUser){
             map.put("data",dsxhUser);
         }else {

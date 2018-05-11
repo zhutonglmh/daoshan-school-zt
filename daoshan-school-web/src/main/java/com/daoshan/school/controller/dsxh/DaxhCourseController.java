@@ -26,9 +26,12 @@ public class DaxhCourseController {
     public MessageBody getCourseInfo(@RequestBody DsxhCourse dsxhCourse){
 
         Map<String,Object> map = new HashMap<String,Object>();
-        dsxhCourse = dsxhCourseService.getCourseInfo(dsxhCourse);
+        try {
+            dsxhCourse = dsxhCourseService.getCourseInfo(dsxhCourse);
+        } catch (Exception e) {
+            return MessageBody.getMessageBody(true,map);
+        }
         map.put("data",dsxhCourse);
-        System.out.println(JSON.toJSONString(dsxhCourse));
         return MessageBody.getMessageBody(true,map);
     }
 

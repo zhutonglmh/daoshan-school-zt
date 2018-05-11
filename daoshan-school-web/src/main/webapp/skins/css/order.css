@@ -1,0 +1,78 @@
+.my-order{
+    color: #666;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+/*.container {
+    width: 1280px;
+    height: 900px;
+    padding-top: 90px;
+}*/
+.one-zt{
+    margin-top: 100px;
+}
+.table-one {
+    width: 350px;
+}
+.table-two {
+    width: 140px;
+}
+.table-three {
+    width: 160px;
+}
+.table-four {
+    width: 160px;
+}
+.table-five {
+    width: 160px;
+}
+.table-six {
+    width: 160px;
+}
+.table-seven {
+    width: 160px;
+}
+thead > tr{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #cecef8;
+}
+
+tbody > tr{
+    height: 140px;
+    border-bottom: 1px dashed#c8c8ec;
+}
+.td-bottom{
+    color: #333;
+    font-size: 14px;
+}
+.td-top{
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+.mybtn{
+    width: 82px;
+    height: 33px;
+    background-color: #ff8000;
+    border-color: aliceblue;
+}
+.mybtn :hover{
+    background-color: #ff0000;
+}
+.go-to-study {
+    cursor: pointer;
+    color: #14aa50;
+}
+.M-box3 {
+    margin-top: 15px;
+    margin-left: 100px;
+    margin-bottom: 15px;
+}
+.td-bottom {
+    cursor: pointer;
+    color: #14aa50;
+}

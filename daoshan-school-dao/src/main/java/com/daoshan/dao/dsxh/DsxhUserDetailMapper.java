@@ -8,4 +8,7 @@ import com.daoshan.bean.dsxh.entity.DsxhUserDetail;
  */
 public interface DsxhUserDetailMapper extends BaseMapper<DsxhUserDetail>{
 
+    int deleteByUser(DsxhUserDetail dsxhUserDetail);
+
+    DsxhUserDetail getDsxhUserDetailByUser(DsxhUserDetail dsxhUserDetail);
 }

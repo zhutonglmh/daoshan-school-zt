@@ -67,19 +67,20 @@
                         <label><a>我的收藏</a></label>
                         <label><a>我的余额</a></label>
                         <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
-                        <label><a id="user-name" style="display: none"></a></label>
+						<img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
                     </div>
                 </div>
             </div>
+			<ul class="user-info-message">
+				<li id="update-message"><a href="user.jsp">修改资料</a></li>
+				<li id="my-order"><a href="user.jsp">我的订单</a></li>
+				<li id="my-money"><a href="user.jsp">我的余额</a></li>
+				<li id="log-out"><a href="user.jsp">退出登录</a></li>
+				<li id="hide">隐藏</li>
+			</ul>
         </nav>
     </div>
-	<ul class="user-info-message">
-		<li id="update-message">修改资料</li>
-		<li id="my-order">我的订单</li>
-		<li id="my-money">我的余额</li>
-		<li id="log-out">退出登录</li>
-		<li id="hide">隐藏</li>
-	</ul>
+
 		<div id="content">
 			<div id="menu">
 				<div class="left_menu">
@@ -308,10 +309,10 @@
 				<div class="practise">
 					<div class="title">
 						实战推荐
-						<a href="#">更多 ></a>
+						<a href="http://localhost:8080/daoshan-school/jsp/search.jsp?">更多 ></a>
 					</div>
 					<div class="item_class" data-id="310f02b2-5f35-41ef-8f1e-1a3f1f9b2328">
-						<img src="D:\prictise1.jpg" height="124" width="100%" />
+						<img src="../skins/imge/prictise1.jpg" height="124" width="100%" />
 						<div class="item_class_intro">
 							<h3>多领域通用的Python秘籍</h3>
 							<p>只要用Python就一定用的到的多领域通用开发秘籍</p>
@@ -370,7 +371,7 @@
 				<div class="free">
 					<div class="title">
 						免费课程
-						<a href="#">更多 ></a>
+						<a href="http://localhost:8080/daoshan-school/jsp/search.jsp?">更多 ></a>
 					</div>
 					<div class="item_class" data-id="ee0b79bf-4f66-44c3-9caa-791572251bf5">
 						<img src="../skins/imge/free1.jpg" height="124" width="100%" />

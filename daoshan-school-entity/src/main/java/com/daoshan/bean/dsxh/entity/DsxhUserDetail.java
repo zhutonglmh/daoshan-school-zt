@@ -1,13 +1,15 @@
 package com.daoshan.bean.dsxh.entity;
 
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
+
 @TableName("dsxh_user_detail")
+@Data
 public class DsxhUserDetail extends Model<DsxhUserDetail> {
 
     private String id;
@@ -28,6 +30,14 @@ public class DsxhUserDetail extends Model<DsxhUserDetail> {
 
     private String userQqNumber;
 
+    @TableField(exist = false)
+    private String userName; //昵称
+    @TableField(exist = false)
+    private String card;
+
+    public String getCard(){
+        return card;
+    }
     /**
      * 主键值
      */

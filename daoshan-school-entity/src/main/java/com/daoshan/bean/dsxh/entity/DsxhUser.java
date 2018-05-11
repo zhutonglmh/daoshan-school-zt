@@ -2,6 +2,7 @@ package com.daoshan.bean.dsxh.entity;
 
 
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 import java.io.Serializable;
@@ -66,6 +67,9 @@ public class DsxhUser extends Model<DsxhUser>{
      * 账户余额
      */
     private Double money;
+
+    @TableField(exist = false)
+    private DsxhUserDetail dsxhUserDetail;
     @Override
     protected Serializable pkVal() {
         return null;

@@ -34,6 +34,7 @@ function initUser() {
                 $("#user-name").html(data.data.data.userName);
                 $("#user-name").show();
                 $("#goto-login").hide();
+                $("#my-money").attr("data-money",data.data.data.money);
             }
         },
         error: function () {
@@ -96,18 +97,53 @@ function toBuy() {
     $('#Mydialog4').modal('show');
     var courseId = $("#course_name").attr("data-id");
     var courseName = $("#course_name").html().trim();
-    var priceStr = $("#course_name").html().trim();
-    var price = $("#course_name").attr("data-price");
+    var priceStr = $(".price").attr("data-price");
+    var price = $(".price").attr("data-price");
 
     $("#label-course-name").parent().attr("data-id",courseId);
     $("#label-course-name").html(courseName);
-    $("#label-course-price").parent().attr("data-id",price);
-    $("#label-course-price").html(priceStr);
+    $("#label-course-price").attr("data-money",price);
+    $("#label-course-price").html(priceStr+".00元");
+    var money = $("#my-money").attr("data-money");
+    $("#label-course-amt").attr("data-money",money)
+    $("#label-course-amt").html(money+".00元")
 
 }
 //购买
 function commitBuy() {
-    $('#Mydialog4').modal('hide');
+
+
+    var courseId = $("#label-course-name").parent().attr("data-id");
+    var courseName = $("#label-course-name").html();
+    var price = $("#label-course-price").attr("data-money");
+    var JsonData = {
+        "courseId": courseId,
+        "courseName": courseName,
+        "price": price,
+        "status":1
+    }
+    var url = encodeURI(global.context + "/dsxh/order/addOrder");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async: false,
+        data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+            if(data.data.data == "false"){
+                message2("购买失败！", "error");
+            }else {
+                message2("购买成功！", "success");
+                $('#Mydialog4').modal('hide');
+            }
+        },
+        error: function () {
+            message2("购买失败！", "error");
+        }
+    });
+
+
 }
 //取消
 function cancelBuy() {
@@ -323,7 +359,7 @@ function initDate() {
 
             var dataResult = data.data.data;
             if (dataResult != null) {
-                $("#vedio").attr("src",dataResult.vedioAddress);
+
                 $("#toIndex1").attr("data-bigTypeId",dataResult.bigTypeId);
                 $("#toIndex1").html(dataResult.bigTypeName);
                 $("#toIndex2").attr("data-bigTypeId",dataResult.typeId);
@@ -345,6 +381,14 @@ function initDate() {
                 var temp = template('weather', {"data" : dataResult.dsxhCourseChildren});
                 $("#mulu_content2").html(temp);
 
+                //判断当前用户是否已经购买了此课程
+                if(dataResult.isBuy == 1){
+                    $("#vedio").attr("src",dataResult.vedioAddress);
+                    $(".to-buy").html("已购买");
+                    $(".to-buy").attr("disabled","disabled");
+                }else {
+                    //$("#vedio").attr("src","../");
+                }
                 global.data =  dataResult.commentsList;
                 if(global.data != null && global.data.length > 0 ) {
 

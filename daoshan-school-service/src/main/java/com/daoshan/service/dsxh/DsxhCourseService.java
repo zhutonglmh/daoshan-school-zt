@@ -20,7 +20,7 @@ public interface DsxhCourseService {
      * @return
      * @throws Exception
      */
-    DsxhCourse getCourseInfo(DsxhCourse dsxhCourse);
+    DsxhCourse getCourseInfo(DsxhCourse dsxhCourse) throws Exception;
 
     /**
      * 添加课程

@@ -22,4 +22,21 @@ public interface DsxhCommonService {
      * @throws Exception
      */
     public String sendIphoneCode(DsxhUserDetail dsxhUserDetail) throws Exception;
+
+    /**
+     * 验证手机验证码
+     * @param dsxhUserDetail
+     * @return
+     * @throws Exception
+     */
+    String checkIphone(DsxhUserDetail dsxhUserDetail) throws Exception;
+
+
+    /**
+     * 验证邮箱验证码
+     * @param dsxhUserDetail
+     * @return
+     * @throws Exception
+     */
+    String checkEmail(DsxhUserDetail dsxhUserDetail) throws Exception;
 }
