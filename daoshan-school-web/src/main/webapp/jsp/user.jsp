@@ -42,9 +42,9 @@
         </div>
         <ul class="user-info-message">
             <li id="update-message"><a href="user.jsp">修改资料</a></li>
-            <li id="my-order"><a href="user.jsp">我的订单</a></li>
+            <li id="my-order"><a href="order.jsp">我的订单</a></li>
             <li id="my-money"><a href="user.jsp">我的余额</a></li>
-            <li id="log-out"><a href="user.jsp">退出登录</a></li>
+            <li id="log-out"><a>退出登录</a></li>
             <li id="hide">隐藏</li>
         </ul>
     </nav>

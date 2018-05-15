@@ -2,6 +2,9 @@
 server:
   port: 8082
   context-path: /daoshan-school
+
+#静态资源配置
+
 # 数据库配置
 spring:
     http:

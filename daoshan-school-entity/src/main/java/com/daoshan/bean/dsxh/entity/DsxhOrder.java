@@ -63,6 +63,12 @@ public class DsxhOrder extends Model<DsxhOrder> {
      */
     private String userName;
 
+    /**
+     * 字符串时间
+     */
+    @TableField(exist = false)
+    private String timeStr;
+
     @Override
     protected Serializable pkVal() {
         return null;

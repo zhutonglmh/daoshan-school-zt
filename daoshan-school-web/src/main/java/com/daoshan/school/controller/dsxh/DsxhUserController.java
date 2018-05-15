@@ -151,12 +151,6 @@ public class DsxhUserController {
     public MessageBody loginOut(){
 
         HttpSession session = dsxhUserService.getSession();
-
-
-        //设置值
-        session.setAttribute("name","朱同");
-        //获取值
-        session.getAttribute("name");//结果    朱同
         session.removeAttribute("id");
         if(session.getAttribute("id") != null){
             session.invalidate();

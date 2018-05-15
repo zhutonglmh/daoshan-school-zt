@@ -13,12 +13,21 @@
   <sql id="Base_Column_List">
     id, course_id, course_name, price, create_user, create_time, user_name
   </sql>
- <!-- <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="getUsedOrder" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from dsxh_order
-    where id = #{id,jdbcType=CHAR}
+    where course_id = #{courseId,jdbcType=CHAR} and create_user =#{createUser,jdbcType=CHAR} and status in (1,2,5)
+    ORDER BY create_time DESC
   </select>
+  <select id="findDataForPage" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dsxh_order
+    where create_user =#{createUser,jdbcType=CHAR}
+    ORDER BY create_time DESC
+  </select>
+  <!--
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from dsxh_order
     where id = #{id,jdbcType=CHAR}

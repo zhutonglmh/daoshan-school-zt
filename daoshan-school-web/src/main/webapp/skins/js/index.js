@@ -13,10 +13,24 @@ window.onload = function() {
 	shadowChanged();
 
 }
-
+$.ajaxSetup({
+    complete: function (xhr, status) {
+        //拦截器实现超时跳转到登录页面
+        // 通过xhr取得响应头
+        var REDIRECT = xhr.getResponseHeader("REDIRECT");
+        //如果响应头中包含 REDIRECT 则说明是拦截器返回的
+        if (REDIRECT == "REDIRECT") {
+            var win = window;
+            while (win != win.top) {
+                win = win.top;
+            }
+            //重新跳转到 login.html
+            win.location.href = global.context+"/jsp/login.jsp";
+        }
+    }
+});
 function initPageEvent() {
 
-    $(document).on("click",".loginOut a", loginOut);
 
     $(document).on("click",".item_class", courseInfo);
 
@@ -26,6 +40,8 @@ function initPageEvent() {
 
     $(document).on("click","#user-name", showUser);
 
+    //登出
+    $(document).on("click","#log-out", loginOut);
 }
 
 function hideUser() {
@@ -49,6 +65,7 @@ function courseInfo() {
  * 用户登出
  */
 function loginOut() {
+
     var url = encodeURI(global.context + "/dsxh/user/loginOut");
     $.ajax({
         url: url,
@@ -58,9 +75,7 @@ function loginOut() {
         contentType: "application/json",
         dataType: "JSON",
         success: function (data) {
-                $(".userInfo a" ).hide();
-                $(".userLogin a" ).show();
-                $(".loginOut a" ).hide();
+            window.location.href= global.context+"/jsp/login.jsp";
         },
         error: function () {
         }
@@ -85,6 +100,9 @@ function initUser() {
                 $("#goto-login").show();
             }
             else{
+                if(data.data.data.dsxhUserDetail != null){
+                    $("#head-image2").attr("src","/daoshan-school/upload/getImage/"+data.data.data.dsxhUserDetail.headImageAddress);
+                }
                 $("#user-name").html(data.data.data.userName);
                 $("#user-name").show();
                 $("#goto-login").hide();

@@ -70,9 +70,9 @@
 <script type="text/javascript" src="../skins/js/bootstrap.js"></script>
 <script type="text/javascript" src="../skins/js/message.min.js"></script>
 <script src="../skins/js/login.js"></script>
-<script type="text/javascript">
+<%--<script type="text/javascript">
     global.context = "<%=request.getContextPath()%>";
-</script>
+</script>--%>
 </body>
 
 </body>

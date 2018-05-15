@@ -93,6 +93,8 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
         List<DsxhOrder> two = new ArrayList<>();
         List<DsxhOrder> three = new ArrayList<>();
         List<DsxhOrder> zero = new ArrayList<>();
+        List<DsxhOrder> four = new ArrayList<>();
+        List<DsxhOrder> five = new ArrayList<>();
         DsxhUser dsxhUser = dsxhUserService.getUserInfo();
         if(AirUtils.hv(dsxhUser)){
             dsxhOrder.setCreateUser(dsxhUser.getId());
@@ -101,6 +103,10 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
         List<DsxhOrder> list = dsxhOrderMapper.selectList(orderWrapper);
         if (CollectionUtils.isEmpty(list)) return null;
         for (DsxhOrder dsxhOrder1 : list){
+            String format = "yyyy-MM-dd HH:mm:ss";
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            String time = sdf.format(dsxhOrder1.getCreateTime());
+            dsxhOrder1.setTimeStr(time);
             if(dsxhOrder1.getStatus().equals(0)){
                 zero.add(dsxhOrder1);
             }
@@ -113,12 +119,54 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
             if(dsxhOrder1.getStatus().equals(3)){
                 three.add(dsxhOrder1);
             }
+            if(dsxhOrder1.getStatus().equals(4)){
+                four.add(dsxhOrder1);
+            }
+            if(dsxhOrder1.getStatus().equals(5)){
+                five.add(dsxhOrder1);
+            }
         }
         map.put("zero",zero);
         map.put("one",one);
         map.put("two",two);
         map.put("three",three);
+        map.put("four",four);
+        map.put("five",five);
         map.put("all",list);
         return map;
+    }
+
+    /**
+     * 修改订单状态
+     *
+     * @param dsxhOrder
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public String updateOrder(DsxhOrder dsxhOrder) throws Exception {
+
+        Wrapper<DsxhOrder> wrapper = new EntityWrapper<>(dsxhOrder);
+        int result = dsxhOrderMapper.update(dsxhOrder,wrapper);
+        if (result > 0){
+            return "success";
+        }else return "false";
+    }
+
+    /**
+     * 根据条件查询课程是否被购买
+     *
+     * @param dsxhOrder
+     * @return
+     */
+    @Override
+    public int getUsedOrder(DsxhOrder dsxhOrder) throws Exception {
+
+        List<DsxhOrder> list = dsxhOrderMapper.getUsedOrder(dsxhOrder);
+        if(CollectionUtils.isEmpty(list)){
+            return 0;
+        }else {
+            return 1;
+        }
     }
 }

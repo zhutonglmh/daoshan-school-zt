@@ -9,7 +9,22 @@ $(function () {
     initPageEvent();
     initUser();
 });
-
+$.ajaxSetup({
+    complete: function (xhr, status) {
+        //拦截器实现超时跳转到登录页面
+        // 通过xhr取得响应头
+        var REDIRECT = xhr.getResponseHeader("REDIRECT");
+        //如果响应头中包含 REDIRECT 则说明是拦截器返回的
+        if (REDIRECT == "REDIRECT") {
+            var win = window;
+            while (win != win.top) {
+                win = win.top;
+            }
+            //重新跳转到 login.html
+            win.location.href = global.context+"/jsp/login.jsp";
+        }
+    }
+});
 function initPageDom(){
     initList();
 }
@@ -17,11 +32,31 @@ function initPageEvent() {
     $(document).on("click","#search-begin", toSearch);
     $(document).on("click",".search-item", toPlay);
     $(document).on("click","#hide", hideUser);
-
+//登出
+    $(document).on("click","#log-out", loginOut5);
     $(document).on("click","#user-name", showUser);
 
 }
+/**
+ * 用户登出
+ */
+function loginOut5() {
 
+    var url = encodeURI(global.context + "/dsxh/user/loginOut");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:false,
+        //data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+            window.location.href= global.context+"/jsp/login.jsp";
+        },
+        error: function () {
+        }
+    });
+}
 function hideUser() {
     $(".user-info-message").hide();
 }
@@ -75,6 +110,22 @@ function initList() {
         }
     });
 }
+$.ajaxSetup({
+    complete: function (xhr, status) {
+        //拦截器实现超时跳转到登录页面
+        // 通过xhr取得响应头
+        var REDIRECT = xhr.getResponseHeader("REDIRECT");
+        //如果响应头中包含 REDIRECT 则说明是拦截器返回的
+        if (REDIRECT == "REDIRECT") {
+            var win = window;
+            while (win != win.top) {
+                win = win.top;
+            }
+            //重新跳转到 login.html
+            win.location.href = global.context+"/jsp/login.jsp";
+        }
+    }
+});
 //加载分页组件
 function initPage(data) {
 
@@ -113,6 +164,9 @@ function initUser() {
                 $("#goto-login").show();
             }
             else{
+                if(data.data.data.dsxhUserDetail != null){
+                    $("#head-image2").attr("src","/daoshan-school/upload/getImage/"+data.data.data.dsxhUserDetail.headImageAddress);
+                }
                 $("#user-name").html(data.data.data.userName);
                 $("#user-name").show();
                 $("#goto-login").hide();

@@ -1,7 +1,5 @@
 package com.daoshan.service.dsxh.impl;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.daoshan.bean.dsxh.entity.*;
 import com.daoshan.dao.dsxh.DsxhCourseChildMapper;
 import com.daoshan.dao.dsxh.DsxhCourseDetailMapper;
@@ -78,7 +76,7 @@ public class DsxhCourseServiceImpl implements DsxhCourseService{
         dsxhOrder.setCreateUser(dsxhUser.getId());
         dsxhOrder.setCourseId(dsxhCourse.getId());
         //TODO 查看当前用户是否购买
-        int flag = dsxhOrderService.selectOrder(dsxhOrder);
+        int flag = dsxhOrderService.getUsedOrder(dsxhOrder);
         dsxhCourse1.setIsBuy(flag);
         return dsxhCourse1;
     }

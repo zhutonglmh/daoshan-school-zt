@@ -30,4 +30,18 @@ public interface DsxhOrderService {
      */
     public Map<String,List<DsxhOrder>> findDataForPage(DsxhOrder dsxhOrder) throws Exception;
 
+
+    /**
+     * 修改订单状态
+     * @param dsxhOrder
+     * @return
+     * @throws Exception
+     */
+    public String updateOrder(DsxhOrder dsxhOrder) throws Exception;
+
+    /**
+     * 根据条件查询课程是否被购买
+     * @return
+     */
+    public int getUsedOrder(DsxhOrder dsxhOrder) throws Exception;
 }

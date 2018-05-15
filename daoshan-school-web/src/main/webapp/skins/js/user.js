@@ -12,7 +12,21 @@ $(function () {
     //$("#user-image").attr("src","/daoshan-school/upload/getImage/");
 
 });
-
+$.ajaxSetup({
+    complete: function (xhr, status) {
+        //拦截器实现超时跳转到登录页面
+        // 通过xhr取得响应头
+        var REDIRECT = xhr.getResponseHeader("REDIRECT");
+        //如果响应头中包含 REDIRECT 则说明是拦截器返回的
+        if (REDIRECT == "REDIRECT") {
+            var win = window;
+            while (win != win.top) {
+                win = win.top;
+            }
+            //重新跳转到 login.html
+            win.location.href = global.context+"/jsp/login.jsp";
+        }
+    }});
 function initPageDom(){
 
 }
@@ -62,12 +76,33 @@ function initPageEvent(){
     $(document).on("click","#save", saveInfo);
 
     $(document).on("click","#user-name", showUser2);
-
+    //登出
+    $(document).on("click","#log-out", loginOut3);
 }
 function showUser2() {
     $(".user-info-message").show();
 }
 
+/**
+ * 用户登出
+ */
+function loginOut3() {
+
+    var url = encodeURI(global.context + "/dsxh/user/loginOut");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:false,
+        //data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+            window.location.href= global.context+"/jsp/login.jsp";
+        },
+        error: function () {
+        }
+    });
+}
 //保存
 function saveInfo() {
 

@@ -1,6 +1,6 @@
 "use strict";
 var global = {
-    context: null
+    context: "/daoshan-school"
 };
 
 $(function () {

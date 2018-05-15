@@ -73,9 +73,9 @@
             </div>
 			<ul class="user-info-message">
 				<li id="update-message"><a href="user.jsp">修改资料</a></li>
-				<li id="my-order"><a href="user.jsp">我的订单</a></li>
+				<li id="my-order"><a href="order.jsp">我的订单</a></li>
 				<li id="my-money"><a href="user.jsp">我的余额</a></li>
-				<li id="log-out"><a href="user.jsp">退出登录</a></li>
+				<li id="log-out"><a>退出登录</a></li>
 				<li id="hide">隐藏</li>
 			</ul>
         </nav>
@@ -309,7 +309,7 @@
 				<div class="practise">
 					<div class="title">
 						实战推荐
-						<a href="http://localhost:8080/daoshan-school/jsp/search.jsp?">更多 ></a>
+						<a href="search.jsp?">更多 ></a>
 					</div>
 					<div class="item_class" data-id="310f02b2-5f35-41ef-8f1e-1a3f1f9b2328">
 						<img src="../skins/imge/prictise1.jpg" height="124" width="100%" />
@@ -371,7 +371,7 @@
 				<div class="free">
 					<div class="title">
 						免费课程
-						<a href="http://localhost:8080/daoshan-school/jsp/search.jsp?">更多 ></a>
+						<a href="search.jsp?">更多 ></a>
 					</div>
 					<div class="item_class" data-id="ee0b79bf-4f66-44c3-9caa-791572251bf5">
 						<img src="../skins/imge/free1.jpg" height="124" width="100%" />

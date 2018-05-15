@@ -55,9 +55,9 @@
         </div>
         <ul class="user-info-message">
             <li id="update-message"><a href="user.jsp">修改资料</a></li>
-            <li id="my-order"><a href="user.jsp">我的订单</a></li>
+            <li id="my-order"><a href="order.jsp">我的订单</a></li>
             <li id="my-money"><a href="user.jsp">我的余额</a></li>
-            <li id="log-out"><a href="user.jsp">退出登录</a></li>
+            <li id="log-out"><a>退出登录</a></li>
             <li id="hide">隐藏</li>
         </ul>
     </nav>
@@ -71,9 +71,11 @@
             <ul>
                 <div class="bg"></div>
                 <li><span>全部订单</span></li>
-                <li><span>退购审核</span></li>
-                <li><span>交易成功</span></li>
-                <li><span>撤销交易</span></li>
+                <li><span>未支付 </span></li>
+                <li><span>已完成</span></li>
+                <li><span>退款审核</span></li>
+                <li><span>已取消</span></li>
+                <li><span>已退款</span></li>
             </ul>
             <div class="clear"></div>
             <div class="tab tab1 show" style="background: white;
@@ -82,8 +84,9 @@
                                                                     margin-top: 30px;
                                                                     padding-right: 50px;
                                                                     padding-top: 15px;
-                                                                    height: 756px;">
-               <table class="my-table">
+                                                                    height: 756px;
+margin-bottom: 50px;">
+               <table id="one" class="my-table">
                    <thead>
                     <th class="table-one">
                         订单信息
@@ -107,143 +110,240 @@
                         交易操作
                     </th>
                    </thead>
-                   <tr>
-                       <td>
-                           <div class="td-top"><label>2018-05-10 19:28</label><label style="    margin-left: 20px;">订单号：1007364857</label></div>
-                           <div class="td-bottom">方糖全栈课·PHP+React大系</div>
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td class="go-to-study">
-                           去学习
-                       </td>
-                       <td>
-                           支付成功
-                       </td>
-                       <td style="    color: red;">
-                           永久有效
-                       </td>
-                       <td>
-                           <button class="btn btn-info mybtn">申请退款</button>
-                       </td>
-                   </tr>
-                   <tr>
+                   <tbody>
 
-                       <td>
-                           <div class="td-top"><label>2018-05-10 19:28</label><label style="    margin-left: 20px;">订单号：1007364857</label></div>
-                           <div class="td-bottom">方糖全栈课·PHP+React大系</div>
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td class="go-to-study">
-                           去学习
-                       </td>
-                       <td>
-                           支付成功
-                       </td>
-                       <td style="    color: red;">
-                           永久有效
-                       </td>
-                       <td>
-                           <button class="btn btn-info mybtn">申请退款</button>
-                       </td>
-                   </tr>
-                   <tr>
-
-                       <td>
-                           <div class="td-top"><label>2018-05-10 19:28</label><label style="    margin-left: 20px;">订单号：1007364857</label></div>
-                           <div class="td-bottom">方糖全栈课·PHP+React大系</div>
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td class="go-to-study">
-                           去学习
-                       </td>
-                       <td>
-                           支付成功
-                       </td>
-                       <td style="    color: red;">
-                           永久有效
-                       </td>
-                       <td>
-                           <button class="btn btn-info mybtn">申请退款</button>
-                       </td>
-                   </tr>
-                   <tr>
-
-                       <td>
-                           <div class="td-top"><label>2018-05-10 19:28</label><label style="    margin-left: 20px;">订单号：1007364857</label></div>
-                           <div class="td-bottom">方糖全栈课·PHP+React大系</div>
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td class="go-to-study">
-                           去学习
-                       </td>
-                       <td>
-                           支付成功
-                       </td>
-                       <td style="    color: red;">
-                           永久有效
-                       </td>
-                       <td>
-                           <button class="btn btn-info mybtn">申请退款</button>
-                       </td>
-                   </tr>
-                   <tr>
-
-                       <td>
-                           <div class="td-top"><label>2018-05-10 19:28</label><label style="    margin-left: 20px;">订单号：1007364857</label></div>
-                           <div class="td-bottom">方糖全栈课·PHP+React大系</div>
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td>
-                           2980
-                       </td>
-                       <td class="go-to-study">
-                           去学习
-                       </td>
-                       <td>
-                           支付成功
-                       </td>
-                       <td style="    color: red;">
-                           永久有效
-                       </td>
-                       <td>
-                           <button class="btn btn-info mybtn">申请退款</button>
-                       </td>
-                   </tr>
+                   </tbody>
                </table>
                 <div  align="right" class="m-style M-box3"></div>
             </div>
-            <div class="tab tab1">
-                tab2
-            </div>
-            <div class="tab tab1">
-                tab3
-            </div>
-            <div class="tab tab1">
-                tab4
-            </div>
+            <div class="tab tab1" style="background: white;
+                                                                   background: white;
+                                                                    padding-left: 50px;
+                                                                    margin-top: 30px;
+                                                                    padding-right: 50px;
+                                                                    padding-top: 15px;
+                                                                    height: 756px;
+margin-bottom: 50px;">
+                <table id="two" class="my-table">
+                    <thead>
+                    <th class="table-one">
+                        订单信息
+                    </th>
+                    <th class="table-two">
+                        单价(元)
+                    </th>
+                    <th class="table-three">
+                        实付金额(元)
+                    </th>
+                    <th class="table-four">
+                        课程操作
+                    </th>
+                    <th class="table-five">
+                        交易状态
+                    </th>
+                    <th class="table-six">
+                        有效时间
+                    </th>
+                    <th class="table-seven">
+                        交易操作
+                    </th>
+                    </thead>
+                    <tbody>
 
+                    </tbody>
+                </table>
+                <div  align="right" class="m-style M-box4"></div>
+            </div>
+            <div class="tab tab1" style="background: white;
+                                                                   background: white;
+                                                                    padding-left: 50px;
+                                                                    margin-top: 30px;
+                                                                    padding-right: 50px;
+                                                                    padding-top: 15px;
+                                                                    height: 756px;
+margin-bottom: 50px;">
+                <table id="three" class="my-table">
+                    <thead>
+                    <th class="table-one">
+                        订单信息
+                    </th>
+                    <th class="table-two">
+                        单价(元)
+                    </th>
+                    <th class="table-three">
+                        实付金额(元)
+                    </th>
+                    <th class="table-four">
+                        课程操作
+                    </th>
+                    <th class="table-five">
+                        交易状态
+                    </th>
+                    <th class="table-six">
+                        有效时间
+                    </th>
+                    <th class="table-seven">
+                        交易操作
+                    </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div  align="right" class="m-style M-box5"></div>
+            </div>
+            <div class="tab tab1" style="background: white;
+                                                                   background: white;
+                                                                    padding-left: 50px;
+                                                                    margin-top: 30px;
+                                                                    padding-right: 50px;
+                                                                    padding-top: 15px;
+                                                                    height: 756px;
+margin-bottom: 50px;">
+                <table id="four" class="my-table">
+                    <thead>
+                    <th class="table-one">
+                        订单信息
+                    </th>
+                    <th class="table-two">
+                        单价(元)
+                    </th>
+                    <th class="table-three">
+                        实付金额(元)
+                    </th>
+                    <th class="table-four">
+                        课程操作
+                    </th>
+                    <th class="table-five">
+                        交易状态
+                    </th>
+                    <th class="table-six">
+                        有效时间
+                    </th>
+                    <th class="table-seven">
+                        交易操作
+                    </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div  align="right" class="m-style M-box6"></div>
+            </div>
+            <div class="tab tab1" style="background: white;
+                                                                   background: white;
+                                                                    padding-left: 50px;
+                                                                    margin-top: 30px;
+                                                                    padding-right: 50px;
+                                                                    padding-top: 15px;
+                                                                    height: 756px;
+margin-bottom: 50px;">
+                <table id="five" class="my-table">
+                    <thead>
+                    <th class="table-one">
+                        订单信息
+                    </th>
+                    <th class="table-two">
+                        单价(元)
+                    </th>
+                    <th class="table-three">
+                        实付金额(元)
+                    </th>
+                    <th class="table-four">
+                        课程操作
+                    </th>
+                    <th class="table-five">
+                        交易状态
+                    </th>
+                    <th class="table-six">
+                        有效时间
+                    </th>
+                    <th class="table-seven">
+                        交易操作
+                    </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div  align="right" class="m-style M-box7"></div>
+            </div>
+            <div class="tab tab1" style="background: white;
+                                                                   background: white;
+                                                                    padding-left: 50px;
+                                                                    margin-top: 30px;
+                                                                    padding-right: 50px;
+                                                                    padding-top: 15px;
+                                                                    height: 756px;
+margin-bottom: 50px;">
+                <table id="six" class="my-table">
+                    <thead>
+                    <th class="table-one">
+                        订单信息
+                    </th>
+                    <th class="table-two">
+                        单价(元)
+                    </th>
+                    <th class="table-three">
+                        实付金额(元)
+                    </th>
+                    <th class="table-four">
+                        课程操作
+                    </th>
+                    <th class="table-five">
+                        交易状态
+                    </th>
+                    <th class="table-six">
+                        有效时间
+                    </th>
+                    <th class="table-seven">
+                        交易操作
+                    </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div  align="right" class="m-style M-box8"></div>
+            </div>
+            <div class="tab tab1" style="background: white;
+                                                                   background: white;
+                                                                    padding-left: 50px;
+                                                                    margin-top: 30px;
+                                                                    padding-right: 50px;
+                                                                    padding-top: 15px;
+                                                                    height: 756px;
+margin-bottom: 50px;">
+                <table id="fix" class="my-table">
+                    <thead>
+                    <th class="table-one">
+                        订单信息
+                    </th>
+                    <th class="table-two">
+                        单价(元)
+                    </th>
+                    <th class="table-three">
+                        实付金额(元)
+                    </th>
+                    <th class="table-four">
+                        课程操作
+                    </th>
+                    <th class="table-five">
+                        交易状态
+                    </th>
+                    <th class="table-six">
+                        有效时间
+                    </th>
+                    <th class="table-seven">
+                        交易操作
+                    </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div  align="right" class="m-style M-box9"></div>
+            </div>
         </div>
 
     </div>
@@ -272,61 +372,61 @@
 </body>
 <script id="order-template" type="text/html">
     {{each data as data2}}
-    <tr>
+    <tr data-id={{data2.id}}>
         <td>
-            <div class="td-top"><label>2018-05-10 19:28</label><label style="    margin-left: 20px;">订单号：1007364857</label></div>
-            <div class="td-bottom">方糖全栈课·PHP+React大系</div>
+            <div class="td-top"><label>{{data2.timeStr}}</label><label style="    margin-left: 20px;">订单号：{{data2.billNo}}</label></div>
+            <div class="td-bottom">{{data2.courseName}}</div>
         </td>
         <td>
-            2980
+            {{data2.price}}.00
         </td>
         <td>
-            2980
+            {{data2.priceAmt}}.00
         </td>
         {{if data2.status == 0}}
-        <td class="go-to-study">
+        <td data-id={{data2.id}} data-course={{data2.courseId}} class="go-to-study">
             去支付
         </td>
-        <td>
+        <td data-id={{data2.id}}>
             待支付
         </td>
         <td style="    color: red;">
             购买有效
         </td>
         <td>
-            <button class="btn btn-info mybtn">取消订单</button>
+            <button data-id={{data2.id}} data-status="3" class="btn btn-info mybtn">取消订单</button>
         </td>
         {{/if}}
         {{if data2.status == 1}}
-        <td class="go-to-study">
+        <td data-id={{data2.id}} data-course={{data2.courseId}} class="go-to-study">
             去学习
         </td>
-        <td>
+        <td data-status = {{data2.status}}>
             已完成
         </td>
         <td style="    color: red;">
             永久有效
         </td>
         <td>
-            <button class="btn btn-info mybtn">申请退款</button>
+            <button data-id={{data2.id}} data-status="2" class="btn btn-info mybtn">申请退款</button>
         </td>
         {{/if}}
         {{if data2.status == 2}}
-        <td class="go-to-study">
+        <td data-id={{data2.id}} data-course={{data2.courseId}} class="go-to-study">
             去学习
         </td>
         <td>
             审核中
         </td>
         <td style="    color: red;">
-            永久有效
+            目前有效
         </td>
         <td>
-            <button class="btn btn-info mybtn">取消退款</button>
+            <button data-id={{data2.id}} data-status="1" class="btn btn-info mybtn">取消退款</button>
         </td>
         {{/if}}
         {{if data2.status == 3}}
-        <td class="go-to-study">
+        <td class="go-to-study" data-course={{data2.courseId}}>
             重新购买
         </td>
         <td>
@@ -341,7 +441,7 @@
         {{/if}}
 
         {{if data2.status == 4}}
-        <td class="go-to-study">
+        <td class="go-to-study" data-course={{data2.courseId}}>
             重新购买
         </td>
         <td>
@@ -356,17 +456,17 @@
         {{/if}}
 
         {{if data2.status == 5}}
-        <td class="go-to-study">
+        <td class="go-to-study" data-course={{data2.courseId}}>
             去学习
         </td>
         <td>
             退款审核失败
         </td>
         <td style="    color: red;">
-            永久有效
+            目前有效
         </td>
         <td>
-            <button class="btn btn-info mybtn">重新提交申请</button>
+            <button data-id={{data2.id}} data-status="2" class="btn btn-info mybtn">重新提交申请</button>
         </td>
         {{/if}}
 

@@ -54,4 +54,17 @@ public class DsxhOrderController  {
         }
 
     }
+
+    @PostMapping("updateOrder")
+    public MessageBody updateOrder(@RequestBody DsxhOrder dsxhOrder){
+
+        Map<String,List<DsxhOrder>> map = new HashMap<>();
+        try {
+            String result = dsxhOrderService.updateOrder(dsxhOrder);
+            return MessageBody.getMessageBody(true,result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return MessageBody.getMessageBody(true,"false");
+        }
+    }
 }
