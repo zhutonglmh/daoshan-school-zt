@@ -30,9 +30,8 @@ public class DsxhCommonServiceImpl implements DsxhCommonService {
         String emailAddress = dsxhUserDetail.getUserEmail();
         int card = AirUtils.card();
         EmailSend.send_mail(emailAddress, (String.valueOf(card)));
-
         HttpSession session = dsxhUserService.getSession();
-        session.setAttribute(emailAddress,card);
+        session.setAttribute(emailAddress, card);
         return "success";
     }
 
@@ -48,12 +47,12 @@ public class DsxhCommonServiceImpl implements DsxhCommonService {
 
         String iphoneNumber = dsxhUserDetail.getUserIphone();
         int card = AirUtils.card();
-        String result = AliSmsUntils.sms(iphoneNumber,String.valueOf(card));
-        if("success".equals(result)){
+        String result = AliSmsUntils.sms(iphoneNumber, String.valueOf(card));
+        if ("success".equals(result)) {
             HttpSession session = dsxhUserService.getSession();
-            session.setAttribute(iphoneNumber,card);
+            session.setAttribute(iphoneNumber, card);
             return "success";
-        }else {
+        } else {
             return "false";
         }
     }
@@ -74,9 +73,9 @@ public class DsxhCommonServiceImpl implements DsxhCommonService {
         HttpSession session = dsxhUserService.getSession();
         Object code = session.getAttribute(iphoneNumber);
         if (!AirUtils.hv(code)) return "false";
-        if(userCard.equals(code.toString())){
+        if (userCard.equals(code.toString())) {
             return "success";
-        }else {
+        } else {
             return "false";
         }
 
@@ -94,13 +93,12 @@ public class DsxhCommonServiceImpl implements DsxhCommonService {
 
         String userCard = dsxhUserDetail.getCard();
         String iphoneNumber = dsxhUserDetail.getUserEmail();
-
         HttpSession session = dsxhUserService.getSession();
         Object card = session.getAttribute(iphoneNumber);
         if (!AirUtils.hv(card)) return "false";
-        if(userCard.equals(card.toString())){
+        if (userCard.equals(card.toString())) {
             return "success";
-        }else {
+        } else {
             return "false";
         }
     }

@@ -89,7 +89,10 @@ function initPageEvent(){
 
     $(document).on("click",".to-buy", toBuy);
     $(document).on("click","#buy-commit", commitBuy);//购买
+    $(document).on("click","#buy-commit-2", commitOrder);//加入订单window.location.href = "http://www.jb51.net";
     $(document).on("click","#buy-cancel", cancelBuy);//取消
+
+    $(document).on("click",".mulu_title", toChild);//子目录跳转
     $(document).on("click",".control-play-icon", function () {
         alert("sddsd");
     }); //评论评论
@@ -99,11 +102,100 @@ function initPageEvent(){
 
     $(document).on("click","#user-name", showUser);
 
+    //添加收藏
+    $(document).on("click","#collect", collect);
+
+    $(document).on("click","#to-collect", collect);
+    //取消收藏
+    $(document).on("click","#cancel-collect", cancelCollect);
+
+    $(document).on("click","#cancel-collect1", cancelCollect);
+    //分享
+    $(document).on("click","#spare", spare);
     //登出
     $(document).on("click","#log-out", loginOut2);
 
-}
+    //注册回车事件
+    $("#search-info").keyup(function (event) {
+        if(event.keyCode ==13){
+            toSearch();
+        }
+    });
 
+    $(document).on("click","#log-out", loginOut2);
+}
+function toChild() {
+
+    var id = $(this).attr("data-id");
+    window.location.href = "http://localhost:8080/daoshan-school/jsp/main.jsp?"+id;
+}
+//分享
+function spare() {
+    message2("功能尚未开放！敬请期待","info");
+}
+//取消收藏
+function cancelCollect() {
+    var courseId = $("#course_name").attr("data-id");
+    var JsonData = {
+        "courseId": courseId
+    };
+    var url = encodeURI(global.context + "/dsxh/collect/delete");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async: false,
+        data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+            if(data.data == "failure"){
+                message2("操作失败！", "error");
+            }else {
+                message2("操作成功！", "success");
+                $("#collect").show();
+                $("#cancel-collect").hide();
+                $("#to-collect").show();
+                $("#cancel-collect1").hide();
+            }
+        },
+        error: function () {
+            message2("收藏失败！", "error");
+        }
+    });
+}
+//添加收藏
+function collect() {
+
+    var courseId = $("#course_name").attr("data-id");
+    var courseName = $("#toIndex4").val();
+    var JsonData = {
+        "courseId": courseId,
+        "courseName": courseName
+    }
+    var url = encodeURI(global.context + "/dsxh/collect/add");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async: false,
+        data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+            if(data.data == "failure"){
+                message2("收藏失败！", "error");
+            }else {
+                message2("添加收藏成功！", "success");
+                $("#collect").hide();
+                $("#cancel-collect").show();
+                $("#to-collect").hide();
+                $("#cancel-collect1").show();
+            }
+        },
+        error: function () {
+            message2("收藏失败！", "error");
+        }
+    });
+}
 function hideUser() {
     $(".user-info-message").hide();
 }
@@ -151,6 +243,41 @@ function toBuy() {
     $("#label-course-amt").html(money+".00元")
 
 }
+
+//稍后购买
+function commitOrder() {
+    var courseId = $("#label-course-name").parent().attr("data-id");
+    var courseName = $("#label-course-name").html();
+    var price = $("#label-course-price").attr("data-money");
+    var JsonData = {
+        "courseId": courseId,
+        "courseName": courseName,
+        "price": price,
+        "status":0
+    }
+    var url = encodeURI(global.context + "/dsxh/order/addOrder");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async: false,
+        data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+            if(data.data.data == "false"){
+                message2("创建订单失败！", "error");
+                window.location.reload();
+            }else {
+                message2("创建订单成功！", "success");
+                $('#Mydialog4').modal('hide');
+            }
+        },
+        error: function () {
+            message2("购买失败！", "error");
+        }
+    });
+
+}
 //购买
 function commitBuy() {
 
@@ -175,10 +302,11 @@ function commitBuy() {
         success: function (data) {
             if(data.data.data == "false"){
                 message2("购买失败！", "error");
-                window.location.reload();
+
             }else {
                 message2("购买成功！", "success");
                 $('#Mydialog4').modal('hide');
+                window.location.reload();
             }
         },
         error: function () {
@@ -404,13 +532,17 @@ function initDate() {
             if (dataResult != null) {
 
                 $("#toIndex1").attr("data-bigTypeId",dataResult.bigTypeId);
+                $("#toIndex1").attr("href","search.jsp?"+dataResult.bigTypeName);
                 $("#toIndex1").html(dataResult.bigTypeName);
                 $("#toIndex2").attr("data-bigTypeId",dataResult.typeId);
+                $("#toIndex2").attr("href","search.jsp?"+dataResult.typeName);
                 $("#toIndex2").html(dataResult.typeName);
                 $("#toIndex3").attr("data-bigTypeId",dataResult.bigTypeId);
                 $("#toIndex3").html(dataResult.childTypeName);
+                $("#toIndex3").attr("href","search.jsp?"+dataResult.childTypeName);
                 $("#toIndex4").attr("data-bigTypeId",dataResult.id);
                 $("#toIndex4").html(dataResult.courseName);
+                $("#toIndex4").attr("href","search.jsp?"+dataResult.courseName);
                 $("#teacher").html(dataResult.teacherName);
                 $("#course_teacher_name").html(dataResult.teacherName);
                 $(".price").html("¥ " +dataResult.coursePrice+".00");
@@ -431,6 +563,17 @@ function initDate() {
                     $(".to-buy").attr("disabled","disabled");
                 }else {
                     //$("#vedio").attr("src","../");
+                }
+                if(dataResult.isCollect == 1){
+                    $("#collect").hide();
+                    $("#cancel-collect").show();
+                    $("#to-collect").hide();
+                    $("#cancel-collect1").show();
+                }else {
+                    $("#collect").show();
+                    $("#cancel-collect").hide();
+                    $("#to-collect").show();
+                    $("#cancel-collect1").hide();
                 }
                 global.data =  dataResult.commentsList;
                 if(global.data != null && global.data.length > 0 ) {

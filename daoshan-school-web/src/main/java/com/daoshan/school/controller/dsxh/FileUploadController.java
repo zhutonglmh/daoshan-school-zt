@@ -35,7 +35,7 @@ public class FileUploadController {
 
         }else{
             //这里以用户ID作为文件夹
-            url = "D://dsxh-image/"; //new FileUtil().createImageDir( String.valueOf(uid));
+            url = "E://dsxh-image/"; //new FileUtil().createImageDir( String.valueOf(uid));
             uuid = UUIDUtils.getUUID();
             url = url+uuid+".jpg";
             try {
@@ -63,7 +63,7 @@ public class FileUploadController {
     public void readImage(HttpServletRequest request, HttpServletResponse response,@PathVariable(value = "address") String imagePath){
 
         try{
-            String url = "D://dsxh-image/"+imagePath+".jpg";
+            String url = "E://dsxh-image/"+imagePath+".jpg";
             File file = new File(url);
             if (file.exists()) {
                 DataOutputStream temps = new DataOutputStream(response

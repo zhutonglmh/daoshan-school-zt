@@ -36,4 +36,11 @@ public interface DsxhCourseService {
      */
     List<DsxhCourse> courseSearch(DsxhCourse dsxhCourse);
 
+    /**
+     * 根据类别进行搜索
+     * @param dsxhCourse
+     * @return
+     */
+    List<DsxhCourse> courseSearchByType(DsxhCourse dsxhCourse);
+
 }

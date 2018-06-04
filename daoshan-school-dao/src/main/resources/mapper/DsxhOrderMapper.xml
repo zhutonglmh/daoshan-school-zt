@@ -27,6 +27,11 @@
     where create_user =#{createUser,jdbcType=CHAR}
     ORDER BY create_time DESC
   </select>
+  <update id="update3" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">
+    UPDATE dsxh_order
+    set status = #{status,jdbcType=INTEGER}
+    WHERE id= #{id,jdbcType=CHAR}
+  </update>
   <!--
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from dsxh_order

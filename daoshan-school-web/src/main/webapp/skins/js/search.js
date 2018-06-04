@@ -80,9 +80,9 @@ function initList() {
     var myArray=new Array();
     myArray = url2.split("?");
     var queryString = myArray[1];
-
+    queryString= decodeURI(queryString)
     var JsonData = {
-        "queryString" : encodeURI(queryString)
+        "queryString" : queryString
     }
     var url = encodeURI(global.context + "/dsxh/course/courseSearch");;
     $.ajax({

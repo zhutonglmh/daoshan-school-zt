@@ -64,6 +64,9 @@ public class DsxhCourse extends Model<DsxhUser> {
     @TableField(exist = false)
     private int isBuy;  //1  已购买  0 未购买
 
+    @TableField(exist = false)
+    private int isCollect;  //1  已收藏  0 未收藏
+
     @Override
     protected Serializable pkVal() {
         return null;

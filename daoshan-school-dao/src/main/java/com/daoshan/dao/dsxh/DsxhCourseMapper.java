@@ -8,4 +8,6 @@ import java.util.List;
 public interface DsxhCourseMapper extends BaseMapper<DsxhCourse> {
 
     List<DsxhCourse> courseSearch (DsxhCourse dsxhCourse);
+
+    List<DsxhCourse> courseSearchByType(DsxhCourse dsxhCourse);
 }

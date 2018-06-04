@@ -36,7 +36,7 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
      * @return
      */
     @Override
-    public DsxhOrder addOrder(DsxhOrder dsxhOrder) throws Exception{
+    public DsxhOrder addOrder(DsxhOrder dsxhOrder) throws Exception {
 
         DsxhUser dsxhUser = dsxhUserService.getUserInfo();
 
@@ -47,16 +47,22 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
         dsxhOrder.setCreateTime(new Date());
         DateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
         String reTime = format.format(new Date());
-        String billNo = "GM"+reTime;
+        String billNo = "GM" + reTime;
         dsxhOrder.setBillNo(billNo);
         dsxhOrder.setPriceAmt(dsxhOrder.getPrice());
-        dsxhOrderMapper.insertAllColumn(dsxhOrder);
 
+        DsxhOrder dsxhOrder1 = new DsxhOrder();
+        dsxhOrder1.setCreateUser(dsxhOrder.getCreateUser());
+        dsxhOrder1.setCourseId(dsxhOrder.getCourseId());
+        Wrapper<DsxhOrder> wrapper = new EntityWrapper<>(dsxhOrder1);
+        dsxhOrderMapper.delete(wrapper);
+        dsxhOrderMapper.insertAllColumn(dsxhOrder);
         BigDecimal spendMoney = dsxhOrder.getPrice();
         BigDecimal acountMoney = BigDecimal.valueOf(dsxhUser.getMoney());
-
-        dsxhUser.setMoney(acountMoney.subtract(spendMoney).doubleValue());
-        dsxhUserService.updateUser2(dsxhUser);
+        if(dsxhOrder.getStatus().equals(1)){
+            dsxhUser.setMoney(acountMoney.subtract(spendMoney).doubleValue());
+            dsxhUserService.updateUser2(dsxhUser);
+        }
         return dsxhOrder;
     }
 
@@ -71,9 +77,9 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
 
         Wrapper<DsxhOrder> orderWrapper = new EntityWrapper(dsxhOrder);
         List<DsxhOrder> list = dsxhOrderMapper.selectList(orderWrapper);
-        if(CollectionUtils.isEmpty(list)){
+        if (CollectionUtils.isEmpty(list)) {
             return 0;
-        }else {
+        } else {
             return 1;
         }
     }
@@ -85,10 +91,9 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
      * @return
      */
     @Override
-    public Map<String,List<DsxhOrder>> findDataForPage(DsxhOrder dsxhOrder) throws Exception {
+    public Map<String, List<DsxhOrder>> findDataForPage(DsxhOrder dsxhOrder) throws Exception {
 
-        Map<String,List<DsxhOrder>> map = new HashMap<>();
-
+        Map<String, List<DsxhOrder>> map = new HashMap<>();
         List<DsxhOrder> one = new ArrayList<>();
         List<DsxhOrder> two = new ArrayList<>();
         List<DsxhOrder> three = new ArrayList<>();
@@ -96,43 +101,43 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
         List<DsxhOrder> four = new ArrayList<>();
         List<DsxhOrder> five = new ArrayList<>();
         DsxhUser dsxhUser = dsxhUserService.getUserInfo();
-        if(AirUtils.hv(dsxhUser)){
+        if (AirUtils.hv(dsxhUser)) {
             dsxhOrder.setCreateUser(dsxhUser.getId());
         }
         Wrapper<DsxhOrder> orderWrapper = new EntityWrapper(dsxhOrder);
         List<DsxhOrder> list = dsxhOrderMapper.selectList(orderWrapper);
         if (CollectionUtils.isEmpty(list)) return null;
-        for (DsxhOrder dsxhOrder1 : list){
+        for (DsxhOrder dsxhOrder1 : list) {
             String format = "yyyy-MM-dd HH:mm:ss";
             SimpleDateFormat sdf = new SimpleDateFormat(format);
             String time = sdf.format(dsxhOrder1.getCreateTime());
             dsxhOrder1.setTimeStr(time);
-            if(dsxhOrder1.getStatus().equals(0)){
+            if (dsxhOrder1.getStatus().equals(0)) {
                 zero.add(dsxhOrder1);
             }
-            if(dsxhOrder1.getStatus().equals(1)){
+            if (dsxhOrder1.getStatus().equals(1)) {
                 one.add(dsxhOrder1);
             }
-            if(dsxhOrder1.getStatus().equals(2)){
+            if (dsxhOrder1.getStatus().equals(2)) {
                 two.add(dsxhOrder1);
             }
-            if(dsxhOrder1.getStatus().equals(3)){
+            if (dsxhOrder1.getStatus().equals(3)) {
                 three.add(dsxhOrder1);
             }
-            if(dsxhOrder1.getStatus().equals(4)){
+            if (dsxhOrder1.getStatus().equals(4)) {
                 four.add(dsxhOrder1);
             }
-            if(dsxhOrder1.getStatus().equals(5)){
+            if (dsxhOrder1.getStatus().equals(5)) {
                 five.add(dsxhOrder1);
             }
         }
-        map.put("zero",zero);
-        map.put("one",one);
-        map.put("two",two);
-        map.put("three",three);
-        map.put("four",four);
-        map.put("five",five);
-        map.put("all",list);
+        map.put("zero", zero);
+        map.put("one", one);
+        map.put("two", two);
+        map.put("three", three);
+        map.put("four", four);
+        map.put("five", five);
+        map.put("all", list);
         return map;
     }
 
@@ -146,11 +151,31 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
     @Override
     public String updateOrder(DsxhOrder dsxhOrder) throws Exception {
 
-        Wrapper<DsxhOrder> wrapper = new EntityWrapper<>(dsxhOrder);
-        int result = dsxhOrderMapper.update(dsxhOrder,wrapper);
-        if (result > 0){
+        int result = dsxhOrderMapper.update3(dsxhOrder);
+        //已支付状态
+        if(dsxhOrder.getStatus().equals(1)){
+
+            DsxhUser dsxhUser = dsxhUserService.getUserInfo();
+            BigDecimal spendMoney = dsxhOrder.getPrice();
+            BigDecimal acountMoney = BigDecimal.valueOf(dsxhUser.getMoney());
+            if(dsxhOrder.getStatus().equals(1)){
+                dsxhUser.setMoney(acountMoney.subtract(spendMoney).doubleValue());
+                dsxhUserService.updateUser2(dsxhUser);
+            }
+        }
+        //已退款状态
+        if(dsxhOrder.getStatus().equals(1)){
+            DsxhUser dsxhUser = dsxhUserService.getUserInfo();
+            BigDecimal spendMoney = dsxhOrder.getPrice();
+            BigDecimal acountMoney = BigDecimal.valueOf(dsxhUser.getMoney());
+            if(dsxhOrder.getStatus().equals(1)){
+                dsxhUser.setMoney(acountMoney.add(spendMoney).doubleValue());
+                dsxhUserService.updateUser2(dsxhUser);
+            }
+        }
+        if (result > 0) {
             return "success";
-        }else return "false";
+        } else return "false";
     }
 
     /**
@@ -162,10 +187,11 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
     @Override
     public int getUsedOrder(DsxhOrder dsxhOrder) throws Exception {
 
+        dsxhOrder.setCreateUser(dsxhUserService.getUserInfo().getId());
         List<DsxhOrder> list = dsxhOrderMapper.getUsedOrder(dsxhOrder);
-        if(CollectionUtils.isEmpty(list)){
+        if (CollectionUtils.isEmpty(list)) {
             return 0;
-        }else {
+        } else {
             return 1;
         }
     }

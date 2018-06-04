@@ -3,14 +3,14 @@
     <property name="log.path" value="/choice/sms-platform/log" />
 
     <!--LOGSTASH-->
-    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <!--<appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>localhost:4560</destination>
-       <!-- <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />-->
+       &lt;!&ndash; <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />&ndash;&gt;
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%thread] [%-40.40logger{39}:%line] %m%n</pattern>
             <charset>UTF-8</charset>
         </encoder>
-    </appender>
+    </appender>-->
     <!--STDOUT-->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -33,7 +33,7 @@
     <root level="DEBUG">
         <appender-ref ref="file" />
         <appender-ref ref="CONSOLE" />
-        <appender-ref ref="LOGSTASH" />
+       <!-- <appender-ref ref="LOGSTASH" />-->
     </root>
 </configuration>
     <!--

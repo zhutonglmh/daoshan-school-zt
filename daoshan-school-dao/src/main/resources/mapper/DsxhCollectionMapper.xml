@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.daoshan.dao.dsxh.DsxhCollectionMapper" >
+    <resultMap id="BaseResultMap" type="com.daoshan.bean.dsxh.entity.DsxhCollection" >
+        <id column="id" property="id" jdbcType="CHAR" />
+        <result column="course_id" property="courseId" jdbcType="CHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+        <result column="create_user" property="createUser" jdbcType="CHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, course_id, course_name, user_name, create_time, create_user
+    </sql>
+    <delete id="deleteByUserAndCourse" parameterType="com.daoshan.bean.dsxh.entity.DsxhCollection">
+        DELETE from dsxh_collection
+        <where>
+            <if test="null != createUser">
+                and create_user = #{createUser,jdbcType=CHAR}
+            </if>
+            <if test="null != courseId">
+                and course_id = #{courseId,jdbcType=CHAR}
+            </if>
+            <if test="null != id">
+                and id = #{id,jdbcType=CHAR}
+            </if>
+        </where>
+    </delete>
+
+</mapper>

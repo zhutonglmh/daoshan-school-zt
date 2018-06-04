@@ -22,7 +22,6 @@ public class DsxhUserDetailServiceImpl implements DsxhUserDetailService{
     private DsxhUserService dsxhUserService;
     /**
      * 新增
-     *
      * @param dsxhUserDetail
      * @return
      * @throws Exception
@@ -39,13 +38,11 @@ public class DsxhUserDetailServiceImpl implements DsxhUserDetailService{
         int result1 = dsxhUserService.updateUserInfo(dsxhUser);
         dsxhUserDetailMapper.deleteByUser(dsxhUserDetail);
         int result = dsxhUserDetailMapper.insert(dsxhUserDetail);
-
         return result > 0 ? "success" : "保存失败";
     }
 
     /**
      * 删除
-     *
      * @param dsxhUserDetail
      * @return
      * @throws Exception
@@ -57,7 +54,6 @@ public class DsxhUserDetailServiceImpl implements DsxhUserDetailService{
 
     /**
      * 查看
-     *
      * @return
      * @throws Exception
      */

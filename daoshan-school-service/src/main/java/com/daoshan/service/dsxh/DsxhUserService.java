@@ -18,6 +18,13 @@ public interface DsxhUserService {
     String insertUser(DsxhUser dsxhUser);
 
     /**
+     * 校验用户是否可用
+     * @param dsxhUser
+     * @return
+     */
+    String checkUser(DsxhUser dsxhUser);
+
+    /**
      * 修改
      * @param dsxhUser
      * @return

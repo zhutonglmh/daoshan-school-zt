@@ -164,6 +164,7 @@ function saveInfo() {
 
             if("success" == data.data){
                message2("保存成功!","success");
+                window.location.reload();
             }else {
                 message2(data.data,"success");
             }

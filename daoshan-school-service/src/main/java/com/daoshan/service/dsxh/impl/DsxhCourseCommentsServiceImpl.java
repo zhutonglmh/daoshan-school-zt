@@ -35,48 +35,45 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
     @Override
     public List<DsxhCourseComments> getCourseComments(DsxhCourseComments dsxhCourseComments) {
 
-        //Wrapper<DsxhCourseComments> commentsWrapper = new EntityWrapper<>(dsxhCourseComments);
         List<DsxhCourseComments> list = dsxhCourseCommentsMapper.selectList2(dsxhCourseComments);
-
-        if(CollectionUtils.isEmpty(list)){
+        if (CollectionUtils.isEmpty(list)) {
             return Collections.emptyList();
         }
 
         List<DsxhCourseComments> comments = new ArrayList<>();
-        Map<String,List<DsxhCourseComments>> map = new HashMap<>();
-        for(DsxhCourseComments dsxhCourseComments1 : list){
+        Map<String, List<DsxhCourseComments>> map = new HashMap<>();
+        for (DsxhCourseComments dsxhCourseComments1 : list) {
             dsxhCourseComments1.setCreateTimeStr(TimeUtils.timeStamp2Date(dsxhCourseComments1.getCreateTime().getTime()));
-            if(AirUtils.hv(dsxhCourseComments1)){
+            if (AirUtils.hv(dsxhCourseComments1)) {
                 String key = dsxhCourseComments1.getParentId();
-                if(AirUtils.hv(key)){
-                    if(map.containsKey(key)){
+                if (AirUtils.hv(key)) {
+                    if (map.containsKey(key)) {
                         List<DsxhCourseComments> commentsList = map.get(key);
                         commentsList.add(dsxhCourseComments1);
-                    }else {
+                    } else {
                         List<DsxhCourseComments> commentsList = new ArrayList<>();
                         commentsList.add(dsxhCourseComments1);
-                        map.put(key,commentsList);
+                        map.put(key, commentsList);
                     }
-                }else {
+                } else {
                     comments.add(dsxhCourseComments1);
                 }
             }
         }
 
-        if(CollectionUtils.isEmpty(comments)){
+        if (CollectionUtils.isEmpty(comments)) {
             return Collections.emptyList();
         }
-        for(DsxhCourseComments courseComments : comments){
+        for (DsxhCourseComments courseComments : comments) {
 
             String key = courseComments.getId();
             List<DsxhCourseComments> commentsList = map.get(key);
-            if(!CollectionUtils.isEmpty(commentsList)){
+            if (!CollectionUtils.isEmpty(commentsList)) {
                 courseComments.setCommentsList(commentsList);
-            }else {
+            } else {
                 courseComments.setCommentsList(new ArrayList<DsxhCourseComments>());
             }
         }
-
         return comments;
     }
 
@@ -94,7 +91,6 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
         dsxhCourseComments.setCreateUserName("朱同");
         dsxhCourseComments.setId(UUIDUtils.getUUID());
         int result = dsxhCourseCommentsMapper.insert(dsxhCourseComments);
-
         return result;
     }
 

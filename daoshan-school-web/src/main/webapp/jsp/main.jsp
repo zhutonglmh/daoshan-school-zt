@@ -20,19 +20,19 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
+            <a id="my-navbar-brand" class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-book"></span>道山学海</a>
         </div>
         <div>
             <div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
                 爱学习&nbsp;&nbsp;不设限&nbsp;&nbsp;我们与你同在！
             </div>
             <div id="search">
-                <input type="text" name="search"  id="search-info" placeholder="输入搜索内容" value="" />
-                <label><a  id="search-begin">搜索</a></label>
-                <label><a>我的学习</a></label>
-                <label><a>我的收藏</a></label>
-                <label><a>我的余额</a></label>
-                <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
+                <input type="text" name="search" id="search-info" placeholder="输入搜索内容" value=""/>
+                <label><a id="search-begin">搜索</a></label>
+                <label><a href="order.jsp">我的订单</a></label>
+                <label><a href="collect.jsp">我的收藏</a></label>
+                <label><a href="money.jsp">我的余额</a></label>
+                <label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
                 <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
             </div>
         </div>
@@ -60,9 +60,15 @@
             <label id="course_name"></label>
         </div>
         <div class="handle">
-            <span class="glyphicon glyphicon-new-window"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-            <span class="glyphicon glyphicon-star"></span>
+            <span id="collect" class="glyphicon glyphicon-star-empty" style="    cursor: pointer;"><span style="
+    font-size: 12px;
+">(收藏课程)</span></span>
+            <span id="cancel-collect" class="glyphicon glyphicon-star"  style="    cursor: pointer;"><span style="
+    font-size: 12px;
+">(取消收藏)</span></span>
+            <span id="spare" class="glyphicon glyphicon-new-window"  style="    cursor: pointer;    font-size: 16px;"><span style="
+    font-size: 12px;
+">(分享)</span></span>
         </div>
         <p><span class="glyphicon glyphicon-user">User</span>
             <label id="teacher"></label>
@@ -71,18 +77,19 @@
         <div class="price">
 
         </div>
-        <p class = "dmeo">本网站视频以开放为本，我们承诺不收取任何费用，不过您可以选择购买课程鼓励作者与我们！我们承诺您的资助只会用于本站建设！</p>
+        <p class = "dmeo">本网站视频以开放为本！我们承诺您的资助只会用于本站建设！</p>
         <div id="my_btns">
             <button class="btn btn-info to-buy" >立即购买</button><%--<button  class="btn btn-info">立即购买</button>--%>
-            <button class="btn btn-info">加入收藏</button>
+            <button class="btn btn-info " id="to-collect">加入收藏</button>
+            <button class="btn btn-info " id="cancel-collect1">取消收藏</button>
         </div>
     </div>
 
     <ul class="nav nav-pills my_nav">
         <li class="active"><a class="comments" href="#my_content_one" data-toggle="tab">介绍</a></li>
         <li><a class="comments" href="#my_content_two" data-toggle="tab">目录</a></li>
-        <li><a class="comments" href="#my_content_three" data-toggle="tab">笔记</a></li>
-        <li><a id = "comments" href="#my_content_four" data-toggle="tab">评论区</a></li>
+        <%--<li><a class="comments" href="#my_content_three" data-toggle="tab">笔记</a></li>--%>
+        <li><a  class="comments" href="#my_content_four" data-toggle="tab">评论区</a></li>
     </ul>
     <div class = "information">
         <div class="information_top">
@@ -132,15 +139,15 @@
         <div id="my_content_one" class="my_content tab-pane active fade in" >
             <p>标准通用标记语言下的一个应用 HTML 标准自 19 年 12 月发布的 HTML4.01后，后继的 HTML5 和其它标准被束之高阁，为了推动 Web 标准化运动的发展，一些公司联合起来，成立了一个叫做 Web Hypertext Aplication Technolgy Working Group（Web 超文本应用技术工作组 -WHATWG） 的组织。WHATWG 致力于 Web 表单和应用程序，而 W3C（World Wide Web Consortium，万维网联盟） 专注于 XHTML2.0。在 206 年，双方决定进行合作，来创建一个新版本的 HTML。</p>
         </div>
-        <div id="my_content_two" class="my_content tab-pane fade" id="bootstrap3">
+        <div id="my_content_two" class="my_content tab-pane fade" >
           <p id = "mulu"> 目录 </p>
             <div id = mulu_content2></div>
         </div>
 
-        <div id="my_content_three" class="my_content tab-pane fade" id="jquery3">
+        <div id="my_content_three" class="my_content tab-pane fade" >
             <p>JQuery 是继 protype 之后又一个优秀的 Javscript 库。它是轻量级的 js库 ，它兼容 CS3，还兼容各种浏览器（IE 6.0+, F 1.5+, Safri 2.0+, Opera 9.0+），jQuery2.0 及后续版本将不再支持 IE6/78 浏览器。jQuery 使用户能更方便地处理 HTML（标准通用标记语言下的一个应用）、evnts、实现动画效果，并且方便地为网站提供 AJX交互。jQuery 还有一个比较大的优势是，它的文档说明很全，而且各种应用也说得很详细，同时还有许多成熟的插件可供选择。jQuery 能够使用户的 html 页面保持代码和 html 内容分离，也就是说，不用再在 html 里面插入一堆 js 来调用命令了，只需要定义 id 即可。</p>
         </div>
-        <div id="my_content_four" class="tab-pane fade" id="extjs3">
+        <div id="my_content_four" class="tab-pane fade">
             <div class="edit_comments">
                 <p class="commentss"> 课程评论 </p>
                 <div>
@@ -155,9 +162,9 @@
         </div>
 
     </div>
-    <div class="my_content" id="my_content" >
+    <%--<div class="my_content" id="my_content" >
         <p>标准通用标记语言下的一个应用 HTML 标准自 19 年 12 月发布的 HTML4.01后，后继的 HTML5 和其它标准被束之高阁，为了推动 Web 标准化运动的发展，一些公司联合起来，成立了一个叫做 Web Hypertext Aplication Technolgy Working Group（Web 超文本应用技术工作组 -WHATWG） 的组织。WHATWG 致力于 Web 表单和应用程序，而 W3C（World Wide Web Consortium，万维网联盟） 专注于 XHTML2.0。在 206 年，双方决定进行合作，来创建一个新版本的 HTML。</p>
-    </div>
+    </div>--%>
 </div>
 <div class="my_foot">
     <div class="container">
@@ -194,7 +201,8 @@
                             <p>感谢！</p>
                         </div>
                         <div class="modal-footer">
-                            <button id="buy-commit" class="btn btn-info buy-button">确认购买</button>
+                            <button id="buy-commit" class="btn btn-info buy-button">确认支付</button>
+                            <button id="buy-commit-2" class="btn btn-info buy-button">稍后付款</button>
                             <button id="buy-cancel" class="btn btn-info buy-button">取消</button>
                         </div>
                     </div>
@@ -221,7 +229,7 @@
 <script id="weather" type="text/html">
     <div id = mulu_content>
         {{each data as data}}
-        <div class="mulu_title" data-id = {{data.courseId}}>
+        <div class="mulu_title" data-id = {{data.id}}>
             <label class="one">课时{{data.number}}</label>
             <label class="two">{{data.name}}</label>
             <label class="three"><span class="glyphicon glyphicon-expand " style="

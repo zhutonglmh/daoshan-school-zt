@@ -53,7 +53,10 @@
         <div class="cont_form_sign_up"> <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
           <h2>SIGN UP</h2>
           <input id = "userName_sign" type="text" placeholder="用户名" />
+          <p id="message2">用户名已存在</p>
+          <p id="message3">用户名不支持特殊字符</p>
           <input id="user_sign" type="text" placeholder="昵称" />
+          <p id="message">用户昵称不支持特殊字符</p>
           <input id="password_sign" type="password" placeholder="密码" />
           <input id="password_try" type="password" placeholder="确认密码" />
           <button id = "register" class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>

@@ -12,6 +12,7 @@
     <result column="status" property="status" jdbcType="SMALLINT" />
     <result column="vip" property="vip" jdbcType="SMALLINT" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, pwd, create_time, create_user, update_user, update_time, status, vip
@@ -26,6 +27,13 @@
     set
     user_name = #{userName,jdbcType=VARCHAR}
     WHERE id = #{id,jdbcType=CHAR}
+  </update>
+
+  <update id="updateMoneyByUser" parameterType="com.daoshan.bean.dsxh.entity.DsxhUser" >
+    UPDATE dsxh_user
+    set
+    money = #{money,jdbcType = DOUBLE}
+    WHERE id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="getDsxhUserDetailBuUser" resultMap="BaseResultMap" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail">
       select

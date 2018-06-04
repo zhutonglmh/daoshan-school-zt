@@ -42,7 +42,7 @@ function initList() {
         contentType: "application/json",
         dataType: "JSON",
         success: function (data) {
-            if(data.data.all == null){
+            if(data.data == null){
                 message2("没有订单信息！","info");
             }
             /*var temp = template('order-template', {"data": data.data.all});
@@ -94,6 +94,8 @@ function initPageEvent() {
     //登出
     $(document).on("click","#log-out", loginOut2);
    // $(document).on("click",".mybtn", updateOrder());
+
+    $(document).on("click",".mybtn", updateOrder);
 
 }
 /**
@@ -364,12 +366,12 @@ function initItem1(page,data,$object) {
 }
 
 //修改订单状态
-function updateOrder() {
+function updateOrder(){
 
-    var id = $(this).attr("data-id");
+    var orderId = $(this).attr("data-id");
     var status = $(this).attr("data-status");
     var data = {
-        "id":id,
+        "id":orderId,
         "status":status
     }
     var url = encodeURI(global.context + "/dsxh/order/updateOrder");
@@ -383,9 +385,10 @@ function updateOrder() {
         success: function (data) {
 
             if (data.data.data == "false") {
-                message2("操作失败！请重试")
+                message2("操作失败！请重试","error");
             }
             else{
+                message2("操作成功","success");
                 window.location.reload();
             }
         },

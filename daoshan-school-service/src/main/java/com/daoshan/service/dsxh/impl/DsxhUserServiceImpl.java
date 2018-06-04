@@ -9,6 +9,8 @@ import com.daoshan.school.utils.constans.ConStants;
 import com.daoshan.school.utils.md5.Md5;
 import com.daoshan.school.utils.uuid.UUIDUtils;
 import com.daoshan.service.dsxh.DsxhUserService;
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -17,12 +19,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 @Service("dsxhUserService")
-public class DsxhUserServiceImpl implements DsxhUserService{
+public class DsxhUserServiceImpl implements DsxhUserService {
 
 
     @Resource
@@ -51,11 +54,22 @@ public class DsxhUserServiceImpl implements DsxhUserService{
         dsxhUser.setCreateTime(timestamp);
         int insertResult = dsxhUserMapper.insert(dsxhUser);
         String result = insertResult > 0 ? ConStants.DSXH_SUCCESS : ConStants.DSXH_FAILUER;
-        if(insertResult > 0){
+        if (insertResult > 0) {
             HttpSession session = getSession();
-            session.setAttribute("id",dsxhUser.getId());
+            session.setAttribute("id", dsxhUser.getId());
         }
         return result;
+    }
+
+    @Override
+    public String checkUser(DsxhUser dsxhUser) {
+
+        Wrapper<DsxhUser> wrapper = new EntityWrapper<>(dsxhUser);
+        List<DsxhUser> list = dsxhUserMapper.selectList(wrapper);
+        if (CollectionUtils.isEmpty(list)){
+            return ConStants.DSXH_SUCCESS;
+        }
+        return ConStants.DSXH_FAILUER;
     }
 
     /**
@@ -67,11 +81,11 @@ public class DsxhUserServiceImpl implements DsxhUserService{
     @Override
     public String updateUser(DsxhUser dsxhUser) {
 
-        if(null != dsxhUser.getPwd()){
+        if (null != dsxhUser.getPwd()) {
             //MD5加密
             String password = dsxhUser.getPwd();
             dsxhUser.setPwd(Md5.getMd5ByParams(password));
-        }else {
+        } else {
             return ConStants.DSXH_FAILUER;
         }
         //获取当前用户
@@ -136,13 +150,14 @@ public class DsxhUserServiceImpl implements DsxhUserService{
 
     /**
      * 分页查询
+     *
      * @param page
      * @param dsxhUser
      * @return
      */
-    public Page<DsxhUser> findDataForPage(Page<DsxhUser> page,DsxhUser dsxhUser){
+    public Page<DsxhUser> findDataForPage(Page<DsxhUser> page, DsxhUser dsxhUser) {
 
-        List<DsxhUser> list = dsxhUserMapper.selectByZt(page,dsxhUser);
+        List<DsxhUser> list = dsxhUserMapper.selectByZt(page, dsxhUser);
         page.setRecords(list);
         return page;
     }
@@ -154,35 +169,40 @@ public class DsxhUserServiceImpl implements DsxhUserService{
      * @return
      */
     @Override
-    public HashMap<String,Object> userLogin(DsxhUser dsxhUser) {
+    public HashMap<String, Object> userLogin(DsxhUser dsxhUser) {
 
         HashMap map = new HashMap();
         String name = dsxhUser.getName();
         String password = dsxhUser.getPwd();
-        if(null != dsxhUser.getName() && null != dsxhUser.getPwd() && !"".equals(name) && !"".equals(password)){
+        if (null != dsxhUser.getName() && null != dsxhUser.getPwd() && !"".equals(name) && !"".equals(password)) {
 
-            DsxhUser user =  new DsxhUser();
+            DsxhUser user = new DsxhUser();
             user.setName(dsxhUser.getName());
-            List<DsxhUser>  list = this.queryUserList(user);
+            List<DsxhUser> list = this.queryUserList(user);
+
+            if (CollectionUtils.isEmpty(list)) {
+                map.put("result", ConStants.DSXH_FAILUER);
+                return map;
+            }
             DsxhUser dsxhUser1 = list.get(0);
-            if(null != dsxhUser1){
+            if (null != dsxhUser1) {
                 String passwordMd5 = Md5.getMd5ByParams(password);
                 String result = passwordMd5.equals(dsxhUser1.getPwd()) ? ConStants.DSXH_SUCCESS : ConStants.DSXH_FAILUER;
                 //放置session
-                if (ConStants.DSXH_SUCCESS.equals(result)){
+                if (ConStants.DSXH_SUCCESS.equals(result)) {
                     HttpSession session = getSession();
-                    session.setAttribute("id",dsxhUser1.getId());
+                    session.setAttribute("id", dsxhUser1.getId());
                 }
-                map.put("result",result);
-                map.put("data",dsxhUser1);
-                return map ;
-            }else {
-                map.put("result",ConStants.DSXH_FAILUER);
-                return map ;
+                map.put("result", result);
+                map.put("data", dsxhUser1);
+                return map;
+            } else {
+                map.put("result", ConStants.DSXH_FAILUER);
+                return map;
             }
-        }else {
-            map.put("result",ConStants.DSXH_FAILUER);
-            return map ;
+        } else {
+            map.put("result", ConStants.DSXH_FAILUER);
+            return map;
         }
     }
 
@@ -223,7 +243,7 @@ public class DsxhUserServiceImpl implements DsxhUserService{
         DsxhUser dsxhUser = null;
         HttpSession session = getSession();
         Object id = session.getAttribute("id");
-        if(!"".equals(id) && null != id){
+        if (!"".equals(id) && null != id) {
             String userId = id.toString();
             dsxhUser = dsxhUserMapper.selectById(userId);
         }
@@ -238,7 +258,6 @@ public class DsxhUserServiceImpl implements DsxhUserService{
      */
     @Override
     public int updateUserInfo(DsxhUser dsxhUser) throws Exception {
-
         return dsxhUserMapper.updateByUser(dsxhUser);
     }
 
@@ -250,9 +269,7 @@ public class DsxhUserServiceImpl implements DsxhUserService{
      */
     @Override
     public int updateUser2(DsxhUser dsxhUser) throws Exception {
-
-        Wrapper<DsxhUser> wrapper = new EntityWrapper<>(dsxhUser);
-        return dsxhUserMapper.update(dsxhUser,wrapper);
+        return dsxhUserMapper.updateMoneyByUser(dsxhUser);
     }
 
 }

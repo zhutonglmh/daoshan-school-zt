@@ -23,7 +23,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
 
         //注册自定义拦截器，添加拦截路径和排除拦截路径
-        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/dsxh/user/**");
+        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**").excludePathPatterns("/dsxh/user/userLogin").excludePathPatterns("/dsxh/user/insert").excludePathPatterns("/dsxh/user/checkUser");
         super.addInterceptors(registry);
     }
 }

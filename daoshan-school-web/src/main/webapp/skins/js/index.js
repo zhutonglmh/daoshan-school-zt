@@ -2,7 +2,6 @@
 var global = {
     context: null
 };
-
 window.onload = function() {
 
 	initPageEvent();
@@ -31,15 +30,10 @@ $.ajaxSetup({
 });
 function initPageEvent() {
 
-
     $(document).on("click",".item_class", courseInfo);
-
     $(document).on("click","#search-begin", toSearch);
-
     $(document).on("click","#hide", hideUser);
-
     $(document).on("click","#user-name", showUser);
-
     //登出
     $(document).on("click","#log-out", loginOut);
 }
@@ -50,7 +44,6 @@ function hideUser() {
 function showUser() {
     $(".user-info-message").show();
 }
-
 function toSearch() {
 
 	var search = $("#search-info").val();
@@ -65,7 +58,6 @@ function courseInfo() {
  * 用户登出
  */
 function loginOut() {
-
     var url = encodeURI(global.context + "/dsxh/user/loginOut");
     $.ajax({
         url: url,
@@ -94,7 +86,6 @@ function initUser() {
         contentType: "application/json",
         dataType: "JSON",
         success: function (data) {
-
             if (data.data.data == "failure") {
                 $("#user-name").hide();
                 $("#goto-login").show();
@@ -116,9 +107,6 @@ function initUser() {
 function initPageDom() {
     initUser();
 }
-/**
- * 显示子菜单栏
- */
 function showSubmenu() {
 	var items = $(".item");
 	items.each(function() {
@@ -134,9 +122,7 @@ function showSubmenu() {
 		$(".item").removeClass("select");
 		$(".sub_menu").hide();
 	})
-
 }
-
 /**
  * 菜单栏项被点击
  */

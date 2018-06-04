@@ -22,6 +22,7 @@ public class DaxhCourseController {
     @Autowired
     private DsxhCourseService dsxhCourseService;
 
+
     @PostMapping("/getCourseInfo")
     public MessageBody getCourseInfo(@RequestBody DsxhCourse dsxhCourse){
 
@@ -29,6 +30,7 @@ public class DaxhCourseController {
         try {
             dsxhCourse = dsxhCourseService.getCourseInfo(dsxhCourse);
         } catch (Exception e) {
+            e.printStackTrace();
             return MessageBody.getMessageBody(true,map);
         }
         map.put("data",dsxhCourse);
@@ -56,6 +58,20 @@ public class DaxhCourseController {
 
         Map<String,Object> map = new HashMap<String,Object>();
         List<DsxhCourse> list = dsxhCourseService.courseSearch(dsxhCourse);
+        map.put("data",list);
+        return MessageBody.getMessageBody(true,map);
+    }
+
+    /**
+     * 类别搜索
+     * @param dsxhCourse
+     * @return
+     */
+    @PostMapping("/courseSearchByType")
+    public MessageBody courseSearchByType(@RequestBody DsxhCourse dsxhCourse){
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        List<DsxhCourse> list = dsxhCourseService.courseSearchByType(dsxhCourse);
         map.put("data",list);
         return MessageBody.getMessageBody(true,map);
     }

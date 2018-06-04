@@ -1,6 +1,6 @@
 #端口配置
 server:
-  port: 8082
+  port: 8080
   context-path: /daoshan-school
 
 #静态资源配置
@@ -17,12 +17,12 @@ spring:
       name: daoshan_school
       #是可以设置时区
       #url: jdbc:mysql://139.199.209.216:3306/daoshan_school?useSSL=false&&serverTimezone=GMT%2B8&&allowMultiQueries=true&&Unicode=true&characterEncoding=UTF-8
-      url: jdbc:mysql://localhost:3306/daoshan_school?useSSL=false&&serverTimezone=GMT%2B8&&allowMultiQueries=true
+      url: jdbc:mysql://localhost:3306/daoshan_school?useSSL=false&&serverTimezone=GMT%2B8&&allowMultiQueries=true&&Unicode=true&characterEncoding=UTF-8
       username: root
-      password: zhutong960607
+      password:
       # 使用druid数据源
       type: com.alibaba.druid.pool.DruidDataSource
-      driverClassName: com.mysql.jdbc.Driver
+      driverClassName: com.mysql.cj.jdbc.Driver
       #这里飘黄是因为spring boot 没有内置druid连接池的以下配置信息，所以需要自己去写一个druid的配置类  来进行这些属性的配置
       initialSize: 1
       filters: stat

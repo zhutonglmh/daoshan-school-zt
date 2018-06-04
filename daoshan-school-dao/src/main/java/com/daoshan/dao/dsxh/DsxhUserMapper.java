@@ -14,4 +14,6 @@ public interface DsxhUserMapper extends BaseMapper<DsxhUser>{
     List<DsxhUser> selectByZt(Pagination page, DsxhUser dsxhUser);
 
     int updateByUser(DsxhUser dsxhUser) throws Exception;
+
+    int updateMoneyByUser(DsxhUser dsxhUser) throws Exception;
 }

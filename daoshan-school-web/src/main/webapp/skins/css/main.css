@@ -84,7 +84,7 @@ body {
 }
 .message_info > .title{
     margin: 0 0 10px;
-    font-size: 24px;
+    font-size: 20px;
     color: #333;
     font-weight: 400;
 }
@@ -246,6 +246,7 @@ body {
 }
 #my_content_one{
     overflow: scroll;
+    height: 800px;
 }
 #my_content_two{
     overflow: scroll;
@@ -471,4 +472,19 @@ body {
     width: 25px;
     height: 25px;
     margin-left: 35px;
+}
+#cancel-collect{
+    display: none;
+}
+#collect{
+    display: none;
+}
+#collect :hover{
+    color:#3bd017;
+}
+#cancel-collect :hover{
+    color:#3bd017;
+}
+#spare :hover{
+    color:#3bd017;
 }

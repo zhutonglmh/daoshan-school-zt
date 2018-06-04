@@ -48,34 +48,8 @@ public class DsxhUserController {
     public MessageBody updateUser(@RequestBody DsxhUserDetail dsxhUserDetail){
 
         Map<String,Object> map = new HashMap<String,Object>();
-        //String result = dsxhUserService.updateUser(dsxhUserDetail);
-        //map.put("data",result);
         return MessageBody.getMessageBody(true,map);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * 删除
      * @param dsxhUser
@@ -156,5 +130,19 @@ public class DsxhUserController {
             session.invalidate();
         }
         return MessageBody.getMessageBody(true,"success");
+    }
+
+    /**
+     * 校验用户名可用性
+     * @param dsxhUser
+     * @return
+     */
+    @AccessControl
+    @PostMapping("/checkUser")
+    public MessageBody checkUser(@RequestBody DsxhUser dsxhUser){
+        Map<String,Object> map = new HashMap<String,Object>();
+        String result = dsxhUserService.checkUser(dsxhUser);
+        map.put("data",result);
+        return MessageBody.getMessageBody(true,map);
     }
 }

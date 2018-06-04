@@ -17,8 +17,97 @@ function initPageEvent(){
     $(document).on("click","#login", loginClick);
     //注册
     $(document).on("click","#register", signClick);
+
+    $(document).on("blur","#user_sign", checkName4());
+    //校验用户名是否已经被使用
+    $(document).on("blur","#userName_sign", checkName3);
+
+
+    //登录回车事件
+    $("#passwordLogin").keyup(function (event) {
+        if(event.keyCode ==13){
+            loginClick();
+        }
+    });
+
+    //注册回车事件
+    $("#password_try").keyup(function (event) {
+        if(event.keyCode ==13){
+            signClick();
+        }
+    });
 }
 
+//校验用户昵称
+function checkName4() {
+    var name = $(this).val();
+
+    if(name ==null || name == ""){
+        $("#message2").hide();
+        $("#message1").show();
+        return ;
+    }
+
+    var patter_special_char = /[,;；，《》]+/;
+
+    var matchResult = name.match(patter_special_char);
+    if(matchResult != null){
+        $("#message").show();
+        return ;
+    }else {
+        $("#message").hide();
+    }
+}
+//校验名称是否可用
+function checkName3() {
+
+    var name = $(this).val();
+
+    if(name ==null || name == ""){
+        $("#message2").hide();
+        $("#message1").show();
+        return ;
+    }
+
+    var patter_special_char = /[,;；，《》]+/;
+
+    var matchResult = name.match(patter_special_char);
+    if(matchResult != null){
+        $("#message2").hide();
+        $("#message3").show();
+        return ;
+    }else {
+
+        var url = encodeURI(global.context + "/dsxh/user/checkUser");
+        var JsonData = {
+            "name" : name
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            async:false,
+            data: JSON.stringify(JsonData),
+            contentType: "application/json",
+            dataType: "JSON",
+            success: function (data) {
+
+                if (data.data.data == "success") {
+                    $("#message3").hide();
+                    $("#message2").hide();
+                    return;
+                }
+                else{
+                    $("#message3").hide();
+                    $("#message2").show();
+                    return;
+                }
+            },
+            error: function () {
+            }
+        });
+
+    }
+}
 //注册
 function signClick() {
 

@@ -32,19 +32,19 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
+                <a id="my-navbar-brand" class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-book"></span>道山学海</a>
             </div>
             <div>
                 <div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
                     爱学习&nbsp;&nbsp;不设限&nbsp;&nbsp;我们与你同在！
                 </div>
                 <div id="search">
-                    <input type="text" name="search"  id="search-info" placeholder="输入搜索内容" value="" />
-                    <label><a  id="search-begin">搜索</a></label>
-                    <label><a>我的学习</a></label>
-                    <label><a>我的收藏</a></label>
-                    <label><a>我的余额</a></label>
-                    <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
+                    <input type="text" name="search" id="search-info" placeholder="输入搜索内容" value=""/>
+                    <label><a id="search-begin">搜索</a></label>
+                    <label><a href="order.jsp">我的订单</a></label>
+                    <label><a href="collect.jsp">我的收藏</a></label>
+                    <label><a href="money.jsp">我的余额</a></label>
+                    <label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
                     <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
                 </div>
             </div>

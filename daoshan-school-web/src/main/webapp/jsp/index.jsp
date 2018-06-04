@@ -54,21 +54,21 @@
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
+                    <a id="my-navbar-brand" class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-book"></span>道山学海</a>
                 </div>
                 <div>
                     <div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
                         爱学习&nbsp;&nbsp;不设限&nbsp;&nbsp;我们与你同在！
                     </div>
-                    <div id="search">
-                        <input type="text" name="search"  id="search-info" placeholder="输入搜索内容" value="" />
-                        <label><a  id="search-begin">搜索</a></label>
-                        <label><a>我的学习</a></label>
-                        <label><a>我的收藏</a></label>
-                        <label><a>我的余额</a></label>
-                        <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
+					<div id="search">
+						<input type="text" name="search" id="search-info" placeholder="输入搜索内容" value=""/>
+						<label><a id="search-begin">搜索</a></label>
+						<label><a href="order.jsp">我的订单</a></label>
+						<label><a href="collect.jsp">我的收藏</a></label>
+						<label><a href="money.jsp">我的余额</a></label>
+						<label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
 						<img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
-                    </div>
+					</div>
                 </div>
             </div>
 			<ul class="user-info-message">
@@ -85,43 +85,43 @@
 			<div id="menu">
 				<div class="left_menu">
 					<div id="item1" class="item">
-						<a href="#">
+						<a href="search.jsp?前端开发">
 							<span>前端开发</span>
 							<i>></i>
 						</a>
 					</div>
 					<div id="item2" class="item">
-						<a href="#">
+						<a href="search.jsp?后端开发">
 							<span>后端开发</span>
 							<i>></i>
 						</a>
 					</div>
 					<div id="item3" class="item">
-						<a href="#">
+						<a href="search.jsp?移动开发">
 							<span>移动开发</span>
 							<i>></i>
 						</a>
 					</div>
 					<div id="item4" class="item">
-						<a href="#">
+						<a href="search.jsp?数据库">
 							<span>数据库</span>
 							<i>></i>
 						</a>
 					</div>
 					<div id="item5" class="item">
-						<a href="#">
+						<a href="search.jsp?云计算">
 							<span>云计算&大数据</span>
 							<i>></i>
 						</a>
 					</div>
 					<div id="item6" class="item">
-						<a href="#">
+						<a href="search.jsp?测试">
 							<span>运维&测试</span>
 							<i>></i>
 						</a>
 					</div>
 					<div id="item7" class="item">
-						<a href="#">
+						<a href="search.jsp?视觉设计">
 							<span>视觉设计</span>
 							<i>></i>
 						</a>
@@ -132,37 +132,36 @@
 						<h3>分类目录</h3>
 						<p>
 							<strong>基础：</strong>
-							<a href="">HTML/CSS</a> /
-							<a href="">JavaScript</a> /
-							<a href="">JQuery</a>
+							<a href="search.jsp?html">HTML/CSS</a> /
+							<a href="search.jsp?javaScript">JavaScript</a> /
+							<a href="search.jsp?jQuery">JQuery</a>
 						</p>
 						<p>
 							<strong>进阶：</strong>
-							<a href=""> HTML5 </a> /
-							<a href=""> CSS3 </a> /
-							<a href=""> Node.js </a> /
-							<a href=""> AngularJS </a> /
-							<a href=""> Bootstrap </a> /
-							<a href=""> React </a> /
-							<a href=""> Sass/Less </a> /
-							<a href=""> Vue.js </a> /
-							<a href=""> WebApp </a>
+							<a href="main.jsp?6c529ac6-48ee-4f28-89a4-654eeaed3836"> HTML5 </a> /
+							<a href="main.jsp?de3f1376-7771-4d79-8e05-20e0bb31e1d7"> CSS3 </a> /
+							<a href="main.jsp?5b44fd6a-fa00-4550-9584-6e6f496ea84c"> Node.js </a> /
+							<a href="main.jsp?e3d9cffe-ece8-40db-8328-bdee317ade14"> AngularJS </a> /
+							<a href="main.jsp?ae324631-502f-4f24-9590-7547604edeca"> Bootstrap </a> /
+							<a href="main.jsp?e3d9cffe-ece8-40db-8328-bdee317ade14"> React </a> /
+							<a href="main.jsp?b64cc915-b256-497e-875d-9e8a0b1c414b"> Vue.js </a> /
+							<a href="main.jsp?d243fea7-538a-4f8a-88a6-30718e557616"> WebApp </a>
 						</p>
 						<p>
-							<strong>其他：</strong>
-							<a href="">前端工具</a>
+							<strong>全部：</strong>
+							<a href="search.jsp?前端开发">前端开发</a>
 						</p>
 					</div>
 					<div>
 						<h3>推荐</h3>
 						<p>
-							<a href="">课程 | CSS深入理解之overflow</a>
+							<a href="main.jsp?de3f1376-7771-4d79-8e05-20e0bb31e1d7">课程 | oeasy教你玩转css禅意花园</a>
 						</p>
 						<p>
-							<a href="">课程 | 前端开发工具技巧介绍—Sublime篇</a>
+							<a href="main.jsp?6c529ac6-48ee-4f28-89a4-654eeaed3836">课程 | 飞速上手的跨平台Html开发</a>
 						</p>
 						<p>
-							<a href="">课程 | 移动端开发框架Zepto.js入门</a>
+							<a href="main.jsp?6b9ea1bc-248e-469b-a424-c41de3a5fd8b">课程 | 移动端开发框架Zepto.js入门</a>
 						</p>
 					</div>
 				</div>
@@ -170,25 +169,24 @@
 					<div>
 						<h3>分类目录</h3>
 						<p>
-							<a href=""> PHP </a>/
-							<a href=""> Java </a>/
-							<a href=""> Python </a>/
-							<a href=""> C </a>/
-							<a href=""> C++ </a>/
-							<a href=""> GO </a>/
-							<a href=""> C# </a>
+							<a href="main.jsp?f4bc0632-f8ab-45ba-a81a-ea9473cc2b38"> PHP </a>/
+							<a href="main.jsp?82f379f8-e8c5-4f7d-a2f6-4a1600bcc4cf"> Java </a>/
+							<a href="main.jsp?310f02b2-5f35-41ef-8f1e-1a3f1f9b2328"> Python </a>/
+							<a href="main.jsp?fdb42d50-e64f-4888-af58-458c397696e7"> C </a>/
+							<a href="main.jsp?c95cb69e-5b87-4083-99ad-ce510f186eda"> C++ </a>/
+							<a href="main.jsp?ce691cb1-1919-499a-9492-adc3d4361a6e"> C# </a>
 						</p>
 					</div>
 					<div>
 						<h3>推荐</h3>
 						<p>
-							<a href="">课程 | C语言入门</a>
+							<a href="main.jsp?fdb42d50-e64f-4888-af58-458c397696e7">课程 | C语言入门</a>
 						</p>
 						<p>
-							<a href="">课程 | JAVA生成二维码</a>
+							<a href="main.jsp?1712a3b0-0ce9-4d2e-a368-26a380a13074">课程 | SpringBoot</a>
 						</p>
 						<p>
-							<a href="">课程 | 数据结构探险—栈篇</a>
+							<a href="main.jsp?6389caee-d8d6-45bf-bb01-be7fe33f2a4a">课程 | 数据结构探险—栈篇</a>
 						</p>
 					</div>
 				</div>
@@ -196,22 +194,21 @@
 					<div>
 						<h3>分类目录</h3>
 						<p>
-							<a href=""> Android </a>/
-							<a href=""> IOS </a>/
-							<a href=""> Unity 3D </a>/
-							<a href=""> Cocos2d-x </a>
+							<a href="search.jsp?Android"> Android </a>/
+							<a href="search.jsp?ios"> IOS </a>/
+							<a href="search.jsp?unity%203d"> Unity 3D </a>/
 						</p>
 					</div>
 					<div>
 						<h3>推荐</h3>
 						<p>
-							<a href="">课程 | Android-仿微信语音聊天</a>
+							<a href="main.jsp?99d727fd-ffd4-4082-8822-aabd6bb7fd52">课程 | Android开发基础教程</a>
 						</p>
 						<p>
-							<a href="">课程 | Android自定义任意层级树形控件</a>
+							<a href="main.jsp?52b99ba4-d6d7-4e3f-9dea-50126ec259af">课程 | 玩转 iOS开发教程</a>
 						</p>
 						<p>
-							<a href="">课程 | 中国首届swift开发者大会</a>
+							<a href="main.jsp?b32761ad-2eb1-40c7-a030-9315e9ba06bd">课程 | Unity 3D 制作《即时策略》类游戏</a>
 						</p>
 					</div>
 				</div>
@@ -219,22 +216,21 @@
 					<div>
 						<h3>分类目录</h3>
 						<p>
-							<a href=""> MySQL </a>/
-							<a href=""> MongoDB </a>/
-							<a href=""> Oracle </a>/
-							<a href=""> Oracle </a>
+							<a href="search.jsp?mysql"> MySQL </a>/
+							<a href="search.jsp?MongoDB"> MongoDB </a>/
+							<a href="search.jsp?Oracle"> Oracle </a>/
 						</p>
 					</div>
 					<div>
 						<h3>推荐</h3>
 						<p>
-							<a href="">课程 | MongoDB复制集—容灾核心选举</a>
+							<a href="main.jsp?896385a9-6c61-4dbd-9830-3d47a0007eb0">课程 | 打造扛得住的MySQL数据库架构</a>
 						</p>
 						<p>
-							<a href="">课程 | MongoDB读写分离的适用性</a>
+							<a href="main.jsp?b7943e8a-a414-4bb3-900b-76aaa6b8d469">课程 | 走入Mongodb v3.2+</a>
 						</p>
 						<p>
-							<a href="">课程 | Duang~MySQLi扩展库来袭</a>
+							<a href="main.jsp?62c76c17-5de0-4f97-88b4-3a8a6e2f9d66">课程 | Oracle 数据库基础教程</a>
 						</p>
 					</div>
 				</div>

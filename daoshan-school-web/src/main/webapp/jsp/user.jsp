@@ -23,7 +23,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
+                <a id="my-navbar-brand" class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-book"></span>道山学海</a>
             </div>
             <div>
                 <div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
@@ -32,9 +32,9 @@
                 <div id="search">
                     <input type="text" name="search" id="search-info" placeholder="输入搜索内容" value=""/>
                     <label><a id="search-begin">搜索</a></label>
-                    <label><a>我的学习</a></label>
-                    <label><a>我的收藏</a></label>
-                    <label><a>我的余额</a></label>
+                    <label><a href="order.jsp">我的订单</a></label>
+                    <label><a href="collect.jsp">我的收藏</a></label>
+                    <label><a href="money.jsp">我的余额</a></label>
                     <label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
                     <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
                 </div>
@@ -135,7 +135,7 @@
                         <div class="check-card"><input id="email-caode" type="text" placeholder="请输入验证码"><button id="checkEmail" class=" btn btn-info mybutton2">发送验证码</button> <button class="btn mybutton2 btn-info" id="checkEmail-2" disabled="disabled">验证</button></div>
                     </div>
                     <div class="label-right-top" id="upd-email">
-                        <label style="    margin-right: 10px;color: #1aa939;">shandongsunzhi@126.com</label><button id="update-email" class="btn btn-info mybutton2">修改</button>
+                        <label style="    margin-right: 10px;color: #1aa939;"></label><button id="update-email" class="btn btn-info mybutton2">修改</button>
                     </div>
                     <div class="label-right-bottom">用于接收来自平台和课程的邮件通知，非常重要</div>
                 </div>
@@ -148,7 +148,7 @@
                         <button id="add-iphone" class="btn btn-info mybutton2" >添加</button>
                     </div>
                     <div id="iphone-update" class="label-right-top" >
-                        <label style="    margin-right: 10px;color: #1aa939;">17862979628</label><button id="update-iphone" class="btn btn-info mybutton2">修改</button>
+                        <label style="    margin-right: 10px;color: #1aa939;"></label><button id="update-iphone" class="btn btn-info mybutton2">修改</button>
                     </div>
                     <div class="label-right-bottom">用于优质课程的学习提醒等服务，手机号不会对外公开，请放心</div>
                 </div>

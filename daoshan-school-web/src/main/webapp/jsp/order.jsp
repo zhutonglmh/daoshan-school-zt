@@ -35,7 +35,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a id="my-navbar-brand" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>道山学海</a>
+                <a id="my-navbar-brand" class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-book"></span>道山学海</a>
             </div>
             <div>
                 <div id="myNav" class="nav navbar-nav" style="line-height: 60px; color: #44f30c;margin-left: 60px;">
@@ -44,12 +44,11 @@
                 <div id="search">
                     <input type="text" name="search" id="search-info" placeholder="输入搜索内容" value=""/>
                     <label><a id="search-begin">搜索</a></label>
-                    <label><a>我的学习</a></label>
-                    <label><a>我的收藏</a></label>
-                    <label><a>我的余额</a></label>
-                    <label><a id="goto-login" href="login.jsp">登录/注册</a></label>
-                    <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name"
-                                                                                      style="display: none"></a></label>
+                    <label><a href="order.jsp">我的订单</a></label>
+                    <label><a href="collect.jsp">我的收藏</a></label>
+                    <label><a href="money.jsp">我的余额</a></label>
+                    <label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
+                    <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
                 </div>
             </div>
         </div>
@@ -385,7 +384,7 @@ margin-bottom: 50px;">
         </td>
         {{if data2.status == 0}}
         <td data-id={{data2.id}} data-course={{data2.courseId}} class="go-to-study">
-            去支付
+            <a class="do-main" href="main.jsp?{{data2.courseId}}">去支付</a>
         </td>
         <td data-id={{data2.id}}>
             待支付
@@ -399,7 +398,7 @@ margin-bottom: 50px;">
         {{/if}}
         {{if data2.status == 1}}
         <td data-id={{data2.id}} data-course={{data2.courseId}} class="go-to-study">
-            去学习
+            <a class="do-main"  href="main.jsp?{{data2.courseId}}">去学习 </a>
         </td>
         <td data-status = {{data2.status}}>
             已完成
@@ -413,7 +412,7 @@ margin-bottom: 50px;">
         {{/if}}
         {{if data2.status == 2}}
         <td data-id={{data2.id}} data-course={{data2.courseId}} class="go-to-study">
-            去学习
+            <a class="do-main"  href="main.jsp?{{data2.courseId}}">去学习 </a>
         </td>
         <td>
             审核中
@@ -427,7 +426,7 @@ margin-bottom: 50px;">
         {{/if}}
         {{if data2.status == 3}}
         <td class="go-to-study" data-course={{data2.courseId}}>
-            重新购买
+            <a class="do-main"  href="main.jsp?{{data2.courseId}}">重新购买 </a>
         </td>
         <td>
             已取消
@@ -442,7 +441,7 @@ margin-bottom: 50px;">
 
         {{if data2.status == 4}}
         <td class="go-to-study" data-course={{data2.courseId}}>
-            重新购买
+            <a class="do-main"  href="main.jsp?{{data2.courseId}}">重新购买 </a>
         </td>
         <td>
             已退款
@@ -457,7 +456,7 @@ margin-bottom: 50px;">
 
         {{if data2.status == 5}}
         <td class="go-to-study" data-course={{data2.courseId}}>
-            去学习
+            <a class="do-main"  href="main.jsp?{{data2.courseId}}">去学习 </a>
         </td>
         <td>
             退款审核失败

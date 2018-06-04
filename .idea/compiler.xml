@@ -19,11 +19,11 @@
     <bytecodeTargetLevel>
       <module name="danshan-school-web" target="1.8" />
       <module name="dao-shanschool-dao" target="1.6" />
-      <module name="daoshan-school" target="1.8" />
-      <module name="daoshan-school-dao" target="1.8" />
-      <module name="daoshan-school-entity" target="1.8" />
-      <module name="daoshan-school-service" target="1.8" />
-      <module name="daoshan-school-utils" target="1.8" />
+      <module name="daoshan-school" target="1.7" />
+      <module name="daoshan-school-dao" target="1.7" />
+      <module name="daoshan-school-entity" target="1.7" />
+      <module name="daoshan-school-service" target="1.7" />
+      <module name="daoshan-school-utils" target="1.7" />
       <module name="daoshan-school-web" target="1.8" />
       <module name="demo" target="1.8" />
       <module name="spring-boot-starter" target="1.6" />
