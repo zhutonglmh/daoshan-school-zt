@@ -9,6 +9,7 @@ import com.daoshan.service.dsxh.DsxhUserDetailService;
 import com.daoshan.service.dsxh.DsxhUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -20,6 +21,19 @@ public class DsxhUserDetailServiceImpl implements DsxhUserDetailService{
 
     @Autowired
     private DsxhUserService dsxhUserService;
+
+    @Override
+    public DsxhUser getDsxhUserById(DsxhUser dsxhUser) {
+
+        DsxhUser dsxhUser1 = dsxhUserService.queryUser(dsxhUser);
+
+        DsxhUserDetail dsxhUserDetail = new DsxhUserDetail();
+        dsxhUserDetail.setUserId(dsxhUser.getId());
+        DsxhUserDetail dsxhUserDetail2 = dsxhUserDetailMapper.selectOne(dsxhUserDetail);
+        dsxhUser1.setDsxhUserDetail(dsxhUserDetail2);
+        return dsxhUser1;
+    }
+
     /**
      * 新增
      * @param dsxhUserDetail
@@ -27,6 +41,7 @@ public class DsxhUserDetailServiceImpl implements DsxhUserDetailService{
      * @throws Exception
      */
     @Override
+    @Transactional
     public String addDsxhUserDetail(DsxhUserDetail dsxhUserDetail) throws Exception {
 
         DsxhUser dsxhUser = dsxhUserService.getUserInfo();
@@ -37,6 +52,9 @@ public class DsxhUserDetailServiceImpl implements DsxhUserDetailService{
         dsxhUser.setUserName(dsxhUserDetail.getUserName());
         int result1 = dsxhUserService.updateUserInfo(dsxhUser);
         dsxhUserDetailMapper.deleteByUser(dsxhUserDetail);
+        if(!AirUtils.hv(dsxhUserDetail.getHeadImageAddress())){
+            dsxhUserDetail.setHeadImageAddress("head");
+        }
         int result = dsxhUserDetailMapper.insert(dsxhUserDetail);
         return result > 0 ? "success" : "保存失败";
     }
@@ -48,6 +66,7 @@ public class DsxhUserDetailServiceImpl implements DsxhUserDetailService{
      * @throws Exception
      */
     @Override
+    @Transactional
     public String delDsxhUserDetail(DsxhUserDetail dsxhUserDetail) throws Exception {
         return null;
     }

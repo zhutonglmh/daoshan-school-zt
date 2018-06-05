@@ -9,10 +9,12 @@ import com.daoshan.school.utils.common.AirUtils;
 import com.daoshan.school.utils.common.TimeUtils;
 import com.daoshan.school.utils.uuid.UUIDUtils;
 import com.daoshan.service.dsxh.DsxhCourseCommentsService;
+import com.daoshan.service.dsxh.DsxhUserDetailService;
 import com.daoshan.service.dsxh.DsxhUserService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -26,6 +28,10 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
     @Autowired
     private DsxhUserService dsxhUserService;
 
+    @Autowired
+    private DsxhUserDetailService dsxhUserDetailService;
+
+
     /**
      * 获取课程评论
      *
@@ -33,7 +39,7 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
      * @return
      */
     @Override
-    public List<DsxhCourseComments> getCourseComments(DsxhCourseComments dsxhCourseComments) {
+    public List<DsxhCourseComments> getCourseComments(DsxhCourseComments dsxhCourseComments) throws Exception{
 
         List<DsxhCourseComments> list = dsxhCourseCommentsMapper.selectList2(dsxhCourseComments);
         if (CollectionUtils.isEmpty(list)) {
@@ -46,6 +52,14 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
             dsxhCourseComments1.setCreateTimeStr(TimeUtils.timeStamp2Date(dsxhCourseComments1.getCreateTime().getTime()));
             if (AirUtils.hv(dsxhCourseComments1)) {
                 String key = dsxhCourseComments1.getParentId();
+                DsxhUser dsxhUser1 = new DsxhUser();
+                dsxhUser1.setId(dsxhCourseComments1.getCreateUser());
+                DsxhUser dsxhUser = dsxhUserDetailService.getDsxhUserById(dsxhUser1);
+                if (AirUtils.hv(dsxhUser.getDsxhUserDetail().getHeadImageAddress())){
+                    dsxhCourseComments1.setAddress(dsxhUser.getDsxhUserDetail().getHeadImageAddress());
+                }else {
+                    dsxhCourseComments1.setAddress("head");
+                }
                 if (AirUtils.hv(key)) {
                     if (map.containsKey(key)) {
                         List<DsxhCourseComments> commentsList = map.get(key);
@@ -83,12 +97,13 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
      * @param dsxhCourseComments
      */
     @Override
+    @Transactional
     public int addDsxhCourseComments(DsxhCourseComments dsxhCourseComments) {
 
         DsxhUser dsxhUser = dsxhUserService.getUserInfo();
         dsxhCourseComments.setCreateTime(new Date());
-        dsxhCourseComments.setCreateUser("c79e6ff7-a1bc-4151-9b53-9705f5fdc560");
-        dsxhCourseComments.setCreateUserName("朱同");
+        dsxhCourseComments.setCreateUser(dsxhUser.getId());
+        dsxhCourseComments.setCreateUserName(dsxhUser.getUserName());
         dsxhCourseComments.setId(UUIDUtils.getUUID());
         int result = dsxhCourseCommentsMapper.insert(dsxhCourseComments);
         return result;
@@ -101,6 +116,7 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
      * @return
      */
     @Override
+    @Transactional
     public int updateComments(DsxhCourseComments dsxhCourseComments) {
         int result = dsxhCourseCommentsMapper.updateById(dsxhCourseComments);
         return result;
@@ -116,6 +132,16 @@ public class DsxhCourseCommentsServiceImpl implements DsxhCourseCommentsService 
     public List<DsxhCourseComments> getCourseCommentsByParentId(DsxhCourseComments dsxhCourseComments) {
         Wrapper<DsxhCourseComments> commentsWrapper = new EntityWrapper<>(dsxhCourseComments);
         List<DsxhCourseComments> list = dsxhCourseCommentsMapper.selectList(commentsWrapper);
+        for(DsxhCourseComments dsxhCourseComments1 : list){
+            DsxhUser dsxhUser1 = new DsxhUser();
+            dsxhUser1.setId(dsxhCourseComments1.getCreateUser());
+            DsxhUser dsxhUser = dsxhUserDetailService.getDsxhUserById(dsxhUser1);
+            if (AirUtils.hv(dsxhUser.getDsxhUserDetail().getHeadImageAddress())){
+                dsxhCourseComments1.setAddress(dsxhUser.getDsxhUserDetail().getHeadImageAddress());
+            }else {
+                dsxhCourseComments1.setAddress("head");
+            }
+        }
         return list;
     }
 }

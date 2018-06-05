@@ -49,6 +49,8 @@ function initUser() {
             else{
                 if(data.data.data.dsxhUserDetail != null){
                     $("#head-image2").attr("src","/daoshan-school/upload/getImage/"+data.data.data.dsxhUserDetail.headImageAddress);
+                }else {
+                    $("#head-image2").attr("src","/daoshan-school/upload/getImage/head");
                 }
                 $("#user-name").html(data.data.data.userName);
                 $("#user-name").show();

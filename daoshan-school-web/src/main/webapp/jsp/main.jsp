@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>道山学海-主页</title>
     <link href="../skins/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../skins/css/main.css" rel="stylesheet" type="text/css" />
     <link href="../skins/css/pagination.css" rel="stylesheet" type="text/css" />
@@ -242,7 +242,8 @@
 
     {{each data as data2}}
     <div class="course_comments">
-        <div class="image"><img src="../skins/imge/head.jpg"></div>
+        <div class="image"><img src="/daoshan-school/upload/getImage/{{data2.address}}" style="    height: 49px;
+    width: 49px;"></div>
         <div class="comments_content" data-id="{{data2.id}}">
             <div class="comment_head" >{{data2.createUserName}}</div>
             <div class="comment_mid">{{data2.commentMessage}}</div>
@@ -250,7 +251,8 @@
             <div class="comments_children">
                 {{each data2.commentsList as data3}}
                 <div class="child1_comments"  data-id="{{data3.id}}">
-                    <div class="image_child_image"><img src="../skins/imge/childHead.jpg"></div>
+                    <div class="image_child_image"><img src="/daoshan-school/upload/getImage/{{data2.address}}" style="    width: 27px;
+    height: 28px;"></div>
                     <div class="comments_child_message">
                         <div class="comments_child_head">{{data3.createUserName}}<span>{{data3.createTimeStr}}</span></div>
                         <div class="comments_child_content">{{data3.commentMessage}}</div></div>
@@ -271,7 +273,8 @@
 <script id="comments_children2" type="text/html">
 {{each data as data3}}
 <div class="child1_comments"  data-id="{{data3.id}}">
-    <div class="image_child_image"><img src="../skins/imge/childHead.jpg"></div>
+    <div class="image_child_image"><img src="/daoshan-school/upload/getImage/{{data3.address}}" style="    width: 27px;
+    height: 28px;"></div>
     <div class="comments_child_message">
         <div class="comments_child_head">{{data3.createUserName}}<span>{{data3.createTimeStr}}</span></div>
         <div class="comments_child_content">{{data3.commentMessage}}</div></div>

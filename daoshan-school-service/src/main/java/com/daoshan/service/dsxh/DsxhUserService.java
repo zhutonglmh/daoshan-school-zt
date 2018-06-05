@@ -11,6 +11,12 @@ public interface DsxhUserService {
 
 
     /**
+     * 根据账户查询
+     * @param dsxhUser
+     * @return
+     */
+    DsxhUser findUser(DsxhUser dsxhUser);
+    /**
      * 新增
      * @param dsxhUser
      * @return
@@ -103,4 +109,11 @@ public interface DsxhUserService {
      */
 
     int updateUser2(DsxhUser dsxhUser) throws Exception;
+
+    /**
+     * 修改密码
+     * @param dsxhUser
+     * @return
+     */
+    String updateUser3(DsxhUser dsxhUser);
 }

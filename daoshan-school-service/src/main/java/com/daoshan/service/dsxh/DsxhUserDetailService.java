@@ -5,6 +5,13 @@ import com.daoshan.bean.dsxh.entity.DsxhUserDetail;
 
 public interface DsxhUserDetailService {
 
+
+    /**
+     * 根据id查询
+     * @param dsxhUser
+     * @return
+     */
+    DsxhUser getDsxhUserById(DsxhUser dsxhUser);
     /**
      * 新增
      * @param dsxhUserDetail

@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title></title>
+    <title>道山学海-订单管理</title>
     <link href="../skins/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="../skins/css/main.css" rel="stylesheet" type="text/css"/>
     <link href="../skins/css/pagination.css" rel="stylesheet" type="text/css"/>
@@ -47,8 +47,8 @@
                     <label><a href="order.jsp">我的订单</a></label>
                     <label><a href="collect.jsp">我的收藏</a></label>
                     <label><a href="money.jsp">我的余额</a></label>
-                    <label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
-                    <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
+                    <%--<label id="goto-login"><a  href="login.jsp">登录/注册</a></label>--%>
+                    <img id="head-image2"><label><a id="user-name" style="display: none"></a></label>
                 </div>
             </div>
         </div>

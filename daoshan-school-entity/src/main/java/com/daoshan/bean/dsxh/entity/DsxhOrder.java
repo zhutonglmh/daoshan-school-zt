@@ -28,10 +28,7 @@ public class DsxhOrder extends Model<DsxhOrder> {
      */
     private String courseName;
 
-    /**
-     * 单号
-     */
-    private String billNo;
+
 
     /**
      * 实付金额
@@ -63,6 +60,10 @@ public class DsxhOrder extends Model<DsxhOrder> {
      */
     private String userName;
 
+    /**
+     * 单号
+     */
+    private String billNo;
     /**
      * 字符串时间
      */

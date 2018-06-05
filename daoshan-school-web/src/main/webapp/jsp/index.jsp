@@ -11,13 +11,14 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>道山学海-首页</title>
 		<link href="../skins/css/bootstrap.css" rel="stylesheet" type="text/css" />
 		<link href="../skins/css/main.css" rel="stylesheet" type="text/css" />
 		<link href="../skins/css/pagination.css" rel="stylesheet" type="text/css" />
 		<link href="../skins/css/message.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" type="text/css" href="../skins/css/common.css" />
 		<link rel="stylesheet" type="text/css" href="../skins/css/index.css" />
+
 		<script src="../skins/js/jquery.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="../skins/js/bootstrap.js"></script>
 		<script type="text/javascript" src="../skins/js/arttemplate.js"></script>
@@ -66,7 +67,6 @@
 						<label><a href="order.jsp">我的订单</a></label>
 						<label><a href="collect.jsp">我的收藏</a></label>
 						<label><a href="money.jsp">我的余额</a></label>
-						<label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
 						<img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
 					</div>
                 </div>
@@ -498,7 +498,7 @@
 					<div class="list">
 						<ul>
 							<li>
-								<a href="#">阿里D2前端技术论坛——2015融合</a>
+								<a href="#">阿里D2前端技术论坛——2018融合</a>
 							</li>
 							<li>
 								<a href="#">QQ空间时光轴特效</a>

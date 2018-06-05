@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>道山学海-用户</title>
     <link href="../skins/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="../skins/css/bootstrap-fileinput.css" rel="stylesheet">
     <link href="../skins/css/main.css" rel="stylesheet" type="text/css"/>
@@ -148,7 +148,7 @@
                         <button id="add-iphone" class="btn btn-info mybutton2" >添加</button>
                     </div>
                     <div id="iphone-update" class="label-right-top" >
-                        <label style="    margin-right: 10px;color: #1aa939;"></label><button id="update-iphone" class="btn btn-info mybutton2">修改</button>
+                        <label id="numbwe" style="    margin-right: 10px;color: #1aa939;"></label><button id="update-iphone" class="btn btn-info mybutton2">修改</button>
                     </div>
                     <div class="label-right-bottom">用于优质课程的学习提醒等服务，手机号不会对外公开，请放心</div>
                 </div>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <property name="log.path" value="/choice/sms-platform/log" />
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <property name="log.path" value="/log" />
 
     <!--LOGSTASH-->
     <!--<appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
@@ -30,9 +31,10 @@
         </encoder>
     </appender>
     <logger name="org.springframework" level="ERROR" />
+    <logger name="com.daoshan" level="DEBUG" />
     <root level="DEBUG">
-        <appender-ref ref="file" />
-        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="file"></appender-ref>
+    <appender-ref ref="CONSOLE"></appender-ref>
        <!-- <appender-ref ref="LOGSTASH" />-->
     </root>
 </configuration>
@@ -66,7 +68,7 @@
         </encoder>  
     </appender>  
     <root level="DEBUG">
-        <appender-ref ref="CONSOLE"></appender-ref>  
+        <appender-ref ref="CONSOLE"></appender-ref>
         <appender-ref ref="FILE"></appender-ref>  
     </root>
 </configuration>-->

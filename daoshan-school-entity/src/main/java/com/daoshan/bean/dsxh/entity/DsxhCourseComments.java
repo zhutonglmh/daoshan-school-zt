@@ -36,6 +36,9 @@ public class DsxhCourseComments extends Model<DsxhUser> {
 
     @TableField(exist = false)
     private String createTimeStr;
+
+    @TableField(exist = false)
+    private String address;
     @Override
     protected Serializable pkVal() {
         return null;

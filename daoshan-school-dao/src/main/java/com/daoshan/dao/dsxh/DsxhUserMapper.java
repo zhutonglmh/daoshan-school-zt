@@ -2,6 +2,7 @@ package com.daoshan.dao.dsxh;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import com.cohen.redis.annotation.RedisCached;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
 
 import java.util.List;
@@ -11,9 +12,16 @@ import java.util.List;
  */
 public interface DsxhUserMapper extends BaseMapper<DsxhUser>{
 
+
+    @RedisCached
     List<DsxhUser> selectByZt(Pagination page, DsxhUser dsxhUser);
 
     int updateByUser(DsxhUser dsxhUser) throws Exception;
 
     int updateMoneyByUser(DsxhUser dsxhUser) throws Exception;
+
+    DsxhUser findUser(DsxhUser dsxhUser);
+
+    int updateMoneyByUser2(DsxhUser dsxhUser);
+
 }

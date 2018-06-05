@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>道山学海-搜索</title>
     <link href="../skins/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../skins/css/main.css" rel="stylesheet" type="text/css" />
     <link href="../skins/css/pagination.css" rel="stylesheet" type="text/css" />
@@ -64,7 +64,7 @@
         <li><a href="index.jsp">首页</a></li>
         <li><a >搜索结果</a></li>
     </ol>
-    <div class="search-total">共有333门包含java的课程</div>
+    <div class="search-total"></div>
     <div class="search-content">
 
     </div>

@@ -11,7 +11,7 @@ public interface DsxhCourseCommentsService {
      * @param dsxhCourseComments
      * @return
      */
-    List<DsxhCourseComments> getCourseComments(DsxhCourseComments dsxhCourseComments);
+    List<DsxhCourseComments> getCourseComments(DsxhCourseComments dsxhCourseComments) throws Exception;
 
     /**
      * 新增评论

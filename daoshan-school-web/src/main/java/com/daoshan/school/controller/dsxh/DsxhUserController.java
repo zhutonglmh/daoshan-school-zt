@@ -25,6 +25,29 @@ public class DsxhUserController {
     @Autowired
     private DsxhUserDetailService dsxhUserDetailService;
 
+    @PostMapping("/find")
+    public MessageBody findUser(@RequestBody DsxhUser dsxhUser){
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        DsxhUser result = dsxhUserService.findUser(dsxhUser);
+        map.put("data",result);
+        return MessageBody.getMessageBody(true,map);
+    }
+
+    /**
+     * 新增
+     * @param dsxhUser 用户信息
+     * @return 结果
+     */
+    @PostMapping("/upd")
+    public MessageBody upd(@RequestBody DsxhUser dsxhUser){
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        String result = dsxhUserService.updateUser3(dsxhUser);
+        map.put("data",result);
+        return MessageBody.getMessageBody(true,map);
+    }
+
     /**
      * 新增
      * @param dsxhUser 用户信息
@@ -145,4 +168,6 @@ public class DsxhUserController {
         map.put("data",result);
         return MessageBody.getMessageBody(true,map);
     }
+
+
 }

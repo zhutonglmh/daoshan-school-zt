@@ -27,8 +27,16 @@ public class DsxhCourseCommentsController {
     @PostMapping("/getComments")
     public MessageBody getComments(@RequestBody DsxhCourseComments dsxhCourseComments){
 
+
         Map<String,Object> map = new HashMap<String,Object>();
-        List<DsxhCourseComments> list =dsxhCourseCommentsService.getCourseComments(dsxhCourseComments);
+
+        List<DsxhCourseComments> list = null;
+        try {
+            list = dsxhCourseCommentsService.getCourseComments(dsxhCourseComments);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return MessageBody.getMessageBody(true,map);
+        }
         map.put("data",list);
         return MessageBody.getMessageBody(true,map);
     }
@@ -49,7 +57,12 @@ public class DsxhCourseCommentsController {
         }else {
             DsxhCourseComments comments = new DsxhCourseComments();
             comments.setCourseId(dsxhCourseComments.getCourseId());
-            List<DsxhCourseComments> list =dsxhCourseCommentsService.getCourseComments(comments);
+            List<DsxhCourseComments> list = null;
+            try {
+                list = dsxhCourseCommentsService.getCourseComments(comments);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             map.put("data2",list);
         }
         if(result > 0){

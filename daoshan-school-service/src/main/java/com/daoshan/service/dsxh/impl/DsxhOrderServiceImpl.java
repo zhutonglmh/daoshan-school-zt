@@ -2,16 +2,19 @@ package com.daoshan.service.dsxh.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.daoshan.bean.dsxh.entity.DsxhMoney;
 import com.daoshan.bean.dsxh.entity.DsxhOrder;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
 import com.daoshan.dao.dsxh.DsxhOrderMapper;
 import com.daoshan.school.utils.common.AirUtils;
 import com.daoshan.school.utils.uuid.UUIDUtils;
+import com.daoshan.service.dsxh.DsxhMoneyService;
 import com.daoshan.service.dsxh.DsxhOrderService;
 import com.daoshan.service.dsxh.DsxhUserService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -29,6 +32,9 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
     @Autowired
     private DsxhUserService dsxhUserService;
 
+    @Autowired
+    private DsxhMoneyService dsxhMoneyService;
+
 
     /**
      * 新增订单
@@ -36,6 +42,7 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
      * @return
      */
     @Override
+    @Transactional
     public DsxhOrder addOrder(DsxhOrder dsxhOrder) throws Exception {
 
         DsxhUser dsxhUser = dsxhUserService.getUserInfo();
@@ -62,6 +69,14 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
         if(dsxhOrder.getStatus().equals(1)){
             dsxhUser.setMoney(acountMoney.subtract(spendMoney).doubleValue());
             dsxhUserService.updateUser2(dsxhUser);
+
+            DsxhMoney dsxhMoney = new DsxhMoney();
+            dsxhMoney.setId(UUIDUtils.getUUID());
+            dsxhMoney.setType(1);
+            dsxhMoney.setCause("购买课程《"+dsxhOrder.getCourseName()+"》");
+            dsxhMoney.setMoney(dsxhOrder.getPrice().doubleValue());
+            dsxhMoney.setBillNo(dsxhOrder.getBillNo());
+            dsxhMoneyService.add(dsxhMoney);
         }
         return dsxhOrder;
     }
@@ -149,6 +164,7 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
      * @throws Exception
      */
     @Override
+    @Transactional
     public String updateOrder(DsxhOrder dsxhOrder) throws Exception {
 
         int result = dsxhOrderMapper.update3(dsxhOrder);

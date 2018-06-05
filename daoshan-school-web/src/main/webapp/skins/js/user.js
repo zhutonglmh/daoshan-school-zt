@@ -574,7 +574,10 @@ function initUser() {
                     $("#user-iphone").attr("data-iphone",data.data.data.dsxhUserDetail.userIphone);
                     $("#iphone-update").val(data.data.data.dsxhUserDetail.userIphone);
                     $("#QQ-number").val(data.data.data.dsxhUserDetail.userQqNumber);
-
+                    $("#numbwe").html(data.data.data.dsxhUserDetail.userIphone);
+                }else {
+                    $("#user-name-1").val(data.data.data.userName);
+                    $("#head-image2").attr("src","/daoshan-school/upload/getImage/head");
                 }
 
             }

@@ -37,6 +37,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfd8dc', end
   width: 640px;
 left: 50%;
 margin-left: -320px;
+  margin-top: 70px;
   
 }
 
@@ -362,4 +363,14 @@ p {
   /* padding: 20px; */
   padding-left: 30px;
   color: red;
+}
+#forget_pwd:hover {
+  cursor: pointer;
+  color: #c52524;
+}
+#forget_pwd{
+  font-size: 14px;
+  margin-left: -150px;
+  margin-top: 5px;
+  color: #333029;
 }

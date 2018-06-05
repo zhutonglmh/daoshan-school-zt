@@ -10,6 +10,24 @@
         <result column="create_user" property="createUser" jdbcType="CHAR" />
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     </resultMap>
+
+    <resultMap id="BaseResultMap2" type="com.daoshan.bean.dsxh.entity.DsxhCourse">
+        <id column="id" jdbcType="CHAR" property="id" />
+        <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+        <result column="big_type_id" jdbcType="CHAR" property="bigTypeId" />
+        <result column="big_type_name" jdbcType="VARCHAR" property="bigTypeName" />
+        <result column="type_id" jdbcType="CHAR" property="typeId" />
+        <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+        <result column="child_type_id" jdbcType="CHAR" property="childTypeId" />
+        <result column="child_type_name" jdbcType="VARCHAR" property="childTypeName" />
+        <result column="course_price" jdbcType="DECIMAL" property="coursePrice" />
+        <result column="picture_address" jdbcType="VARCHAR" property="pictureAddress" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="create_user" jdbcType="CHAR" property="createUser" />
+        <result column="delete_flag" jdbcType="SMALLINT" property="deleteFlag" />
+        <result column="praise_number" jdbcType="INTEGER" property="praiseNumber" />
+        <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
+    </resultMap>
     <sql id="Base_Column_List" >
         id, course_id, course_name, user_name, create_time, create_user
     </sql>
@@ -28,4 +46,11 @@
         </where>
     </delete>
 
+    <select id="getCollectByUser" parameterType="com.daoshan.bean.dsxh.entity.DsxhUser" resultMap="BaseResultMap2">
+
+      select  id, course_name, big_type_id, big_type_name, type_id, type_name, child_type_id, child_type_name,
+    course_price, picture_address, create_time, create_user, delete_flag, praise_number,
+    teacher_name FROM dsxh_course
+    where id in(select course_id from dsxh_collection where create_user = #{id,jdbcType=CHAR})
+    </select>
 </mapper>

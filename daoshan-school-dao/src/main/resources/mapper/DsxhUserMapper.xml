@@ -35,10 +35,24 @@
     money = #{money,jdbcType = DOUBLE}
     WHERE id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <update id="updateMoneyByUser2" parameterType="com.daoshan.bean.dsxh.entity.DsxhUser" >
+    UPDATE dsxh_user
+    set
+    pwd = #{pwd,jdbcType = VARCHAR}
+    WHERE id = #{id,jdbcType=VARCHAR}
+  </update>
   <select id="getDsxhUserDetailBuUser" resultMap="BaseResultMap" parameterType="com.daoshan.bean.dsxh.entity.DsxhUserDetail">
       select
       <include refid="Base_Column_List" />
       from dsxh_user
     WHERE user_id = #{userId,jdbcType=CHAR}
+  </select>
+
+  <select id="findUser" resultMap="BaseResultMap" parameterType="com.daoshan.bean.dsxh.entity.DsxhUser">
+    select
+    <include refid="Base_Column_List" />
+    from dsxh_user
+    WHERE name = #{name,jdbcType=VARCHAR}
   </select>
 </mapper>

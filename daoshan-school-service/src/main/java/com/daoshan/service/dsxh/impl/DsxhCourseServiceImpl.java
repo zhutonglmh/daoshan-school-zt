@@ -9,6 +9,7 @@ import com.daoshan.school.utils.uuid.UUIDUtils;
 import com.daoshan.service.dsxh.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -99,6 +100,7 @@ public class DsxhCourseServiceImpl implements DsxhCourseService{
     }
 
     @Override
+    @Transactional
     public DsxhCourse addCourse(DsxhCourse dsxhCourse) {
         String id =UUIDUtils.getUUID();
         dsxhCourse.setId(id);

@@ -1,17 +1,24 @@
 package com.daoshan.service.dsxh.impl;
 
+import com.aliyuncs.exceptions.ClientException;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.daoshan.bean.dsxh.entity.DsxhMoney;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
 import com.daoshan.dao.dsxh.DsxhUserMapper;
+import com.daoshan.school.utils.common.AirUtils;
 import com.daoshan.school.utils.constans.ConStants;
 import com.daoshan.school.utils.md5.Md5;
 import com.daoshan.school.utils.uuid.UUIDUtils;
+import com.daoshan.service.AliSms.AliSmsUntils;
+import com.daoshan.service.dsxh.DsxhMoneyService;
+import com.daoshan.service.dsxh.DsxhUserDetailService;
 import com.daoshan.service.dsxh.DsxhUserService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -19,6 +26,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -31,6 +40,38 @@ public class DsxhUserServiceImpl implements DsxhUserService {
     @Resource
     private DsxhUserMapper dsxhUserMapper;
 
+    @Autowired
+    private DsxhUserDetailService dsxhUserDetailService;
+    @Autowired
+    private DsxhMoneyService dsxhMoneyService;
+
+    @Override
+    public DsxhUser findUser(DsxhUser dsxhUser) {
+
+        DsxhUser dsxhUser1 = dsxhUserMapper.findUser(dsxhUser);
+        if(!AirUtils.hv(dsxhUser1)){
+            return null;
+        }
+        dsxhUser1 = dsxhUserDetailService.getDsxhUserById(dsxhUser1);
+        if(AirUtils.hv(dsxhUser1.getDsxhUserDetail())){
+
+            String iphone = dsxhUser1.getDsxhUserDetail().getUserIphone();
+            if(AirUtils.hv(iphone)){
+                int card = AirUtils.card();
+                try {
+                    String result = AliSmsUntils.sms(iphone, String.valueOf(card));
+                    if ("success".equals(result)) {
+                        HttpSession session = this.getSession();
+                        session.setAttribute(iphone, card);
+                    }
+                } catch (ClientException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return dsxhUser1;
+    }
+
     /**
      * 新增
      *
@@ -38,6 +79,7 @@ public class DsxhUserServiceImpl implements DsxhUserService {
      * @return
      */
     @Override
+    @Transactional
     public String insertUser(DsxhUser dsxhUser) {
 
         //MD5加密
@@ -58,6 +100,17 @@ public class DsxhUserServiceImpl implements DsxhUserService {
             HttpSession session = getSession();
             session.setAttribute("id", dsxhUser.getId());
         }
+        //增加消费信息
+        DsxhMoney dsxhMoney = new DsxhMoney();
+        dsxhMoney.setId(UUIDUtils.getUUID());
+        dsxhMoney.setType(2);
+        DateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+        String reTime = format.format(new Date());
+        String billNo = "GM" + reTime;
+        dsxhMoney.setBillNo(billNo);
+        dsxhMoney.setCause("系统赠送");
+        dsxhMoney.setMoney(10000.00);
+        dsxhMoneyService.add(dsxhMoney);
         return result;
     }
 
@@ -270,6 +323,17 @@ public class DsxhUserServiceImpl implements DsxhUserService {
     @Override
     public int updateUser2(DsxhUser dsxhUser) throws Exception {
         return dsxhUserMapper.updateMoneyByUser(dsxhUser);
+    }
+
+    @Override
+    public String updateUser3(DsxhUser dsxhUser) {
+
+        String pwd = Md5.getMd5ByParams(dsxhUser.getPwd());
+        dsxhUser.setPwd(pwd);
+        if( dsxhUserMapper.updateMoneyByUser2(dsxhUser) > 0){
+            return "success";
+        }
+        return "false";
     }
 
 }

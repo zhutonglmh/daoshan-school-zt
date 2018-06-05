@@ -1,6 +1,6 @@
 #端口配置
 server:
-  port: 8080
+  port: 8082
   context-path: /daoshan-school
 
 #静态资源配置
@@ -73,6 +73,12 @@ mapper:
   #mappers: com.example.myMapper.MyMapper
   identity: MYSQL
   not-empty: false
+redis:
+  cache:
+    enable: true
+  pool:
+    host: 47.94.156.49
+
 
 custom:
   accessKeyId : LTAI1iGvvp1WkvAu

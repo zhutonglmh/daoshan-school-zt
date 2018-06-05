@@ -3,10 +3,7 @@ package com.daoshan.school.utils.messagebody;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * @author 666
- * @date 2018/1/22
- */
+
 public class MessageBody implements Serializable {
     private static final long serialVersionUID = 1L;
     private String code;

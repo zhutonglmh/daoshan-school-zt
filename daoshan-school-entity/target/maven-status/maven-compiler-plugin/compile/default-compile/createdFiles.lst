@@ -1,5 +1,6 @@
 com\daoshan\bean\dsxh\entity\DsxhCourseChild.class
 com\daoshan\bean\dsxh\entity\DsxhCourseDetail.class
+com\daoshan\bean\dsxh\entity\DsxhMoney.class
 com\daoshan\bean\dsxh\entity\DsxhOrder.class
 com\daoshan\bean\dsxh\entity\DsxhCourse.class
 com\daoshan\bean\dsxh\entity\DsxhUserDetail.class

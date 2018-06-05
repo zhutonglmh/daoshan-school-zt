@@ -185,7 +185,7 @@ a:focus, a:hover {
 }
 
 .item_class .item_class_intro {
-	width: 204px;
+	width: 224px;
 	position: absolute;
 	/*left: 0;*/
 	top: 100px;
@@ -220,7 +220,7 @@ a:focus, a:hover {
 }
 
 .item_class .item_class_bottom {
-	width: 204px;
+	width: 224px;
 	position: absolute;
 	bottom: 0;
 	background-color: white;
@@ -385,4 +385,14 @@ a:focus, a:hover {
 	padding-top: 50px;
 	padding-bottom: 30px;
     color: #ffffff;
+}
+#search {
+	float: right;
+	height: 60px;
+	line-height: 60px;
+	margin-right: 60px;
+
+}
+#search >label >  a{
+	    color: #ffffff;
 }

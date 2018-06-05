@@ -22,7 +22,14 @@ function initPageEvent(){
     //校验用户名是否已经被使用
     $(document).on("blur","#userName_sign", checkName3);
 
+    $(document).on("click","#forget_pwd", Mydialog4Show);
 
+    $(document).on("click","#find", find);
+
+    $(document).on("click","#check", check);
+
+    $(document).on("click","#commit", commit);
+    
     //登录回车事件
     $("#passwordLogin").keyup(function (event) {
         if(event.keyCode ==13){
@@ -37,7 +44,109 @@ function initPageEvent(){
         }
     });
 }
+//确认修改
+function commit() {
 
+    var iphone =  $("#zt_01").attr("data-iphone");
+    var code = $("#pwd").val();
+    var data = {
+        "id": iphone,
+        "pwd":code
+    }
+    var url = encodeURI(global.context + "/dsxh/user/upd");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:true,
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if("success" == data.data.data){
+                $('#Mydialog4').modal('hide');
+            }else {
+                $("#message4").empty().html("修改失败！").show();
+            }
+        },
+        error: function () {
+        }
+    });
+}
+function check() {
+
+    var iphone =  $("#zt_01").attr("data-id");
+    var code = $("#input_two").val();
+    var data = {
+        "userIphone":iphone,
+        "card":code
+    }
+    var url = encodeURI(global.context + "/dsxh/common/checkIphone");
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:true,
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if("success" == data.data){
+                $("#two").show();
+                $("#one").hide();
+            }else {
+                $("#message4").empty().html("验证码不正确！").show();
+            }
+        },
+        error: function () {
+        }
+    });
+}
+function find() {
+
+    var name = $("#input_one").val();
+    var url = encodeURI(global.context + "/dsxh/user/find");
+    var JsonData = {
+        "name" : name
+    }
+    $.ajax({
+        url: url,
+        type: "POST",
+        async:false,
+        data: JSON.stringify(JsonData),
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function (data) {
+
+            if (data.data.data == null) {
+                $("#message4").empty().html("无此用户！").show();
+            }
+            else if(data.data.data.dsxhUserDetail == null){
+                $("#message4").empty().html("此用户未绑定手机，请联系管理员17862979628找回密码！").show();
+            }
+            else{
+                $("#zt_01").attr("data-id",data.data.data.dsxhUserDetail.userIphone);
+                $("#zt_01").attr("data-iphone",data.data.data.id);
+                $("#zt_01").empty().html("您正在找回用户:"+data.data.data.name+"的密码！");
+                $("#one").show();
+                $("#iphone").empty().html("请输入手机号"+data.data.data.dsxhUserDetail.userIphone+"收到的验证码");
+                $("#title").hide();
+            }
+        },
+        error: function () {
+        }
+    });
+}
+//找回密码
+function Mydialog4Show() {
+
+    $('#Mydialog4').modal('show');
+    $("#title").show();
+    $("#one").hide();
+    $("#two").hide();
+    $("#message4").hide();
+
+}
 //校验用户昵称
 function checkName4() {
     var name = $(this).val();
@@ -146,7 +255,10 @@ function signClick() {
         success: function (data) {
 
             if (data.data.data == "success") {
-                window.location.href= global.context+"/jsp/index.jsp?";
+                message2("注册成功！获得系统将赠送您10000元代金券。将要跳转到首页！","success")
+                setTimeout(function () {
+                    window.location.href= global.context+"/jsp/index.jsp?";
+                },2000);
             }
             else{
             }
@@ -160,7 +272,7 @@ function signClick() {
 function loginClick() {
 
     var username = $("#userNameLogin").val();
-    var password = $("#userNameLogin").val();
+    var password = $("#passwordLogin").val();
     if(null == username  || username == ""){
         message2("用户名不能为空！","warning");
         return;
