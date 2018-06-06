@@ -129,7 +129,7 @@ function initPageEvent(){
 function toChild() {
 
     var id = $(this).attr("data-id");
-    window.location.href = "http://localhost:8080/daoshan-school/jsp/main.jsp?"+id;
+    window.location.href = global.context + "/jsp/main.jsp?"+id;
 }
 //分享
 function spare() {

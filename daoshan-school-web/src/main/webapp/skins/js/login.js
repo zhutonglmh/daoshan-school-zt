@@ -94,6 +94,7 @@ function check() {
             if("success" == data.data){
                 $("#two").show();
                 $("#one").hide();
+                $("#message4").hide();
             }else {
                 $("#message4").empty().html("验证码不正确！").show();
             }

@@ -366,7 +366,7 @@
 				</div>
 				<div class="free">
 					<div class="title">
-						免费课程
+						优秀课程
 						<a href="search.jsp?">更多 ></a>
 					</div>
 					<div class="item_class" data-id="ee0b79bf-4f66-44c3-9caa-791572251bf5">
