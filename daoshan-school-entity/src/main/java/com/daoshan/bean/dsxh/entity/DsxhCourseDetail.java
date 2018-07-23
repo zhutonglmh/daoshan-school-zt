@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @TableName("dsxh_course_detail")
-public class DsxhCourseDetail extends Model<DsxhUser> {
+public class DsxhCourseDetail extends Model<DsxhCourseDetail> {
 
     private String id;
 

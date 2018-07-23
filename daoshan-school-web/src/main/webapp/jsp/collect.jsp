@@ -18,6 +18,7 @@
     <link href="../skins/css/message.css" rel="stylesheet" type="text/css"/>
     <link href="../skins/css/search.css" rel="stylesheet" type="text/css"/>
 
+
     <script src="../skins/js/jquery.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../skins/js/bootstrap.js"></script>
     <script type="text/javascript" src="../skins/js/arttemplate.js"></script>
@@ -41,9 +42,9 @@
                 <div id="search">
                     <input type="text" name="search" id="search-info" placeholder="输入搜索内容" value=""/>
                     <label><a id="search-begin">搜索</a></label>
-                    <label><a href="order.jsp">我的订单</a></label>
-                    <label><a href="collect.jsp">我的收藏</a></label>
-                    <label><a href="money.jsp">我的余额</a></label>
+                    <label id="vip"><a href="order.jsp">我的订单</a></label>
+                    <label id="vip2"><a href="collect.jsp">我的收藏</a></label>
+                    <label id="vip3"><a href="money.jsp">我的余额</a></label>
                   <%--  <label id="goto-login"><a  href="login.jsp">登录/注册</a></label>--%>
                     <img id="head-image2" ><label><a id="user-name" style="display: none"></a></label>
             </div>
@@ -52,7 +53,7 @@
         <ul class="user-info-message">
             <li id="update-message"><a href="user.jsp">修改资料</a></li>
             <li id="my-order"><a href="order.jsp">我的订单</a></li>
-            <li id="my-money"><a href="user.jsp">我的余额</a></li>
+            <li id="my-money"><a href="money.jsp">我的余额</a></li>
             <li id="log-out"><a>退出登录</a></li>
             <li id="hide">隐藏</li>
         </ul>

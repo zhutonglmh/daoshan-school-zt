@@ -196,9 +196,7 @@ public class DsxhUserServiceImpl implements DsxhUserService {
     @Override
     public List<DsxhUser> queryUserList(DsxhUser dsxhUser) {
 
-        Wrapper<DsxhUser> wrapper = new EntityWrapper<>(dsxhUser);
-
-        return dsxhUserMapper.selectList(wrapper);
+        return dsxhUserMapper.selectList2(dsxhUser);
     }
 
     /**

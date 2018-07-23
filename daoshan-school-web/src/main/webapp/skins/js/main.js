@@ -1,7 +1,8 @@
 "use strict";
 var global = {
     context: null,
-    data:null
+    data:null,
+    flag:null
 };
 
 $(function () {
@@ -11,9 +12,10 @@ $(function () {
 
 function initPageDom(){
 
-    initDate();
+
     //initComments();
     initUser();
+    initDate();
 }
 $.ajaxSetup({
     complete: function (xhr, status) {
@@ -47,6 +49,13 @@ function initUser() {
                 $("#goto-login").show();
             }
             else{
+                if(data.data.data.vip == 1){
+                    $("#vip").empty().html("<a href=\"course.jsp\">课程管理</a>");
+                    $("#vip2").empty().html("<a href=\"order.jsp\">订单管理</a>");
+                    $("#vip3").empty().html("<a href=\"money.jsp\">余额管理</a>");
+                    $("#my-order").empty().html("<a href=\"order.jsp\">订单管理</a>");
+                    global.flag = 1;
+                }
                 if(data.data.data.dsxhUserDetail != null){
                     $("#head-image2").attr("src","/daoshan-school/upload/getImage/"+data.data.data.dsxhUserDetail.headImageAddress);
                 }else {
@@ -560,11 +569,18 @@ function initDate() {
 
                 //判断当前用户是否已经购买了此课程
                 if(dataResult.isBuy == 1){
-                    $("#vedio").attr("src",dataResult.vedioAddress);
+                    if(dataResult.dsxhCourseChildren[0].number == null || dataResult.dsxhCourseChildren[0].number == 0){
+                        $("#vedio2").attr("src",global.context+"/upload/getVedio/"+dataResult.vedioAddress);
+                        $("#vedio2").show();
+                        $("#vedio").hide();
+                    }else {
+                        $("#vedio").attr("src",dataResult.vedioAddress);
+                        $("#vedio2").hide();
+                    }
                     $(".to-buy").html("已购买");
                     $(".to-buy").attr("disabled","disabled");
-                }else {
-                    //$("#vedio").attr("src","../");
+                }else
+                {
                 }
                 if(dataResult.isCollect == 1){
                     $("#collect").hide();
@@ -577,6 +593,25 @@ function initDate() {
                     $("#to-collect").show();
                     $("#cancel-collect1").hide();
                 }
+                if(global.flag == 1){
+                    if(dataResult.dsxhCourseChildren[0].number == null || dataResult.dsxhCourseChildren[0].number == 0){
+                        $("#vedio2").attr("src",global.context+"/upload/getVedio/"+dataResult.vedioAddress);
+                        $("#vedio2").show();
+                        $("#vedio").hide();
+                    }else {
+                        $("#vedio").attr("src",dataResult.vedioAddress);
+
+                        $("#vedio2").hide();
+                    }
+                    $(".to-buy").hide();
+                    $(".to-buy").attr("disabled","disabled");
+                    $("#collect").hide();
+                    $("#cancel-collect").hide();
+                    $("#to-collect").hide();
+                    $("#cancel-collect1").hide();
+                }
+
+
                 global.data =  dataResult.commentsList;
                 if(global.data != null && global.data.length > 0 ) {
 

@@ -1,13 +1,15 @@
 package com.daoshan.bean.dsxh.entity;
 
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 @Data
 @TableName("dsxh_money")
-public class DsxhMoney {
+public class DsxhMoney extends Model<DsxhMoney> {
 
     private String id;
 
@@ -33,4 +35,9 @@ public class DsxhMoney {
 
     @TableField(exist = false)
     private String time;
+
+    @Override
+    protected Serializable pkVal() {
+        return null;
+    }
 }

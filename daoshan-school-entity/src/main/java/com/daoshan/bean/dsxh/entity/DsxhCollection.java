@@ -1,13 +1,15 @@
 package com.daoshan.bean.dsxh.entity;
 
+import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @TableName("dsxh_collection")
-public class DsxhCollection {
+public class DsxhCollection extends Model<DsxhCollection> {
 
     private String id;
 
@@ -21,4 +23,8 @@ public class DsxhCollection {
 
     private String userName;
 
+    @Override
+    protected Serializable pkVal() {
+        return null;
+    }
 }

@@ -342,7 +342,7 @@ text-align: left;
 }
 
 .cont_form_login > h2 {
-margin-top: 110px; 
+margin-top: 90px;
 font-weight: 400;
   color: #757575;
 }
@@ -373,4 +373,7 @@ p {
   margin-left: -150px;
   margin-top: 5px;
   color: #333029;
+}
+.h2, h2 {
+  font-size: 20px;
 }

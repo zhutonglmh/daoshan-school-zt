@@ -1,7 +1,8 @@
 "use strict";
 var global = {
     context: null,
-    data:null
+    data:null,
+    flag:null
 };
 
 $(function () {
@@ -63,7 +64,9 @@ function initList() {
             initPage5(data.data.three);
             initPage6(data.data.four);
             initPage7(data.data.five);
-
+            if(global.flag == 1){
+                $(".my-flag").empty().html("同意退款");
+            }
         },
         error: function () {
         }
@@ -158,6 +161,9 @@ function initPage1(data) {
             callback: function (api) {
                 var $target = $(".M-box3").parent().find("table > tbody");
                 initItem1(api.getCurrent(),global.data.all,$target);
+                if(global.flag == 1){
+                    $(".my-flag").empty().html("同意退款");
+                }
             }
         });
     }
@@ -183,7 +189,10 @@ function initPage2(data) {
             nextContent: '下页',
             callback: function (api) {
                 var $target = $(".M-box4").parent().find("table > tbody");
-                initItem(api.getCurrent(),global.data.zero,$target);
+                initItem1(api.getCurrent(),global.data.zero,$target);
+                if(global.flag == 1){
+                    $(".my-flag").empty().html("同意退款");
+                }
             }
         });
     }
@@ -209,7 +218,10 @@ function initPage3(data) {
             nextContent: '下页',
             callback: function (api) {
                 var $target = $(".M-box5").parent().find("table > tbody");
-                initItem(api.getCurrent(),global.data.all,$target);
+                initItem1(api.getCurrent(),global.data.all,$target);
+                if(global.flag == 1){
+                    $(".my-flag").empty().html("同意退款");
+                }
             }
         });
     }
@@ -235,7 +247,10 @@ function initPage4(data) {
             nextContent: '下页',
             callback: function (api) {
                 var $target = $(".M-box6").parent().find("table > tbody");
-                initItem(api.getCurrent(),global.data.all,$target);
+                initItem1(api.getCurrent(),global.data.all,$target);
+                if(global.flag == 1){
+                    $(".my-flag").empty().html("同意退款");
+                }
             }
         });
     }
@@ -261,7 +276,10 @@ function initPage5(data) {
             nextContent: '下页',
             callback: function (api) {
                 var $target = $(".M-box7").parent().find("table > tbody");
-                initItem(api.getCurrent(),global.data.all,$target);
+                initItem1(api.getCurrent(),global.data.all,$target);
+                if(global.flag == 1){
+                    $(".my-flag").empty().html("同意退款");
+                }
             }
         });
     }
@@ -287,7 +305,10 @@ function initPage6(data) {
             nextContent: '下页',
             callback: function (api) {
                 var $target = $(".M-box8").parent().find("table > tbody");
-                initItem(api.getCurrent(),global.data.all,$target);
+                initItem1(api.getCurrent(),global.data.all,$target);
+                if(global.flag == 1){
+                    $(".my-flag").empty().html("同意退款");
+                }
             }
         });
     }
@@ -312,7 +333,10 @@ function initPage7(data) {
             nextContent: '下页',
             callback: function (api) {
                 var $target = $(".M-box9").parent().find("table > tbody");
-                initItem(api.getCurrent(),global.data.all,$target);
+                initItem1(api.getCurrent(),global.data.all,$target);
+                if(global.flag == 1){
+                    $(".my-flag").empty().html("同意退款");
+                }
             }
         });
     }
@@ -333,6 +357,15 @@ function initUser() {
                 $("#goto-login").show();
             }
             else{
+                if(data.data.data.vip == 1){
+                    $("#vip").empty().html("<a href=\"course.jsp\">课程管理</a>");
+                    $("#vip2").empty().html("<a href=\"order.jsp\">订单管理</a>");
+                    $("#vip3").empty().html("<a href=\"money.jsp\">余额管理</a>");
+                    $("#my-order").empty().html("<a href=\"order.jsp\">订单管理</a>");
+                    global.flag = 1;
+                }else {
+                    global.flag = 0;
+                }
 
                 if(data.data.data.dsxhUserDetail != null){
                     $("#head-image2").attr("src","/daoshan-school/upload/getImage/"+data.data.data.dsxhUserDetail.headImageAddress);
@@ -372,9 +405,11 @@ function updateOrder(){
 
     var orderId = $(this).attr("data-id");
     var status = $(this).attr("data-status");
+    var price = $(this).attr("data-price");
     var data = {
         "id":orderId,
-        "status":status
+         "status":status,
+        "price":price
     }
     var url = encodeURI(global.context + "/dsxh/order/updateOrder");
     $.ajax({

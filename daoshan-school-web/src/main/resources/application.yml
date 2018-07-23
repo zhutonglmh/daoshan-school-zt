@@ -78,8 +78,8 @@ redis:
     enable: true
   pool:
     host: 47.94.156.49
-
-
 custom:
   accessKeyId : LTAI1iGvvp1WkvAu
   accessKeySecret : vxT037TPAnftcwv1CUyeTYZXA5BH4u
+  address:
+      image: "E://dsxh-image/"

@@ -105,14 +105,15 @@ public class DsxhCourseServiceImpl implements DsxhCourseService{
         String id =UUIDUtils.getUUID();
         dsxhCourse.setId(id);
         Date date = new Date();
-        dsxhCourse.setCreateUser("朱同");
+        dsxhCourse.setCreateUser(dsxhUserService.getUserInfo().getUserName());
         dsxhCourse.setCreateTime(date);
+        dsxhCourse.setPictureAddress("/daoshan-school/upload/getImage/"+dsxhCourse.getPictureAddress());
         dsxhCourseMapper.insert(dsxhCourse);
 
         DsxhCourseDetail dsxhCourseDetail = new DsxhCourseDetail();
         dsxhCourseDetail.setCourseId(id);
         dsxhCourseDetail.setId(UUIDUtils.getUUID());
-        dsxhCourseDetail.setCreateUser("朱同");
+        dsxhCourseDetail.setCreateUser(dsxhUserService.getUserInfo().getUserName());
         dsxhCourseDetail.setCreateTime(date);
         dsxhCourseDetail.setCourseMessage(dsxhCourse.getCourseMessage());
         dsxhCourseDetailMapper.insert(dsxhCourseDetail);
@@ -123,7 +124,7 @@ public class DsxhCourseServiceImpl implements DsxhCourseService{
             dsxhCourseChild.setCourseName(dsxhCourse.getCourseName());
             dsxhCourseChild.setId(UUIDUtils.getUUID());
             dsxhCourseChild.setCreateTime(date);
-            dsxhCourseChild.setCreateUser("朱同");
+            dsxhCourseChild.setCreateUser(dsxhUserService.getUserInfo().getUserName());
             dsxhCourseChildMapper.insert(dsxhCourseChild);
         }
         return dsxhCourse;
@@ -149,6 +150,17 @@ public class DsxhCourseServiceImpl implements DsxhCourseService{
     @Override
     public List<DsxhCourse> courseSearchByType(DsxhCourse dsxhCourse) {
         return dsxhCourseMapper.courseSearchByType(dsxhCourse);
+    }
+
+    @Override
+    public List<DsxhCourse> findDataForPage(DsxhCourse dsxhCourse) {
+        return dsxhCourseMapper.findDataForPage(dsxhCourse);
+    }
+
+    @Override
+    @Transactional
+    public int delete(DsxhCourse dsxhCourse) {
+        return dsxhCourseMapper.deleteById(dsxhCourse.getId());
     }
 
 }

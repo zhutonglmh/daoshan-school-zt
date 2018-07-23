@@ -1,0 +1,10 @@
+.handle {
+    float: left;
+    margin-top: -30px;
+}
+.btn-info {
+    width: 70px;
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}

@@ -9,9 +9,11 @@
     <result column="create_user" jdbcType="CHAR" property="createUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="bill_no" jdbcType="VARCHAR" property="billNo" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, course_id, course_name, price, create_user, create_time, user_name
+    id, course_id, course_name, price, create_user, create_time, user_name,status,bill_no
   </sql>
   <select id="getUsedOrder" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder" resultMap="BaseResultMap">
     select 
@@ -25,6 +27,20 @@
     <include refid="Base_Column_List" />
     from dsxh_order
     where create_user =#{createUser,jdbcType=CHAR}
+    ORDER BY create_time DESC
+  </select>
+  <select id="findDataForPage2" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dsxh_order
+    where status= 2
+    ORDER BY create_time DESC
+  </select>
+  <select id="findDataForPage3" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dsxh_order
+    where status=4
     ORDER BY create_time DESC
   </select>
   <update id="update3" parameterType="com.daoshan.bean.dsxh.entity.DsxhOrder">

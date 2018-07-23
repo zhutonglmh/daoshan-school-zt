@@ -55,7 +55,8 @@
           <input id = "userNameLogin" type="text" placeholder="用户名" />
           <input id = "passwordLogin" type="password" placeholder="密码" />
           <div id="forget_pwd" >忘记密码？</div>
-          <button id ="login" class="btn_login" onclick="cambiar_login()">登  录</button>
+          <button id ="login" class="btn_login" onclick="cambiar_login()">用户登录</button>
+         <%-- <button id ="login2" class="btn_login" onclick="cambiar_login()">管理员登录</button>--%>
 
         </div>
         <div class="cont_form_sign_up"> <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>

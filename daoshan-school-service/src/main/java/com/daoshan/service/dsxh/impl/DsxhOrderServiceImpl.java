@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.daoshan.bean.dsxh.entity.DsxhMoney;
 import com.daoshan.bean.dsxh.entity.DsxhOrder;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
+import com.daoshan.dao.dsxh.DsxhMoneyMapper;
 import com.daoshan.dao.dsxh.DsxhOrderMapper;
+import com.daoshan.dao.dsxh.DsxhUserMapper;
 import com.daoshan.school.utils.common.AirUtils;
 import com.daoshan.school.utils.uuid.UUIDUtils;
 import com.daoshan.service.dsxh.DsxhMoneyService;
@@ -27,7 +29,12 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
 
 
     @Resource
+    private DsxhMoneyMapper dsxhMoneyMapper;
+    @Resource
     private DsxhOrderMapper dsxhOrderMapper;
+
+    @Resource
+    private DsxhUserMapper dsxhUserMapper;
 
     @Autowired
     private DsxhUserService dsxhUserService;
@@ -153,7 +160,32 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
         map.put("four", four);
         map.put("five", five);
         map.put("all", list);
+        if(dsxhUser.getVip() == 1){
+
+            List<DsxhOrder> list1 = dsxhOrderMapper.findDataForPage2(new DsxhOrder());
+           for(DsxhOrder dsxhOrder1 : list1) {
+                String format = "yyyy-MM-dd HH:mm:ss";
+                SimpleDateFormat sdf = new SimpleDateFormat(format);
+                String time = sdf.format(dsxhOrder1.getCreateTime());
+                dsxhOrder1.setTimeStr(time);
+            }
+            List<DsxhOrder> list2= dsxhOrderMapper.findDataForPage3(new DsxhOrder());
+            for(DsxhOrder dsxhOrder1 : list2) {
+                String format = "yyyy-MM-dd HH:mm:ss";
+                SimpleDateFormat sdf = new SimpleDateFormat(format);
+                String time = sdf.format(dsxhOrder1.getCreateTime());
+                dsxhOrder1.setTimeStr(time);
+            }
+            map.put("two", list1);
+            map.put("five", list2);
+        }
         return map;
+    }
+
+    @Override
+    public List<DsxhOrder> findDataForPage2(DsxhOrder dsxhOrder) throws Exception {
+
+        return dsxhOrderMapper.findDataForPage2(dsxhOrder);
     }
 
     /**
@@ -167,11 +199,16 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
     @Transactional
     public String updateOrder(DsxhOrder dsxhOrder) throws Exception {
 
+
+        DsxhUser dsxhUser = dsxhUserService.getUserInfo();
+        if(dsxhUser.getVip() == 1 && dsxhOrder.getStatus() == 1){
+            dsxhOrder.setStatus(4);
+        }
         int result = dsxhOrderMapper.update3(dsxhOrder);
         //已支付状态
         if(dsxhOrder.getStatus().equals(1)){
 
-            DsxhUser dsxhUser = dsxhUserService.getUserInfo();
+
             BigDecimal spendMoney = dsxhOrder.getPrice();
             BigDecimal acountMoney = BigDecimal.valueOf(dsxhUser.getMoney());
             if(dsxhOrder.getStatus().equals(1)){
@@ -180,13 +217,27 @@ public class DsxhOrderServiceImpl implements DsxhOrderService {
             }
         }
         //已退款状态
-        if(dsxhOrder.getStatus().equals(1)){
-            DsxhUser dsxhUser = dsxhUserService.getUserInfo();
+        if(dsxhOrder.getStatus().equals(4)){
+
+            DsxhOrder dsxhOrder1 = dsxhOrderMapper.selectById(dsxhOrder.getId());
+            DsxhUser dsxhUser1 = dsxhUserMapper.selectById(dsxhOrder1.getCreateUser());
             BigDecimal spendMoney = dsxhOrder.getPrice();
-            BigDecimal acountMoney = BigDecimal.valueOf(dsxhUser.getMoney());
+            BigDecimal acountMoney = BigDecimal.valueOf(dsxhUser1.getMoney());
             if(dsxhOrder.getStatus().equals(1)){
-                dsxhUser.setMoney(acountMoney.add(spendMoney).doubleValue());
-                dsxhUserService.updateUser2(dsxhUser);
+                dsxhUser1.setMoney(acountMoney.add(spendMoney).doubleValue());
+                dsxhUserService.updateUser2(dsxhUser1);
+                DsxhMoney dsxhMoney =new DsxhMoney();
+                dsxhMoney.setId(UUIDUtils.getUUID());
+                dsxhMoney.setMoney(spendMoney.doubleValue());
+                dsxhMoney.setCause("课程退款");
+                dsxhMoney.setType(2);
+                DateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+                String reTime = format.format(new Date());
+                String billNo = "GM" + reTime;
+                dsxhMoney.setBillNo(billNo);
+                dsxhMoney.setCreateUser(dsxhUser1.getId());
+                dsxhMoney.setCreateTime(new Date());
+                dsxhMoneyMapper.insert(dsxhMoney);
             }
         }
         if (result > 0) {

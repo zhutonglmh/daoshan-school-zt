@@ -44,9 +44,9 @@
                 <div id="search">
                     <input type="text" name="search" id="search-info" placeholder="输入搜索内容" value=""/>
                     <label><a id="search-begin">搜索</a></label>
-                    <label><a href="order.jsp">我的订单</a></label>
-                    <label><a href="collect.jsp">我的收藏</a></label>
-                    <label><a href="money.jsp">我的余额</a></label>
+                    <label id="vip"><a href="order.jsp">我的订单</a></label>
+                    <label id="vip2"><a href="collect.jsp">我的收藏</a></label>
+                    <label id="vip3"><a href="money.jsp">我的余额</a></label>
                     <%--<label id="goto-login"><a  href="login.jsp">登录/注册</a></label>--%>
                     <img id="head-image2"><label><a id="user-name" style="display: none"></a></label>
                 </div>
@@ -55,7 +55,7 @@
         <ul class="user-info-message">
             <li id="update-message"><a href="user.jsp">修改资料</a></li>
             <li id="my-order"><a href="order.jsp">我的订单</a></li>
-            <li id="my-money"><a href="user.jsp">我的余额</a></li>
+            <li id="my-money"><a href="money.jsp">我的余额</a></li>
             <li id="log-out"><a>退出登录</a></li>
             <li id="hide">隐藏</li>
         </ul>
@@ -70,10 +70,10 @@
             <ul>
                 <div class="bg"></div>
                 <li><span>全部订单</span></li>
-                <li><span>未支付 </span></li>
-                <li><span>已完成</span></li>
+                <li class="my-flag2"><span>未支付 </span></li>
+                <li class="my-flag2"><span>已完成</span></li>
                 <li><span>退款审核</span></li>
-                <li><span>已取消</span></li>
+                <li class="my-flag2"><span>已取消</span></li>
                 <li><span>已退款</span></li>
             </ul>
             <div class="clear"></div>
@@ -376,7 +376,7 @@ margin-bottom: 50px;">
             <div class="td-top"><label>{{data2.timeStr}}</label><label style="    margin-left: 20px;">订单号：{{data2.billNo}}</label></div>
             <div class="td-bottom">{{data2.courseName}}</div>
         </td>
-        <td>
+        <td >
             {{data2.price}}.00
         </td>
         <td>
@@ -393,7 +393,7 @@ margin-bottom: 50px;">
             购买有效
         </td>
         <td>
-            <button data-id={{data2.id}} data-status="3" class="btn btn-info mybtn">取消订单</button>
+            <button data-id={{data2.id}} data-price={{data2.price}}  data-status="3" class="btn btn-info mybtn">取消订单</button>
         </td>
         {{/if}}
         {{if data2.status == 1}}
@@ -407,7 +407,7 @@ margin-bottom: 50px;">
             永久有效
         </td>
         <td>
-            <button data-id={{data2.id}} data-status="2" class="btn btn-info mybtn">申请退款</button>
+            <button data-id={{data2.id}} data-status="2" class="btn btn-info mybtn ">申请退款</button>
         </td>
         {{/if}}
         {{if data2.status == 2}}
@@ -421,7 +421,7 @@ margin-bottom: 50px;">
             目前有效
         </td>
         <td>
-            <button data-id={{data2.id}} data-status="1" class="btn btn-info mybtn">取消退款</button>
+            <button data-id={{data2.id}} data-status="1" class="btn btn-info mybtn my-flag">取消退款</button>
         </td>
         {{/if}}
         {{if data2.status == 3}}
@@ -438,7 +438,6 @@ margin-bottom: 50px;">
             <%--<button class="btn btn-info mybtn">取消退款</button>--%>
         </td>
         {{/if}}
-
         {{if data2.status == 4}}
         <td class="go-to-study" data-course={{data2.courseId}}>
             <a class="do-main"  href="main.jsp?{{data2.courseId}}">重新购买 </a>

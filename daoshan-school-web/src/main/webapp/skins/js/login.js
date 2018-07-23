@@ -15,6 +15,8 @@ function initPageEvent(){
 
     //d登录
     $(document).on("click","#login", loginClick);
+
+    //$(document).on("click","#login2", loginClick);
     //注册
     $(document).on("click","#register", signClick);
 

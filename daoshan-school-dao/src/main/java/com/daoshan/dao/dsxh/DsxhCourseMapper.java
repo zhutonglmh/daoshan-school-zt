@@ -12,4 +12,6 @@ public interface DsxhCourseMapper extends BaseMapper<DsxhCourse> {
 
     @RedisCached
     List<DsxhCourse> courseSearchByType(DsxhCourse dsxhCourse);
+
+    List<DsxhCourse> findDataForPage(DsxhCourse dsxhCourse);
 }

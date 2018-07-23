@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @TableName("dsxh_course_comments")
-public class DsxhCourseComments extends Model<DsxhUser> {
+public class DsxhCourseComments extends Model<DsxhCourseComments> {
 
     private String id;
 

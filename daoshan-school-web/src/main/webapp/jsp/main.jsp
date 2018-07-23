@@ -29,9 +29,9 @@
             <div id="search">
                 <input type="text" name="search" id="search-info" placeholder="输入搜索内容" value=""/>
                 <label><a id="search-begin">搜索</a></label>
-                <label><a href="order.jsp">我的订单</a></label>
-                <label><a href="collect.jsp">我的收藏</a></label>
-                <label><a href="money.jsp">我的余额</a></label>
+                <label id="vip"><a href="order.jsp">我的订单</a></label>
+                <label id="vip2"><a href="collect.jsp">我的收藏</a></label>
+                <label id="vip3"><a href="money.jsp">我的余额</a></label>
                 <label id="goto-login"><a  href="login.jsp">登录/注册</a></label>
                 <img id="head-image2" src="../skins/imge/prictise5.jpg"><label><a id="user-name" style="display: none"></a></label>
             </div>
@@ -40,7 +40,7 @@
     <ul class="user-info-message">
         <li id="update-message"><a href="user.jsp">修改资料</a></li>
         <li id="my-order"><a href="order.jsp">我的订单</a></li>
-        <li id="my-money"><a href="user.jsp">我的余额</a></li>
+        <li id="my-money"><a href="money.jsp">我的余额</a></li>
         <li id="log-out"><a>退出登录</a></li>
         <li id="hide">隐藏</li>
     </ul>
@@ -55,6 +55,7 @@
     <li><a id="toIndex4"></a></li>
 </ol>
 <iframe id="vedio" height=400 width=600 frameborder=0 allowfullscreen src="../skins/imge/one1.png"></iframe>
+<video id="vedio2" height=400 width=600 style="display: none"   src="http://localhost:8080/daoshan-school/upload/getVedio/b0bd0229-6932-4e1a-bdd2-baf9f6b7acd7" controls></video>
     <div class="message_info">
         <div class="title">
             <label id="course_name"></label>
@@ -247,7 +248,7 @@
         <div class="comments_content" data-id="{{data2.id}}">
             <div class="comment_head" >{{data2.createUserName}}</div>
             <div class="comment_mid">{{data2.commentMessage}}</div>
-            <div class="comment_bottom"><a class="comments_time" >{{data2.createTimeStr}}</a><a class="comments_one glyphicon glyphicon-thumbs-up">顶（{{data2.commentLoves}}）</a><a class="comments_two glyphicon glyphicon-thumbs-down">踩（{{data2.commentHates}}）</a><a class="comments_three glyphicon glyphicon-edit" data-flag="no">评论（{{data2.commentsList.length}}）</a><a class="comments_four glyphicon glyphicon-new-window">收藏</a></div>
+            <div class="comment_bottom"><a class="comments_time" >{{data2.createTimeStr}}</a><a class="comments_one glyphicon glyphicon-thumbs-up">顶（{{data2.commentLoves}}）</a><a class="comments_two glyphicon glyphicon-thumbs-down">踩（{{data2.commentHates}}）</a><a class="comments_three glyphicon glyphicon-edit" data-flag="no">评论（{{data2.commentsList.length}}）</a></div>
             <div class="comments_children">
                 {{each data2.commentsList as data3}}
                 <div class="child1_comments"  data-id="{{data3.id}}">

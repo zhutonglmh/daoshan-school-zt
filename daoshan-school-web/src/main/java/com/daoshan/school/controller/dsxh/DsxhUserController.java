@@ -114,7 +114,7 @@ public class DsxhUserController {
         Map<String,Object> map = new HashMap<String,Object>();
         HashMap<String,Object> result = dsxhUserService.userLogin(dsxhUser);
         map.put("data",result);
-        return MessageBody.getMessageBody(true,map);
+     return MessageBody.getMessageBody(true,map);
     }
 
     /**

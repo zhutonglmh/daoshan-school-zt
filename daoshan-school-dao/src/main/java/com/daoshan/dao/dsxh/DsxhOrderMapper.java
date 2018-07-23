@@ -16,6 +16,8 @@ public interface DsxhOrderMapper extends BaseMapper<DsxhOrder> {
     List<DsxhOrder> getUsedOrder(DsxhOrder dsxhOrder) throws Exception;
 
     List<DsxhOrder> findDataForPage(DsxhOrder dsxhOrder) throws Exception;
+    List<DsxhOrder> findDataForPage2(DsxhOrder dsxhOrder);
 
+    List<DsxhOrder> findDataForPage3(DsxhOrder dsxhOrder);
     int update3(DsxhOrder dsxhOrder) throws Exception;
 }

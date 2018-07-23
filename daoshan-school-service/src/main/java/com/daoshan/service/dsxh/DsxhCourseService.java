@@ -43,4 +43,18 @@ public interface DsxhCourseService {
      */
     List<DsxhCourse> courseSearchByType(DsxhCourse dsxhCourse);
 
+    /**
+     * 分页搜索
+     * @param dsxhCourse
+     * @return
+     */
+    List<DsxhCourse> findDataForPage(DsxhCourse dsxhCourse);
+
+    /**
+     * 删除
+     * @param dsxhCourse
+     * @return
+     */
+    int delete(DsxhCourse dsxhCourse);
+
 }

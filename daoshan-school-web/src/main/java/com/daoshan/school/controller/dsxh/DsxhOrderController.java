@@ -55,6 +55,21 @@ public class DsxhOrderController  {
 
     }
 
+    @PostMapping("findDataForPage2")
+    public MessageBody findDataForPage2(@RequestBody DsxhOrder dsxhOrder){
+
+        Map<String,List<DsxhOrder>> map = new HashMap<>();
+        try {
+            List<DsxhOrder> list = dsxhOrderService.findDataForPage2(dsxhOrder);
+            map.put("data",list);
+            return MessageBody.getMessageBody(true,map);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return MessageBody.getMessageBody(true,map);
+        }
+
+    }
+
     @PostMapping("updateOrder")
     public MessageBody updateOrder(@RequestBody DsxhOrder dsxhOrder){
 

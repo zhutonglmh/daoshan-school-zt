@@ -24,4 +24,6 @@ public interface DsxhUserMapper extends BaseMapper<DsxhUser>{
 
     int updateMoneyByUser2(DsxhUser dsxhUser);
 
+    List<DsxhUser> selectList2(DsxhUser dsxhUser);
+
 }

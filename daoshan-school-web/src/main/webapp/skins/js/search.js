@@ -164,6 +164,12 @@ function initUser() {
                 $("#goto-login").show();
             }
             else{
+                if(data.data.data.vip == 1){
+                    $("#vip").empty().html("<a href=\"course.jsp\">课程管理</a>");
+                    $("#vip2").empty().html("<a href=\"order.jsp\">订单管理</a>");
+                    $("#vip3").empty().html("<a href=\"money.jsp\">余额管理</a>");
+                    $("#my-order").empty().html("<a href=\"order.jsp\">订单管理</a>");
+                }
                 if(data.data.data.dsxhUserDetail != null){
                     $("#head-image2").attr("src","/daoshan-school/upload/getImage/"+data.data.data.dsxhUserDetail.headImageAddress);
                 }else {

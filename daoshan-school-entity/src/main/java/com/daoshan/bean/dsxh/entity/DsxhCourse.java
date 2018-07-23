@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @TableName("dsxh_course")
-public class DsxhCourse extends Model<DsxhUser> {
+public class DsxhCourse extends Model<DsxhCourse> {
 
     private String id;
 
@@ -67,6 +67,10 @@ public class DsxhCourse extends Model<DsxhUser> {
     @TableField(exist = false)
     private int isCollect;  //1  已收藏  0 未收藏
 
+    @TableField(exist = false)
+    private int start;
+    @TableField(exist = false)
+    private int limit;
     @Override
     protected Serializable pkVal() {
         return null;
