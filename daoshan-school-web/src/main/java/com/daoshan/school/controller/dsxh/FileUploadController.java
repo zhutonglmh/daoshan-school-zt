@@ -3,7 +3,6 @@ package com.daoshan.school.controller.dsxh;
 
 import com.daoshan.school.utils.messagebody.MessageBody;
 import com.daoshan.school.utils.uuid.UUIDUtils;
-import com.oracle.webservices.internal.api.message.PropertySet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
 import java.io.*;
 
 /**

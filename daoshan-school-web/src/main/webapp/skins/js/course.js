@@ -45,7 +45,7 @@ function initPageEvent() {
     $(document).on("click","#delete", deleteCourse);
 
     $(document).on("click","#toadd", toadd);
-    $(document).on("click","#update", tan);
+    $(document).on("click",".show1", toadd);
 
 }
 function tan() {

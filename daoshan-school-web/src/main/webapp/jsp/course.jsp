@@ -110,7 +110,7 @@
     <div class="search-item" data-id="{{data2.id}}">
         <img class="search-img tiaozhuan" src="{{data2.pictureAddress}}">
         <div class="course-info tiaozhuan"> {{data2.courseName}}<%--</br>道山学海(zt.com)为您提供海量优质课程--%></div>
-        <div class="handle"><button id="query" class="btn btn-info my-btn">查看</button><button id="update" class="btn btn-info my-btn">修改</button><button id="delete" class="btn btn-info my-btn">删除</button></div>
+        <div class="handle"><button id="query" class="btn btn-info my-btn">查看</button><button class="btn btn-info my-btn show1">新增</button><button id="delete" class="btn btn-info my-btn">删除</button></div>
     </div>
     {{/each}}
 </script>

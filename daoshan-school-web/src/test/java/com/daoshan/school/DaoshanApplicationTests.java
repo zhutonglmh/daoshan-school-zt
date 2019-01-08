@@ -1,6 +1,5 @@
 package com.daoshan.school;
 
-import com.daoshan.service.AliSms.AliSmsUntils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,7 +22,7 @@ public class DaoshanApplicationTests {
            //AliSmsUntils.sms("15689438669","2222");
 
             //EmailSend.send_mail("shandongsunzhi@126.com","000099");
-
+			return;
 		}catch (NoClassDefFoundError e){
 			System.out.println(e);
 			LOG.error("测试出现类未发现异常日志 ,errMsg = {}, stack info = {}",e.getMessage(),e.toString());

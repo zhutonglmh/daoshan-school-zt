@@ -73,11 +73,6 @@ mapper:
   #mappers: com.example.myMapper.MyMapper
   identity: MYSQL
   not-empty: false
-redis:
-  cache:
-    enable: true
-  pool:
-    host: 47.94.156.49
 custom:
   accessKeyId : LTAI1iGvvp1WkvAu
   accessKeySecret : vxT037TPAnftcwv1CUyeTYZXA5BH4u
