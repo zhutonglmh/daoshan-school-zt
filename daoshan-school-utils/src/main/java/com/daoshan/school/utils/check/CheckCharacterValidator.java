@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * 自定义校验器   验证是否含有非法字符
  * 
- * @author 朱同(雏鹰订餐系统组) 2017/12/15
+ * @author 张崇宝(雏鹰订餐系统组) 2018/12/15
  *
  */
 @Constraint(validatedBy = CheckCharacterValidatorImpl.class)

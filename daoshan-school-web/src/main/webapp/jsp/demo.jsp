@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: thinkpad
-  Date: 2017/11/21
+  Date: 2018/11/21
   Time: 14:08
   To change this template use File | Settings | File Templates.
 --%>
@@ -26,7 +26,7 @@
 </head>
 <body style="margin: 100px">
 <%----%>
-<button class="btn btn-info">朱同</button>
+<button class="btn btn-info">张崇宝</button>
     <p>Bootstrap框架</p>
     <p>Bootstrap框架</p>
     <p>Bootstrap框架</p>

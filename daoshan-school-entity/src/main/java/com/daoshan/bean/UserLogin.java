@@ -10,7 +10,7 @@ import java.io.Serializable;
  * 
  * 实体bean 对应数据库中的user_zt表
  * 
- * @author 朱同  2017/12/7
+ * @author 张崇宝  2018/12/7
  *
  */
 @Data

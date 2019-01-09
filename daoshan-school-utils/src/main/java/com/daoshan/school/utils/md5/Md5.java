@@ -6,7 +6,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  * 
  * 用来处理密码加密处理
  * 
- * @author 朱同
+ * @author 张崇宝
  *
  */
 public class Md5 {

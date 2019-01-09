@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * 自定义校验器   验证是否全是由字母组成
  * 
- * @author 朱同(雏鹰订餐系统组) 2017/12/15
+ * @author 张崇宝(雏鹰订餐系统组) 2018/12/15
  *
  */
 @Constraint(validatedBy = MyIntegerValidatorImpl.class)

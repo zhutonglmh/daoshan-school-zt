@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zhuto
+  User: 张崇宝
   Date: 2018/3/29
   Time: 20:31
   To change this template use File | Settings | File Templates.
@@ -182,7 +182,7 @@
             <a>作者信息</a>
             <a>疑难解答</a>
             <div class="copyright">
-                ©CopyRight 2018-2019  朱同 版权所有 17862979628
+                ©CopyRight 2018-2019  张崇宝 版权所有 17862979628
             </div>
             <%--模态框声明--%>
             <%--模态框声明--%>

@@ -39,7 +39,7 @@ public class EmailSend {
         //设置收件人
         message.setRecipient(Message.RecipientType.TO,new InternetAddress(user));
         //设置主题
-        message.setSubject("道山学海-朱同");
+        message.setSubject("道山学海-张崇宝");
         //设置邮件正文  第二个参数是邮件发送的类型
         message.setContent("注册验证\n" +
                 "您好\" "+ user +"\"！\n" +

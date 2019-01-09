@@ -11,7 +11,7 @@ import java.util.Map;
  * 
  * 用户信息表处理方法 dao 层接口
  * 
- * @author 朱同   2017/12/7
+ * @author 张崇宝   2018/12/7
  * 
  */
 public interface UserLoginMapper extends BaseMapper<UserLogin> {

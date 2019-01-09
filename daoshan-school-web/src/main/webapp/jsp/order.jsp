@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: thinkpad
-  Date: 2017/11/26
+  Date: 2018/11/26
   Time: 22:36
   To change this template use File | Settings | File Templates.
 --%>
@@ -363,7 +363,7 @@ margin-bottom: 50px;">
             <a>作者信息</a>
             <a>疑难解答</a>
             <div class="copyright">
-                ©CopyRight 2018-2019 朱同 版权所有 17862979628
+                ©CopyRight 2018-2019 张崇宝 版权所有 17862979628
             </div>
         </div>
     </div>

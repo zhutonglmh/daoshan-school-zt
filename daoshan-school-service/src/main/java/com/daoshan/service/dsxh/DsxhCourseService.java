@@ -7,9 +7,9 @@ import java.util.List;
 /**
  * 课程类
  *
- * Created By zhuTong On 2018-4-11 21:05:58
+ * Created By 张崇宝 On 2018-4-11 21:05:58
  *
- * @author zhuTong
+ * @author 张崇宝
  *
  */
 public interface DsxhCourseService {

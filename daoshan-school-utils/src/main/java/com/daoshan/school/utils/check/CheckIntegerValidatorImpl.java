@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * 自定义校验器   验证是否为正整数
  * 
- * @author 朱同(雏鹰订餐系统组) 2017/12/15
+ * @author 张崇宝(雏鹰订餐系统组) 2018/12/15
  *
  */
 public class CheckIntegerValidatorImpl
@@ -20,7 +20,7 @@ public class CheckIntegerValidatorImpl
     /**
      * 自定义校验器（验证字符串）
      * 
-     * @author 朱同 2017/12/15
+     * @author 张崇宝 2018/12/15
      * 
      *         初始参数,获取注解中length的值
      */
