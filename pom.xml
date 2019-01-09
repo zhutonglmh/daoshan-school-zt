@@ -194,16 +194,6 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <!--制定项目中公有的依赖-->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.cohen</groupId>
-                <artifactId>redis-cache-starter</artifactId>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <!--指定项目中公有的依赖-->
     <dependencies>
         <dependency>

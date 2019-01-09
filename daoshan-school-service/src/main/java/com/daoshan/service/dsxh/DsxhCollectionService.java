@@ -1,6 +1,5 @@
 package com.daoshan.service.dsxh;
 
-import com.cohen.redis.annotation.RedisCached;
 import com.daoshan.bean.dsxh.entity.DsxhCollection;
 import com.daoshan.bean.dsxh.entity.DsxhCourse;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
@@ -31,6 +30,5 @@ public interface DsxhCollectionService {
     /**
      * 查询该用户下的所有收藏课程
      */
-    @RedisCached
     List<DsxhCourse> getCollectByUser(DsxhUser dsxhUser);
 }

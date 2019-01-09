@@ -1,7 +1,6 @@
 package com.daoshan.dao.dsxh;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.cohen.redis.annotation.RedisCached;
 import com.daoshan.bean.dsxh.entity.DsxhCollection;
 import com.daoshan.bean.dsxh.entity.DsxhCourse;
 import com.daoshan.bean.dsxh.entity.DsxhUser;
@@ -22,6 +21,5 @@ public interface DsxhCollectionMapper extends BaseMapper<DsxhCollection> {
      * @param dsxhUser
      * @return
      */
-    @RedisCached
     List<DsxhCourse> getCollectByUser(DsxhUser dsxhUser);
 }
